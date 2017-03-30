@@ -1,0 +1,26 @@
+{
+  "name": "cs3219_webapp",
+  "version": "1.0.0",
+  "description": "Git Guard web application to display github repository information.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weijieseow/CS3219A5.git"
+  },
+  "author": "CS3219 group 5",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weijieseow/CS3219A5/issues"
+  },
+  "homepage": "https://github.com/weijieseow/CS3219A5#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7"
+  }
+}
