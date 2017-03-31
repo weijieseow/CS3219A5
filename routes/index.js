@@ -19,6 +19,7 @@ router.post('/url', urlEncodoedParser, function(req, res) {
 
    clone(req.body.url, __dirname + "/../repo", function() {
    	//process data here using the cloned repo in {working directory}/repo
+   	//store the data as csv files in public/data
    	
    	//var contributions = shell.exec('git shortlog -s -n ' + __dirname + '/../repo', {silent:false}).stdout;
 	
