@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 
 var index = require('./routes/index');
+var overview = require('./routes/overview');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -12,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
    
 // index page
 app.use('/', index);
+app.use('/overview', overview);
 
 app.use('*',function(req, res){
   res.send('Error 404: Not Found!');
