@@ -13,6 +13,8 @@ router.get('/', function(req, res) {
 
 router.post('/url', urlEncodoedParser, function(req, res) {
    console.log(req.body.url); // url of repo
+   
+   req.session.repo = req.body.url; // save the repo in current session
 
    shell.cd(__dirname + "/..");
    shell.exec('rm -rf repo');

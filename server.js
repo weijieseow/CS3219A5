@@ -5,6 +5,16 @@ var path = require('path');
 var index = require('./routes/index');
 var overview = require('./routes/overview');
 
+// set up session middleware
+var session = require('express-session');
+
+app.use(session({
+  secret: 'this15secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
