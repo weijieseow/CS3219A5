@@ -11,14 +11,19 @@ router.get('/', function(req, res) {
 	res.render('index');
 });
 
-router.post('/url', urlEncodoedParser, function(req, res){
+router.post('/url', urlEncodoedParser, function(req, res) {
    console.log(req.body.url); // url of repo
 
    shell.cd(__dirname + "/..");
    shell.exec('rm -rf repo');
 
-   clone(req.body.url, __dirname + "/../repo");
-   res.redirect('/');
+   clone(req.body.url, __dirname + "/../repo", function() {
+   	//process data here using the cloned repo in {working directory}/repo
+   	
+   	//var contributions = shell.exec('git shortlog -s -n ' + __dirname + '/../repo', {silent:false}).stdout;
+	
+   	res.redirect('/overview');
+   });
 });
 
 module.exports = router;
