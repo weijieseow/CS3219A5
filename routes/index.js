@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
+var git = require('simple-git');
 var clone = require('git-clone');
+
 var shell = require('shelljs');
 
 var urlEncodoedParser = bodyParser.urlencoded({ extended: false });
@@ -21,8 +23,16 @@ router.post('/url', urlEncodoedParser, function(req, res) {
    	//process data here using the cloned repo in {working directory}/repo
    	//store the data as csv files in public/data
    	
-   	//var contributions = shell.exec('git shortlog -s -n ' + __dirname + '/../repo', {silent:false}).stdout;
-	
+   	git(__dirname + "/../repo").status((err, summary) => console.log(summary));
+
+   	git(__dirname + "/../repo").raw([
+   		'log',
+   		'--numstat',
+   		'--pretty=format:%aN%n%s',
+   		], (err, result) => {
+   			console.log(result);
+   		});
+
    	res.redirect('/overview');
    });
 });
