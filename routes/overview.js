@@ -4,7 +4,10 @@ var shell = require('shelljs');
 
 
 router.get('/', function(req, res) {
-	res.render('overview');
+    console.log("current repo: " + req.session.repo);
+	res.render('overview', {
+        repo: req.session.repo || "No repository specified"
+    });
 });
 
 
