@@ -25,15 +25,7 @@ router.post('/url', urlEncodoedParser, function(req, res) {
    	//process data here using the cloned repo in {working directory}/repo
    	//store the data as csv files in public/data
    	
-   	git(__dirname + "/../repo").status((err, summary) => console.log(summary));
-
-   	git(__dirname + "/../repo").raw([
-   		'log',
-   		'--numstat',
-   		'--pretty=format:%aN%n%s',
-   		], (err, result) => {
-   			console.log(result);
-   		});
+   	//git(__dirname + "/../repo").status((err, summary) => console.log(summary));
 
    	res.redirect('/overview');
    });

@@ -95,7 +95,7 @@
 
               <h1><%= repo %></h1>
             
-              <h1>Comparison between number of additions and deletions between Jan 2016 and June 2016</h1>
+              <h1>Comparison between number of additions and deletions between authors</h1>
 
               <form>
                 <label><input type="radio" name="mode" value="grouped"> Grouped</label>
@@ -173,7 +173,7 @@
 
                   d3.selectAll("svg > g > *").remove();
 
-                  x0.domain(dataGroupBarChart.map(function(d) { return d.label; }));
+                  x0.domain(dataGroupBarChart.map(function(d) { return d.author; }));
                   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
                   y.domain([0, d3.max(dataGroupBarChart, function(d) { return d3.max(keys, function(key) { return d[key]; }) }) + 100]).nice();
 
@@ -181,7 +181,7 @@
                   .selectAll("g")
                   .data(dataGroupBarChart)
                   .enter().append("g")
-                  .attr("transform", function(d) { return "translate(" + x0(d.label) + ",0)"; })
+                  .attr("transform", function(d) { return "translate(" + x0(d.author) + ",0)"; })
                   
                   var rect = bar.selectAll("rect")
                   .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
@@ -266,7 +266,7 @@
 
                   d3.selectAll("svg > g > *").remove();
 
-                  x.domain(data.map(function(d) { return d.label; }));
+                  x.domain(data.map(function(d) { return d.author; }));
                   z.domain(keys);
                   y.domain([0, d3.max(data, function(d) { return d.total; })]).nice();
 
@@ -279,7 +279,7 @@
                   var rect = bar.selectAll("rect")
                   .data(function(d) { return d; })
                   .enter().append("rect")
-                  .attr("x", function(d) { return x(d.data.label); })
+                  .attr("x", function(d) { return x(d.data.author); })
                   .attr("y", height)
                   .attr("width", x.bandwidth())
                   .attr("height", 0);
@@ -295,7 +295,7 @@
                    .style("left", d3.event.pageX - 280+ "px")
                    .style("top", d3.event.pageY - 80 + "px")
                    .style("display", "inline-block")
-                   .html("Total count for " + d.data.label + " = " + d.data.total); 
+                   .html("Total count for " + d.data.author + " = " + d.data.total); 
                  })
                   .on("mouseout", function(d){ tooltip.style("display", "none");});
 
