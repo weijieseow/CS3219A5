@@ -7,7 +7,7 @@ var fs = require('fs');
 
 router.get('/', function(req, res) {
 
-	res.render('file');
+	res.render('authors');
 });
 
 module.exports = router;
