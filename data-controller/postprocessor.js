@@ -30,4 +30,4 @@ exports.convertArrayOfObjectsToCSV = function(args) {
 	});
 
 	return result;
-}
+};
