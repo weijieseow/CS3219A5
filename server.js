@@ -4,6 +4,9 @@ var path = require('path');
 
 var index = require('./routes/index');
 var overview = require('./routes/overview');
+var file = require('./routes/file');
+var lines = require('./routes/lines');
+var authors = require('./routes/authors');
 
 // set up session middleware
 var session = require('express-session');
@@ -24,6 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // index page
 app.use('/', index);
 app.use('/overview', overview);
+app.use('/file', file);
+app.use('/lines', lines);
+app.use('/authors', authors);
 
 app.use('*',function(req, res){
   res.send('Error 404: Not Found!');

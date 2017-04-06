@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var shell = require('shelljs');
 var git = require('simple-git');
-var fs = require('fs');
-
+var fileUtil = require('../util/fileUtil.js');
+var postprocessor = require('../data-controller/postprocessor.js');
 
 
 router.get('/', function(req, res) {
@@ -76,18 +76,13 @@ router.get('/', function(req, res) {
 				}
 				i++;
 			}
+			
 			console.log(infoArray);
-			var csv = convertArrayOfObjectsToCSV({
+			var csv = postprocessor.convertArrayOfObjectsToCSV({
 				data: infoArray
 			});
 
-			fs.writeFile(__dirname + '/../public/data/overview.csv', csv, 'utf8', function (err) {
-				if (err) {
-					console.log('Some error occured - file either not saved or corrupted file saved.');
-				} else {
-					console.log('It\'s saved!');
-				}
-			}); 
+			fileUtil.fileWriter('/../public/data/overview.csv', csv);
 
 			res.render('overview', {
 				repo: req.session.repo || "No repository specified"
@@ -96,35 +91,6 @@ router.get('/', function(req, res) {
 		});
 });
 
-function convertArrayOfObjectsToCSV(args) {  
-	var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
-	data = args.data || null;
-	if (data == null || !data.length) {
-		return null;
-	}
-
-	columnDelimiter = args.columnDelimiter || ',';
-	lineDelimiter = args.lineDelimiter || '\n';
-
-	keys = Object.keys(data[0]);
-
-	result = '';
-	result += keys.join(columnDelimiter);
-	result += lineDelimiter;
-
-	data.forEach(function(item) {
-		ctr = 0;
-		keys.forEach(function(key) {
-			if (ctr > 0) result += columnDelimiter;
-
-			result += item[key];
-			ctr++;
-		});
-		result += lineDelimiter;
-	});
-
-	return result;
-}
 
 module.exports = router;
