@@ -31,6 +31,7 @@ router.get('/', function(req, res) {
 				if (author != "GitHub") {
 					infoArray.push({
 						author : author,
+						commits : 0,
 						additions : 0,
 						deletions : 0
 					});
@@ -70,6 +71,13 @@ router.get('/', function(req, res) {
 							commitInfo.forEach(function(item) {
 								if (item.label == author) {
 									item.value++;
+									return;
+								}
+							});
+
+							infoArray.forEach(function(item) {
+								if (item.author == author) {
+									item.commits++;
 									return;
 								}
 							});
@@ -116,9 +124,17 @@ router.get('/', function(req, res) {
 				i++;
 			}
 
-			console.log(commitInfo);
-			console.log(additionInfo);
-			console.log(deletionInfo);
+			commitInfo = sortByValues(commitInfo);
+			additionInfo = sortByValues(additionInfo);
+			deletionInfo = sortByValues(deletionInfo);
+			
+
+			//console.log(commitInfo);
+			//console.log(additionInfo);
+			//console.log(deletionInfo);
+			console.log(infoArray);
+
+
 
 			/*var csv = postprocessor.convertArrayOfObjectsToCSV({
 				data: infoArray
@@ -127,14 +143,24 @@ router.get('/', function(req, res) {
 			fileUtil.fileWriter('/../public/data/overview.csv', csv);*/
 
 			res.render('overview', {
-				repo: req.session.repo || "No repository specified",
+				repo: req.session.repo || "no repo",
 				commitInfo: commitInfo,
 				additionInfo: additionInfo,
-				deletionInfo: deletionInfo
+				deletionInfo: deletionInfo,
+				overallInfo : infoArray
 			});
 
 		});
 });
+
+function sortByValues(arrayOfObj) {
+	var byValues = arrayOfObj.slice(0);
+	byValues.sort(function(a,b) {
+		return a.value - b.value;
+	});
+
+	return byValues;
+}
 
 
 module.exports = router;

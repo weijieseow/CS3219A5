@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-    body {
-        margin: auto;
+    .bar-chart {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         height: auto;
         width: auto;
+        margin: 0 auto
     }
 
     path.slice{
@@ -124,154 +125,202 @@
 
     <% include templates/header.ejs %>
 
+    
     <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="starter-template">
 
-
                 <% if (repo == "no repo") { %>
-                    <h3>No repository is provided.</h3>
-                    <a href="/">Head to homepage</a>
+                <h3>No repository is provided.</h3>
+                <a href="/">Head to homepage</a>
                 <% } else { %>
 
-                    <h3>Overview of <br> <%= repo %></h3>
-                    <form>
-                        <label><input type="radio" name="dataset" id="dataset" value="Commits" checked> Commits</label>
-                        <label><input type="radio" name="dataset" id="dataset" value="Additions"> Addtions</label>
-                        <label><input type="radio" name="dataset" id="dataset" value="Deletions"> Deletions</label>
-                    </form>
-                    <script src="http://d3js.org/d3.v3.min.js"></script>
-                    <script>
-
-                        var datasetCommit = <%- JSON.stringify(commitInfo) %>
-                        var datasetAddition = <%- JSON.stringify(additionInfo) %>
-                        var datasetDeletion = <%- JSON.stringify(deletionInfo) %>
-
-                        d3.selectAll("input").on("change", selectDataset);
-
-                        function selectDataset()
-                        {
-                            var value = this.value;
-                            if (value == "Commits")
-                            {
-                                change(datasetCommit);
-                            }
-                            else if (value == "Additions")
-                            {
-                                change(datasetAddition);
-                            }
-                            else if (value == "Deletions")
-                            {
-                                change(datasetDeletion);
-                            }
-                        }
-
-                        var margin = {top: (parseInt(d3.select('body').style('height'), 10)/20), right: (parseInt(d3.select('body').style('width'), 10)/20), bottom: (parseInt(d3.select('body').style('height'), 10)/20), left: (parseInt(d3.select('body').style('width'), 10)/5)},
-                        width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
-                        height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
-
-                        var div = d3.select("body").append("div").attr("class", "toolTip");
-
-                        var formatPercent = d3.format("");
-
-                        var y = d3.scale.ordinal()
-                        .rangeRoundBands([height, 0], .2, 0.5);
-
-                        var x = d3.scale.linear()
-                        .range([0, width]);
-
-                        var xAxis = d3.svg.axis()
-                        .scale(x)
-                        .tickSize(-height)
-                        .orient("bottom");
-
-                        var yAxis = d3.svg.axis()
-                        .scale(y)
-                        .orient("left");
-                            //.tickFormat(formatPercent);
-
-                            var svg = d3.select("body").append("svg")
-                            .attr("width", width + margin.left + margin.right)
-                            .attr("height", height + margin.top + margin.bottom)
-                            .append("g")
-                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                            svg.append("g")
-                            .attr("class", "x axis")
-                            .attr("transform", "translate(0," + height + ")")
-                            .call(xAxis);
-
-                            d3.select("input[value=\"total\"]").property("checked", true);
-                            change(datasetCommit);
-
-                            function change(dataset) {
-
-                                y.domain(dataset.map(function(d) { return d.label; }));
-                                x.domain([0, d3.max(dataset, function(d) { return d.value; })]);
-
-                                svg.append("g")
-                                .attr("class", "x axis")
-                                .attr("transform", "translate(0," + height + ")")
-                                .call(xAxis);
-
-                                svg.select(".y.axis").remove();
-                                svg.select(".x.axis").remove();
-
-                                svg.append("g")
-                                .attr("class", "y axis")
-                                .call(yAxis)
-                                .append("text")
-                                .attr("transform", "rotate(0)")
-                                .attr("x", 50)
-                                .attr("dx", ".1em")
-                                .style("text-anchor", "end")
-                                .text("Authors");
-
-
-                                var bar = svg.selectAll(".bar")
-                                .data(dataset, function(d) { return d.label; });
-                                // new data:
-                                bar.enter().append("rect")
-                                .attr("class", "bar")
-                                .attr("x", function(d) { return x(d.value); })
-                                .attr("y", function(d) { return y(d.label); })
-                                .attr("width", function(d) { return width-x(d.value); })
-                                .attr("height", y.rangeBand())
-                                .append("text")
-                                .attr("x", function(d) { return x(d.value); })
-                                .attr("y", function(d) { return y(d.label) + width; })
-                                .text(function(d) { return d.value; });
-
-                                bar
-                                .on("mousemove", function(d){
-                                    div.style("left", d3.event.pageX+10+"px");
-                                    div.style("top", d3.event.pageY-25+"px");
-                                    div.style("display", "inline-block");
-                                    div.html((d.label)+"<br>"+(d.value));
-                                });
-                                bar
-                                .on("mouseout", function(d){
-                                    div.style("display", "none");
-                                });
-
-
-                                // removed data:
-                                bar.exit().remove();
-
-                                // updated data:
-                                bar.transition()
-                                .duration(750)
-                                .attr("x", function(d) { return 0; })
-                                .attr("y", function(d) { return y(d.label); })
-                                .attr("width", function(d) { return x(d.value); })
-                                .attr("height", y.rangeBand());
-
-                            };
-                        </script>
-                    <% } %>
-                </div>
+                <h3>Overview of <br> <%= repo %></h3>
+                <form>
+                    <label><input type="radio" name="dataset" id="dataset" value="Commits" checked> Commits</label>
+                    <label><input type="radio" name="dataset" id="dataset" value="Additions"> Addtions</label>
+                    <label><input type="radio" name="dataset" id="dataset" value="Deletions"> Deletions</label>
+                </form>
+                
             </div>
         </div>
-    </body>
-    </html>
+    </div>
+
+    <div id="bar-chart"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Author</th>
+                            <th>Commits</th>
+                            <th>Additions</th>
+                            <th>Deletions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var i = 0; i < overallInfo.length; i++) { %>
+                        <tr> 
+                            <td><input type="checkbox" value="<%= overallInfo[i].author %>" name="authorbox" /></td>
+                            <td><%= overallInfo[i].author %></td>
+                            <td><%= overallInfo[i].commits %></td>
+                            <td><%= overallInfo[i].additions %></td>
+                            <td><%= overallInfo[i].deletions %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" name="authorbtn">Compare</button>
+        </div>
+    </div>
+
+    <% } %>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+
+        var datasetCommit = <%- JSON.stringify(commitInfo) %>
+        var datasetAddition = <%- JSON.stringify(additionInfo) %>
+        var datasetDeletion = <%- JSON.stringify(deletionInfo) %>
+
+        d3.selectAll("input").on("change", selectDataset);
+
+        function selectDataset()
+        {
+            var value = this.value;
+            if (value == "Commits")
+            {
+                change(datasetCommit);
+            }
+            else if (value == "Additions")
+            {
+                change(datasetAddition);
+            }
+            else if (value == "Deletions")
+            {
+                change(datasetDeletion);
+            }
+        }
+
+        var margin = {top: (parseInt(d3.select('body').style('height'), 10)/20), right: (parseInt(d3.select('body').style('width'), 10)/20), bottom: (parseInt(d3.select('body').style('height'), 10)/20), left: (parseInt(d3.select('body').style('width'), 10)/5)},
+        width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
+        height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
+
+        var div = d3.select("#bar-chart").append("div").attr("class", "toolTip");
+
+        var formatPercent = d3.format("");
+
+        var y = d3.scale.ordinal()
+        .rangeRoundBands([height, 0], .2, 0.5);
+
+        var x = d3.scale.linear()
+        .range([0, width]);
+
+        var xAxis = d3.svg.axis()
+        .scale(x)
+        .tickSize(-height)
+        .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+        var svg = d3.select("#bar-chart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+        d3.select("input[value=\"total\"]").property("checked", true);
+        change(datasetCommit);
+
+        function change(dataset) {
+
+            y.domain(dataset.map(function(d) { return d.label; }));
+            x.domain([0, d3.max(dataset, function(d) { return d.value; })]);
+
+            svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+            svg.select(".y.axis").remove();
+            svg.select(".x.axis").remove();
+
+            svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(0)")
+            .attr("x", 50)
+            .attr("dx", ".1em")
+            .style("text-anchor", "end")
+            .text("Authors");
+
+
+            var bar = svg.selectAll(".bar")
+            .data(dataset, function(d) { return d.label; });
+            // new data:
+            bar.enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d.value); })
+            .attr("y", function(d) { return y(d.label); })
+            .attr("width", function(d) { return width-x(d.value); })
+            .attr("height", y.rangeBand())
+            .append("text")
+            .attr("x", function(d) { return x(d.value); })
+            .attr("y", function(d) { return y(d.label) + width; })
+            .text(function(d) { return d.value; });
+
+            bar
+            .on("mousemove", function(d){
+                div.style("left", d3.event.pageX+10+"px");
+                div.style("top", d3.event.pageY-25+"px");
+                div.style("display", "inline-block");
+                div.html((d.label)+"<br>"+(d.value));
+            });
+            bar
+            .on("mouseout", function(d){
+                div.style("display", "none");
+            });
+
+
+            // removed data:
+            bar.exit().remove();
+
+            // updated data:
+            bar.transition()
+            .duration(750)
+            .attr("x", function(d) { return 0; })
+            .attr("y", function(d) { return y(d.label); })
+            .attr("width", function(d) { return x(d.value); })
+            .attr("height", y.rangeBand());
+
+        };
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("button[name='authorbtn']").click(function(){
+                var favorite = [];
+                $.each($("input[name='authorbox']:checked"), function(){            
+                    favorite.push($(this).val());
+                });
+                alert(favorite.join(", "));
+            });
+        });
+    </script>
+
+</body>
+</html>
