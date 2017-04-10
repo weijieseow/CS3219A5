@@ -85,7 +85,8 @@ router.get('/', function(req, res) {
 			fileUtil.fileWriter('/../public/data/overview.csv', csv);
 
 			res.render('overview', {
-				repo: req.session.repo || "No repository specified"
+				repo: req.session.repo || "No repository specified",
+				data: infoArray
 			});
 			
 		});
