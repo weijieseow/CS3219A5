@@ -19,16 +19,17 @@
                 <form action="/file/filepath" method="post">
                     <input type="text" name="filepath"/> <input type="submit" value="Submit">
                 </form>
-
+                <br>
                 <form>
-                    <label><input type="radio" name="dataset" id="dataset" value="num_commits" checked> Total</label>
-                    <label><input type="radio" name="dataset" id="dataset" value="option1"> Option 1</label>
-                    <label><input type="radio" name="dataset" id="dataset" value="option2"> Option 2</label>
+                    <label><input type="radio" name="dataset" id="dataset" value="num_commits" checked> Number Of Commits</label>
+                    <br>
+                    <label><input type="radio" name="dataset" id="dataset" value="option1"> Additions / Deletions</label>
                 </form>
-                <svg width="960" height="500"></svg>
+                <br>
+                <svg width="960" height="600"></svg>
                 <script src="http://d3js.org/d3.v3.min.js"></script>
                 <script>
-
+                    
                     datasetNumCommits = <%-JSON.stringify(datasetNumCommits)%>
                     datasetAddDelete = <%-JSON.stringify(datasetAddDelete)%>
                     
@@ -76,15 +77,17 @@
                         {
                             change(datasetOption1);
                         }
-                        else if (value == "option2")
-                        {
-                            change(datasetOption2);
-                        }
                     }
 
-                    var margin = {top: (parseInt(d3.select('body').style('height'), 10)/20), right: (parseInt(d3.select('body').style('width'), 10)/20), bottom: (parseInt(d3.select('body').style('height'), 10)/20), left: (parseInt(d3.select('body').style('width'), 10)/5)},
-                            width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
-                            height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
+                    var margin = {
+                        top: (parseInt(d3.select('body').style('height'), 10)/20), 
+                        right: (parseInt(d3.select('body').style('width'), 10)/20), 
+                        bottom: (parseInt(d3.select('body').style('height'), 10)/20), 
+                        left: (parseInt(d3.select('body').style('width'), 10)/5)
+                    },
+                    
+                    width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
+                    height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
 
                     var div = d3.select("body").append("div").attr("class", "toolTip");
 
@@ -125,10 +128,16 @@
                         y.domain(dataset.map(function(d) { return d.label; }));
                         x.domain([0, d3.max(dataset, function(d) { return d.value; })]);
 
+                        //console.log(d3.max(dataset, function(d) { return d.value; }))
+
                         svg.append("g")
                                 .attr("class", "x axis")
-                                .attr("transform", "translate(0," + height + ")")
-                                .call(xAxis);
+                                .attr("transform", "translate(0," + (height - 15) + ")")
+                                .call(xAxis)
+                                .append("text")
+                                .attr("x", 350)
+                                .attr("y", 28)
+                                .text("Num Of Commits");
 
                         svg.select(".y.axis").remove();
                         svg.select(".x.axis").remove();

@@ -27,7 +27,10 @@ router.get('/', function(req, res) {
 });
 
 router.post('/filepath', urlEncodoedParser, function(req, res) {
-   
+
+	// Remember to reset the arrays 
+	dArrayOfCommits = []
+
    	var dataDict = {}
 	var newStatsObject = {
 		numCommits: 0,
@@ -140,6 +143,8 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			numCommits: dArrayOfCommitNumber,
 			addDelete: dArrayOfAddDelete, 
 		}
+
+		console.log("After JS: ", dArrayOfCommits)
 		
 	});
 
