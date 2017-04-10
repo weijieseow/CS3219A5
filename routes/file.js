@@ -44,6 +44,7 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 	var dDeletionsArr = [];
 
    let filepath = req.body.filepath
+   req.session.filepath = filepath
    console.log(filepath); // Filepath to be inspected
 
    // Pull data for part D
@@ -155,9 +156,36 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 		datasetNumCommits: dArrayOfCommitNumber || [],
 		datasetAddDelete: dArrayOfAddDelete || [],
 	});
-
-
-
 });
+
+router.post('/codechunk', urlEncodoedParser, function(req, res) {
+
+	let filepath = req.session.filepath
+	let lineStart = req.body.linestart
+	let lineEnd = req.body.lineend
+   	//console.log("Before git log: ", filepath, lineStart, lineEnd);
+
+   	// Pull data for part D
+	git(__dirname + "/../repo").raw([
+	'log',
+	'--numstat',
+	'--pretty="%n@@@@%n%aN%n%ad%n%s"',
+	'-L',
+	lineStart + ',' + lineEnd + ':' + filepath
+	], (err, result) => {
+		console.log(result)
+	});
+
+	// Render page now with the data
+	res.render('file', {
+		filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
+		commitsArr: dArrayOfCommits || [],
+		datasetNumCommits: dArrayOfCommitNumber || [],
+		datasetAddDelete: dArrayOfAddDelete || [],
+	});
+
+});	
+
+
 
 module.exports = router;
