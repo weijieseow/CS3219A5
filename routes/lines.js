@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
   if (req.session.lines && req.session.lines.url === req.session.repo) {
     // retrieve from cache
     console.log('retrieved from cache');
+    
     res.render('lines', {
       data: req.session.lines.data
     });
@@ -16,7 +17,7 @@ router.get('/', function(req, res) {
   }
 
   // git grep command to get all non-binary files
-  // checking non-binary files will provide more accurate line attribution
+  // checking only non-binary files will provide more accurate line attribution
   git(__dirname + "/../repo").raw([
     'grep',
     '-I', '-l',
@@ -70,6 +71,7 @@ router.get('/', function(req, res) {
             count: count[author] 
           };
         });
+        
         // console.log(data);
         
         // save to cache
