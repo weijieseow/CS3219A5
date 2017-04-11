@@ -6,6 +6,14 @@ var fs = require('fs');
 
 
 router.get('/', function(req, res) {
+  if (req.session.lines && req.session.lines.url === req.session.repo) {
+    // retrieve from cache
+    console.log('retrieved from cache');
+    res.render('lines', {
+      data: req.session.lines.data
+    });
+    return;
+  }
 
   // git grep command to get all non-binary files
   // checking non-binary files will provide more accurate line attribution
@@ -62,7 +70,14 @@ router.get('/', function(req, res) {
             count: count[author] 
           };
         });
-        console.log(data);
+        // console.log(data);
+        
+        // save to cache
+        req.session.lines = {
+          url: req.session.repo,
+          data: data
+        };
+        
         res.render('lines', {
           data: data
         });
