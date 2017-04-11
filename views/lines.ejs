@@ -8,8 +8,8 @@
         shape-rendering: crispEdges;
     }
 
-    text, .xAxis, .yAxis {
-        font-size: 0.8em;
+    .xAxis text, .yAxis text, .label {
+        //font-size: 0.9em;
     }
 
     </style>
@@ -37,6 +37,17 @@ var data = <%- JSON.stringify(data) %>;
 </script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
+
+function textEllipsis() {
+    var self = d3.select(this);
+    var text = self.text();
+    var newText = text;
+    while (self.node().getComputedTextLength() > 40) {
+        newText = newText.slice(0,-1);
+        self.text(newText + '...');
+    }
+}
+    
 (function(d3) {
 'use strict';
 
@@ -63,17 +74,16 @@ var y = d3.scaleBand()
 	.range([0, height])
 	.padding(0.4);
 
-// set the x axis
+// set the y axis
 var yAxis = d3.axisLeft(y)
 	.tickSize(0);
 
 svg.append("g")
 .attr("transform", "translate(0," + 0 + ")")
 .attr('class','yAxis')
-.call(yAxis);
-
-d3.selectAll(".yAxis text")
-.attr("transform", "translate(0," + 0 + ")");
+.call(yAxis)
+.selectAll(".tick text")
+.each(textEllipsis);
 
 var g = svg.append("g");
 
@@ -94,6 +104,7 @@ var label = g.selectAll("g")
 			.text(d => d.count)
 			.attr("x", function(d) {return x(d.count) + 15})
 			.attr("y", function(d) {return y(d.author) + y.bandwidth()/2})
+            .attr('class','label')
             .style("dominant-baseline", "middle")
 			.style("text-anchor", "left");
 
