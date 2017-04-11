@@ -150,6 +150,11 @@
     <div id="bar-chart"></div>
 
     <div class="container">
+        <div class="starter-template">
+            <h5>Select 1 or more author to compare. Default date will be today.</h5>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -176,13 +181,13 @@
                     </tbody>
                 </table>
             </div>
-        
-            <p>
-                Before: <input type="text" name="beforedate" id="datebefore"> 
-                After: <input type="text" name="afterdate" id="dateafter"> 
-            </p>
 
-            <button type="button" name="authorbtn">Compare</button> 
+            <p> 
+                From: <input type="text" name="beforedate" id="datebefore"> 
+                To: <input type="text" name="afterdate" id="dateafter"> 
+                <button type="button" name="authorbtn">Compare</button> 
+            </p>
+            
             
         </div>
     </div>
@@ -207,12 +212,27 @@
         $(document).ready(function() {
             $("button[name='authorbtn']").click(function(){
                 var authors = [];
-                $.each($("input[name='authorbox']:checked"), function(){            
-                    authors.push($(this).val());
-                });
+                var url = "/authors";
+
                 var beforedate = $("input[name='beforedate']").val();
                 var afterdate = $("input[name='afterdate']").val();
-                alert(authors.join(", ") + beforedate  + afterdate);
+                url += ("/" + beforedate + "/" + afterdate);
+                
+                $.each($("input[name='authorbox']:checked"), function(){            
+                    authors.push($(this).val());
+                    url += ("/" + $(this).val());
+                });
+
+
+                if (authors.length == 0) {
+                    alert("Please select at least 1 author to compare");
+                }
+                else {
+                    //alert(authors.join(", ") + beforedate  + afterdate);
+
+                    window.location.href = url;
+                    return false;
+                }
             });
         });
     </script>
