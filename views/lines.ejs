@@ -12,6 +12,26 @@
         font-size: .8em;
     }
 
+    .chart {
+        position: relative;
+    }
+        
+    .tiptip {
+        border-radius: 5px;
+        width: auto;
+        padding: 10px;
+        background:	#fff;
+        box-shadow:	0 0	5px	#999999;
+        color: #333;
+        font-size: 12px;
+        text-align:	left;
+        position: absolute;
+        z-index: 10;
+        display: none;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1em;
+    }
+
     </style>
 </head>
 <body>
@@ -24,7 +44,7 @@
             <div class="starter-template">
                 <h1>Contribution by Lines</h1>
 
-                <div id="chartByLines"></div>
+                <div class="chart" id="chartByLines"></div>
 
             </div>
         </div>
@@ -78,6 +98,12 @@ var y = d3.scaleBand()
 
 var g = svg.append("g");
 
+// add tooltip
+var tooltip = d3.select('body')
+    .append('div')
+	.attr('class','tiptip')
+    .on("mouseout", function() { d3.select(this).style("display", "none"); });
+
 // render the bars
 var bar = g.selectAll("g")
 		.data(data)
@@ -108,6 +134,12 @@ svg.append("g")
 .attr('class','yAxis')
 .call(yAxis)
 .selectAll(".tick text")
+.on('mouseover', function(d) {
+    tooltip.html(d);
+    tooltip.style("display", "block");
+    tooltip.style('left', (event.pageX - parseInt(tooltip.style("width"), 10)/2) + "px");
+    tooltip.style('top', (event.pageY - parseInt(tooltip.style("height"), 10)/2) + "px");
+})
 .each(textEllipsis);
 
 })(window.d3);
