@@ -12,61 +12,68 @@ router.get('/', function(req, res) {
 	var additionInfo = [];
 	var deletionInfo = [];
 	var commitInfo = [];
+	var groupedInfo = [];
 
 	console.log("current repo: " + req.session.repo);
 
 	if (req.session.repo == undefined) {
 		res.render('overview', {
-				repo: "no repo",
-				commitInfo: commitInfo,
-				additionInfo: additionInfo,
-				deletionInfo: deletionInfo,
-				overallInfo : infoArray
-			});
+			repo: "no repo",
+			commitInfo: commitInfo,
+			additionInfo: additionInfo,
+			deletionInfo: deletionInfo,
+			overallInfo : infoArray,
+			groupedInfo : groupedInfo
+		});
 	}
 	else {
 		git(__dirname + "/../repo").raw([
-		'log',
-		'--pretty=format:%cN',
-		], (err, result) => {
+			'log',
+			'--pretty=format:%cN',
+			], (err, result) => {
 
-			var authorsArr = result.replace(/\n/g, ",").split(",");
+				var authorsArr = result.replace(/\n/g, ",").split(",");
 
-			authorsArr = authorsArr.filter(function(elem, index, self) {
-				return index == self.indexOf(elem);
-			})
+				authorsArr = authorsArr.filter(function(elem, index, self) {
+					return index == self.indexOf(elem);
+				})
 
-			authorsArr.forEach(function(author) {
+				authorsArr.forEach(function(author) {
 
-				if (author != "GitHub") {
-					infoArray.push({
-						author : author,
-						commits : 0,
-						additions : 0,
-						deletions : 0
-					});
-					additionInfo.push({
-						label : author,
-						value : 0,
-					});
-					deletionInfo.push({
-						label : author,
-						value : 0
-					});
-					commitInfo.push({
-						label : author,
-						value : 0
-					})
-				}
+					if (author != "GitHub") {
+						infoArray.push({
+							author : author,
+							commits : 0,
+							additions : 0,
+							deletions : 0
+						});
+						additionInfo.push({
+							label : author,
+							value : 0,
+						});
+						deletionInfo.push({
+							label : author,
+							value : 0
+						});
+						commitInfo.push({
+							label : author,
+							value : 0
+						})
+						groupedInfo.push({
+							author : author,
+							additions : 0,
+							deletions : 0
+						});
+					}
+				});
 			});
-		});
 
-	git(__dirname + "/../repo").raw([
-		'log',
-		'--pretty=format:author:%cN',
-		'--shortstat',
-		], (err, result) => {
-			var statsArr = result.replace(/\n/g, ",").split(",");
+		git(__dirname + "/../repo").raw([
+			'log',
+			'--pretty=format:author:%cN',
+			'--shortstat',
+			], (err, result) => {
+				var statsArr = result.replace(/\n/g, ",").split(",");
 			//console.log(statsArr);
 
 			var i = 0;
@@ -102,6 +109,13 @@ router.get('/', function(req, res) {
 								}
 							})
 
+							groupedInfo.forEach(function(item) {
+								if (item.author == author) {
+									item.additions += parseInt(insertionArr[0]);
+									return;
+								}
+							})
+
 							additionInfo.forEach(function(item) {
 								if (item.label == author) {
 									item.value += parseInt(insertionArr[0]);
@@ -114,6 +128,13 @@ router.get('/', function(req, res) {
 							var deletionArr = statsArr[i].split("\\s+");
 
 							infoArray.forEach(function(item) {
+								if (item.author == author) {
+									item.deletions += parseInt(deletionArr[0]);
+									return;
+								}
+							});
+
+							groupedInfo.forEach(function(item) {
 								if (item.author == author) {
 									item.deletions += parseInt(deletionArr[0]);
 									return;
@@ -137,7 +158,7 @@ router.get('/', function(req, res) {
 			commitInfo = sortByValues(commitInfo);
 			additionInfo = sortByValues(additionInfo);
 			deletionInfo = sortByValues(deletionInfo);
-			
+			infoArray.sort(function (a, b) {return a.author.toLowerCase() < b.author.toLowerCase()});
 
 			//console.log(commitInfo);
 			//console.log(additionInfo);
@@ -157,7 +178,8 @@ router.get('/', function(req, res) {
 				commitInfo: commitInfo,
 				additionInfo: additionInfo,
 				deletionInfo: deletionInfo,
-				overallInfo : infoArray
+				overallInfo : infoArray,
+				groupedInfo : groupedInfo
 			});
 
 		});
@@ -173,6 +195,5 @@ function sortByValues(arrayOfObj) {
 
 	return byValues;
 }
-
 
 module.exports = router;
