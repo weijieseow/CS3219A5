@@ -16,11 +16,11 @@
         }
         .axis text, .legend {
             font-family: 'Indie Flower', cursive;
-            font-size: 9pt;
+            font-size: .8em;
         } 
         .axis .label {
             font-family: 'Indie Flower', cursive;
-            font-size: 16pt;
+            font-size: 1em;
         }
         .axisLine {
             fill: none;
@@ -87,24 +87,20 @@
   <body>
     <% include templates/header.ejs %>
     <div class="container" id="buttons">
-        <div class="center">
-            <input type="button" name="xAxis" id="fit" value="Fit xAxis">
-            <input type="button" name="xAxis" id="daily" value="Daily Addition"></label>
-            <input type="button" name="xAxis" id="cumulative" value="Cumulative Addition"></label>
-        </div>
+        <button name="xAxis" id="fit">Fit xAxis</button>
+        <label><input type="radio" name="xAxis" id="daily">Daily Addition</label>
+        <label><input type="radio" name="xAxis" id="cumulative">Cumulative Addition</label>
     </div>
-    <div class="container" id="buttons">
-        <div class="center">
-            <div id="info"></div>
-        </div>
+    <div class="container">
+        <div id="info"></div>
+        <div id="scatter"></div>
     </div>
-    <div id="scatter"></div>
     
     
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script>
-        var margin = { top: 10, right: 200, bottom: 50, left: 50 },
+        var margin = { top: 10, right: 200, bottom: 80, left: 50 },
             outerWidth = 1250,
             outerHeight = 580,
             width = outerWidth - margin.left - margin.right,
@@ -113,6 +109,8 @@
         var x = d3.scale.linear().range([0, width]);
 
         var y = d3.scale.linear().range([height, 0]);
+        
+        var parseDate = d3.time.format("%Y-%m-%d");
 
         var details = "details",
             xCat = "date",
@@ -133,18 +131,20 @@
 
         var xMax = d3.max(data, function(d) { return d[xCat]; }),
             xMin = d3.min(data, function(d) { return d[xCat]; }),
-            xMin = xMin > 0 ? 0 : xMin,
             yMax = d3.max(data, function(d) { return d[yCat]; }),
             yMin = d3.min(data, function(d) { return d[yCat]; }),
             yMin = yMin > 0 ? 0 : yMin;
-
+            
         x.domain([xMin, xMax]);
         y.domain([yMin, yMax]);
 
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom")
-            .tickSize(-height);
+            .tickSize(-height)
+            .tickFormat(function(d) {
+                return parseDate(new Date(d));
+            });
 
         var yAxis = d3.svg.axis()
             .scale(y)
@@ -180,16 +180,29 @@
             .attr("width", width)
             .attr("height", height);
 
-        svg.append("g")
+        var xAxisGroup = svg.append("g")
             .classed("x axis", true)
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis)
+            .call(xAxis);
+        
+        xAxisGroup
             .append("text")
             .classed("label", true)
             .attr("x", width)
             .attr("y", margin.bottom - 10)
             .style("text-anchor", "end")
             .text(xCat);
+            
+         function rotateXAxisLabels() {
+            xAxisGroup
+            .selectAll(".tick text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-45)");
+        }
+   
+        rotateXAxisLabels();
 
         svg.append("g")
             .classed("y axis", true)
@@ -273,7 +286,8 @@
             var svg = d3.select("#scatter").transition();
 
             svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat); //duration for shifting background plot
-
+            rotateXAxisLabels();
+            
             objects.selectAll(".dot").transition().duration(1000).attr("transform", transform); //duration for shifting plot
         }
             
@@ -308,6 +322,7 @@
         function zoom() {
             svg.select(".x.axis").call(xAxis);
             svg.select(".y.axis").call(yAxis);
+            rotateXAxisLabels();
 
             svg.selectAll(".dot")
                 .attr("transform", transform);
