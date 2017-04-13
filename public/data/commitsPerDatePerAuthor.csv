@@ -1,0 +1,26 @@
+author,date,commitCount,dayAddition,dayDeletion,authorCumAddition,authorCumDeletion,details
+qroll,2017-04-13,1,173,5,173,5,173 5 Implement part e|
+roll,2017-04-13,1,173,5,33,1,33 1 Show tooltip when hovering over y-axis labels|
+roll,2017-03-31,1,19,1,52,2,19 1 Set up session middleware|
+See Loo Jane,2017-04-13,3,151,61,170,108,38 48 Tidy ejs code|121 43 Fixed barchart x axis, add parsing for edit history|11 17 Add text to display showing edit history for which lines|
+See Loo Jane,2017-04-10,1,39,2,209,110,39 2 Add input and linked server side for the link chunk part BUG: When you keep submitting with the file path, first try nth happens, second third try it cumulates the variable Have not did post processing for the code chunk output|
+See Loo Jane,2017-04-13,1,214,96,423,206,214 96 Add grouped bar chart, still need work on tooltips, x axis and y axis names|
+See Loo Jane,2017-04-10,3,624,56,1047,262,28 8 Change file.ejs to have an input bar to take in file path|559 16 Add stub horizontal bar chart code to file.ejs Linked up number of commits json data with bar chart|37 32 Attempt to add x axis label —> Still buggy, can see that it overlaps with the y axis by a little|
+Seow Wei Jie,2017-03-30,3,624,56,37,0,37 0 Initial commit|
+Seow Wei Jie,2017-03-31,1,4,0,41,0,4 0 Create README.md|
+Seow Weijie,2017-04-11,1,4,0,29,9,29 9 Added redirect to authors page using parameters specified by user|
+Seow Weijie,2017-04-06,2,181,50,210,59,52 48 Extracted csv converter into data-controller/postprocessor.js|129 2 Added routing for other url|
+Seow Weijie,2017-04-02,1,144,27,354,86,144 27 Implemented comparison view between authors for addition and deletion|
+Seow Weijie,2017-04-10,1,563,334,917,420,563 334 Implemented horizontal bar chart for overview|
+Seow Weijie,2017-03-31,1,14,3,931,423,14 3 Testing usage of simple-git|
+Seow Weijie,2017-04-10,2,259,162,1190,585,36 14 Added datepicker|223 148 Added table to overview and checkboxes to select authors|
+Seow Weijie,2017-03-31,1,163,0,1353,585,163 0 Configured server and added index page|
+Seow Weijie,2017-04-10,1,122,115,1475,700,122 115 Prevent user from entering overview when no repo is specified|
+Seow Weijie,2017-04-06,1,21,26,1496,726,21 26 Extracted fileWriter into fileUtil|
+Seow Weijie,2017-03-31,2,18,4,1514,730,10 1 Renamed some files and added some comments|8 3 Added comments|
+Seow Weijie,2017-04-13,1,61,41,1575,771,61 41 Prevent user from going into overview when no repo is specified|
+Seow Weijie,2017-03-31,2,390,9,1965,780,377 4 Added overview page|13 5 Able to clone the repo url successfully|
+Seow Weijie,2017-04-13,1,243,8,2208,788,243 8 Added horizontal grouped bar chart|
+Seow Weijie,2017-03-31,1,17,18,2225,806,17 18 Minor changes to index page|
+Seow Weijie,2017-04-13,1,200,58,2425,864,200 58 Added group bar chart to overview|
+Seow Weijie,2017-04-10,1,267,544,2692,1408,267 544 Added commits per author in overview|
