@@ -10,7 +10,8 @@ var urlEncodoedParser = bodyParser.urlencoded({ extended: false });
 // Define the variables that should be passed on to HTML here
 var dArrayOfCommits = []
 var dArrayOfCommitNumber = []
-var dArrayOfAddDelete = [] 
+var dArrayOfAddDelete = []
+var showHistory = false 
 
 router.get('/', function(req, res) {
 
@@ -20,6 +21,7 @@ router.get('/', function(req, res) {
 		commitsArr: dArrayOfCommits || [],
 		datasetNumCommits: dArrayOfCommitNumber || [],
 		datasetAddDelete: dArrayOfAddDelete || [],
+		showHistory: showHistory,
 	});
 
 	// DEBUG
@@ -30,13 +32,10 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 
 	// Remember to reset the arrays 
 	dArrayOfCommits = []
+	dArrayOfCommitNumber = []
+	dArrayOfAddDelete = []
 
    	var dataDict = {}
-	var newStatsObject = {
-		numCommits: 0,
-		addition: 0,
-		deletion: 0,
-	}
 
 	var dAuthorsArr = [];
 	var dCommitMsgArr = [];
@@ -93,7 +92,7 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			dArrayOfCommits.push(dObject)
 		}
 
-		//console.log(dArrayOfCommits);
+		//console.log("Array of Commits: ", dArrayOfCommits);
 
 		// Go through every commit and consolidate stats per author
 		for (var i = 0; i < dArrayOfCommits.length; i++) {
@@ -101,14 +100,23 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			var author = commit.author
 			
 			// If author is not in dictionary as a key, init new entry
-			if (!dataDict.hasOwnProperty(author)) {
-				dataDict[author] = newStatsObject
-			} 
+			if (!(author in dataDict)) {
+				dataDict[author] = {
+					name: author,
+					numCommits: 1,
+					addition: commit.addition,
+					deletion: commit.deletion,
+				}
 
-			dataDict[author].numCommits += 1
-			dataDict[author].addition += commit.addition
-			dataDict[author].deletion += commit.deletion
+			} else {
+				dataDict[author].numCommits += 1
+				dataDict[author].addition = dataDict[author].addition + commit.addition
+				dataDict[author].deletion = dataDict[author].addition + commit.deletion
+			}
+			
 		}
+
+		//console.log("Data Dict: ", dataDict)
 
 		// Iterate through dictionary to create the respective datasets (array of JSONs) needed for d3
 
@@ -137,6 +145,8 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 
 			dArrayOfCommitNumber.push(numCommitsStat)
 			dArrayOfAddDelete.push(addDeleteStat)
+
+			//console.log("For author" + currAuthor, dArrayOfCommitNumber)
 		}
 
 		req.session.filepathData = {
@@ -145,16 +155,20 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			addDelete: dArrayOfAddDelete, 
 		}
 
-		console.log("After JS: ", dArrayOfCommits)
-		
-	});
+		//console.log("After Loop, Arr of Com Num")
+		//console.log(dArrayOfCommitNumber)
 
-	// Render page now with the data
-	res.render('file', {
-		filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
-		commitsArr: dArrayOfCommits || [],
-		datasetNumCommits: dArrayOfCommitNumber || [],
-		datasetAddDelete: dArrayOfAddDelete || [],
+		//console.log("Before Render, Arr of Com Num")
+		//console.log(dArrayOfCommitNumber)
+
+		// Render page now with the data
+		res.render('file', {
+			filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
+			commitsArr: dArrayOfCommits || [],
+			datasetNumCommits: dArrayOfCommitNumber || [],
+			datasetAddDelete: dArrayOfAddDelete || [],
+			showHistory: showHistory,
+		});
 	});
 });
 
@@ -169,21 +183,77 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 	git(__dirname + "/../repo").raw([
 	'log',
 	'--numstat',
-	'--pretty="%n@@@@%n%aN%n%ad%n%s"',
+	'--pretty="&&&%n-A%aN%n-D%ad%n-M%s"',
 	'-L',
 	lineStart + ',' + lineEnd + ':' + filepath
 	], (err, result) => {
 		console.log(result)
-	});
 
-	// Render page now with the data
-	res.render('file', {
-		filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
-		commitsArr: dArrayOfCommits || [],
-		datasetNumCommits: dArrayOfCommitNumber || [],
-		datasetAddDelete: dArrayOfAddDelete || [],
-	});
+		showHistory = true
 
+		var allLines = result.split('\n')
+		var arrayOfEdits = []
+		var currentEdit = {}
+		for (var i = 0; i < allLines.length; i++) {
+			var currLine = allLines[i]
+
+			// Custom indicator that it is a new Edit (MUST match the git log's pretty format)
+			if (currLine == "&&&") {
+
+				// If not reading the first Edit of the results, 
+				// append the last created Edit object into the array
+				if (i != 0) {
+					arrayOfEdits.push(currentEdit)	
+				}
+
+				// Init new Edit object
+				currentEdit = {
+					author: "",
+					date: "",
+					msg: "",
+					addition: 0,
+					deletion: 0,
+				}
+
+			// Check for -A flag for author
+			} else if (currLine.substring(0,2) == '-A') {
+				currentEdit.author = currLine.substring(2)
+			
+			// Check for -D flag for date
+			} else if (currLine.substring(0,2) == '-D') {
+				currentEdit.date = currLine.substring(2)
+
+			// Check for -M flag for message
+			} else if (currLine.substring(0,2) == '-M') {
+				currentEdit.msg = currLine.substring(2)
+
+			// Check first 3 characters, if it is '+++' or '---', ignore
+			} else if (currLine.substring(0, 3) == '+++') {
+				continue
+			} else if (currLine.substring(0, 3) == '---') {
+				continue
+
+			// If first char is '-' or '+', add to deletion / addition respectively
+			} else if (currLine.substring(0, 1) == '-') {
+				currentEdit.deletion++
+			} else if (currLine.substring(0, 1) == '+') {
+				currentEdit.addition++
+			}
+		}
+
+		console.log(arrayOfEdits)
+
+
+		// Render page now with the data
+		res.render('file', {
+			filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
+			commitsArr: dArrayOfCommits || [],
+			datasetNumCommits: dArrayOfCommitNumber || [],
+			datasetAddDelete: dArrayOfAddDelete || [],
+			showHistory: showHistory,
+		});
+
+	});
 });	
 
 

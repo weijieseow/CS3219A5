@@ -26,7 +26,7 @@
                     <label><input type="radio" name="dataset" id="dataset" value="option1"> Additions / Deletions</label>
                 </form>
                 <br>
-                <svg width="960" height="600"></svg>
+                <div id="bar-chart"></div>
                 <br>
                 <br>
                 <br>
@@ -35,13 +35,20 @@
                 <form action="/file/codechunk" method="post">
                     From Line : <input type="number" name="linestart"/> to <input type="number" name="lineend"/> <input type="submit" value="Submit">
                 </form>
+                
+                <% if (showHistory == true) { %>
+                <div id="history">
+                    <h1>Hi</h1>
+                </div>
+                <% } %>
+
                 <script src="http://d3js.org/d3.v3.min.js"></script>
                 <script>
                     
                     datasetNumCommits = <%-JSON.stringify(datasetNumCommits)%>
                     datasetAddDelete = <%-JSON.stringify(datasetAddDelete)%>
                     
-                    console.log(datasetNumCommits)
+                    console.log("Array Inside EJS: ", datasetNumCommits)
 
                     /*
                     datasetTotal = [
@@ -97,7 +104,7 @@
                     width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
                     height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
 
-                    var div = d3.select("body").append("div").attr("class", "toolTip");
+                    var div = d3.select("#bar-chart").append("div").attr("class", "toolTip");
 
                     //var formatPercent = d3.format("");
 
@@ -117,7 +124,7 @@
                             .orient("left");
                     //.tickFormat(formatPercent);
 
-                    var svg = d3.select("svg")
+                    var svg = d3.select("#bar-chart").append("svg")
                             .attr("width", width + margin.left + margin.right)
                             .attr("height", height + margin.top + margin.bottom)
                             .append("g")
@@ -140,7 +147,7 @@
 
                         svg.append("g")
                                 .attr("class", "x axis")
-                                .attr("transform", "translate(0," + (height - 15) + ")")
+                                .attr("transform", "translate(0," + height + ")")
                                 .call(xAxis)
                                 .append("text")
                                 .attr("x", 350)
