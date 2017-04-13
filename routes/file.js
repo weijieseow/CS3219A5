@@ -13,6 +13,8 @@ var dArrayOfCommitNumber = []
 var dArrayOfAddDelete = []
 var showHistory = false 
 var editHistoryArray = []
+var lineStart = 0
+var lineEnd = 0
 
 router.get('/', function(req, res) {
 
@@ -24,6 +26,8 @@ router.get('/', function(req, res) {
 		datasetAddDelete: dArrayOfAddDelete || [],
 		showHistory: showHistory,
 		editHistoryArray: editHistoryArray || [],
+		lineStart: lineStart,
+		lineEnd: lineEnd,
 	});
 
 	// DEBUG
@@ -171,6 +175,8 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			datasetAddDelete: dArrayOfAddDelete || [],
 			showHistory: showHistory,
 			editHistoryArray: editHistoryArray || [],
+			lineStart: lineStart,
+			lineEnd: lineEnd,
 		});
 	});
 });
@@ -178,8 +184,8 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 router.post('/codechunk', urlEncodoedParser, function(req, res) {
 
 	let filepath = req.session.filepath
-	let lineStart = req.body.linestart
-	let lineEnd = req.body.lineend
+	lineStart = req.body.linestart
+	lineEnd = req.body.lineend
    	//console.log("Before git log: ", filepath, lineStart, lineEnd);
 
    	// Reset array
@@ -255,25 +261,12 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 			datasetAddDelete: dArrayOfAddDelete || [],
 			showHistory: showHistory,
 			editHistoryArray: editHistoryArray || [],
+			lineStart: lineStart,
+			lineEnd: lineEnd,
 		});
 
 	});
 });	
-
-/*
-var commitData = {
-	arrayOfCommits: [],
-	arrayOfCommitNumber: [],
-	arrayOfAddDelete: [],
-}
-
-var editHistoryData = {
-	showHistory: false,
-	arrayOfEdits: [],
-	lineStart: -1,
-	lineEnd: -1,
-}
-*/
 
 
 module.exports = router;
