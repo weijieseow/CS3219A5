@@ -27,9 +27,7 @@
                 </form>
                 <br>
                 <div id="bar-chart"></div>
-                <br>
-                <br>
-                <br>
+                <br><br><br>
                 <h1>See history of edits for a specific code chunk</h1>
                 <br>
                 <form action="/file/codechunk" method="post">
@@ -37,14 +35,39 @@
                 </form>
                 
                 <% if (showHistory == true) { %>
-                <div id="history">
-                    <h1>Hi</h1>
+                <br><br>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Author</th>
+                                <th>Date</th>
+                                <th>Commit Message</th>
+                                <th>No. of Additions</th>
+                                <th>No. of Deletions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% console.log("Inside html editHistory: ", editHistoryArray) %>
+                            <% for (var i = 0; i < editHistoryArray.length; i++) { %>
+                            <tr> 
+                                <td><%= i + 1 %></td>
+                                <td><%= editHistoryArray[i].author %></td>
+                                <td><%= editHistoryArray[i].date %></td>
+                                <td><%= editHistoryArray[i].msg %></td>
+                                <td><%= editHistoryArray[i].addition %></td>
+                                <td><%= editHistoryArray[i].deletion %></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
                 </div>
                 <% } %>
 
                 <script src="http://d3js.org/d3.v3.min.js"></script>
                 <script>
-                    
+
                     datasetNumCommits = <%-JSON.stringify(datasetNumCommits)%>
                     datasetAddDelete = <%-JSON.stringify(datasetAddDelete)%>
                     
@@ -94,11 +117,12 @@
                         }
                     }
 
+                    var barHeight = 40
                     var margin = {
-                        top: (parseInt(d3.select('body').style('height'), 10)/20), 
-                        right: (parseInt(d3.select('body').style('width'), 10)/20), 
-                        bottom: (parseInt(d3.select('body').style('height'), 10)/20), 
-                        left: (parseInt(d3.select('body').style('width'), 10)/5)
+                        top: 10, 
+                        right: 100, 
+                        bottom: 10, 
+                        left: 100,
                     },
                     
                     width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
@@ -127,11 +151,13 @@
                     var svg = d3.select("#bar-chart").append("svg")
                             .attr("width", width + margin.left + margin.right)
                             .attr("height", height + margin.top + margin.bottom)
-                            .append("g")
-                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                    var svgGroup = svg.append("g")
+                                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
                     svg.append("g")
                             .attr("class", "x axis")
+                            .attr("width", 50)
                             .attr("transform", "translate(0," + height + ")")
                             .call(xAxis);
 
@@ -140,10 +166,17 @@
 
                     function change(dataset) {
 
-                        y.domain(dataset.map(function(d) { return d.label; }));
+                        // Get new svg chart height based on the number of dataset elements
+                        var newChartHeight = dataset.length * barHeight - margin.top - margin.bottom
+
+                        // Need to update domain and range for both x and y axes
+                        y.domain(dataset.map(function(d) { return d.label; }))
+                            .rangeRoundBands([newChartHeight, 0], .2, 0.5);
+
                         x.domain([0, d3.max(dataset, function(d) { return d.value; })]);
 
-                        //console.log(d3.max(dataset, function(d) { return d.value; }))
+                        // Set chart to new height
+                        svg.style("height", newChartHeight + margin.top + margin.bottom)
 
                         svg.append("g")
                                 .attr("class", "x axis")
@@ -159,6 +192,7 @@
 
                         svg.append("g")
                                 .attr("class", "y axis")
+                                .attr("height", 50)
                                 .call(yAxis)
                                 .append("text")
                                 .attr("transform", "rotate(0)")

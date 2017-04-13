@@ -12,6 +12,7 @@ var dArrayOfCommits = []
 var dArrayOfCommitNumber = []
 var dArrayOfAddDelete = []
 var showHistory = false 
+var editHistoryArray = []
 
 router.get('/', function(req, res) {
 
@@ -22,6 +23,7 @@ router.get('/', function(req, res) {
 		datasetNumCommits: dArrayOfCommitNumber || [],
 		datasetAddDelete: dArrayOfAddDelete || [],
 		showHistory: showHistory,
+		editHistoryArray: editHistoryArray || [],
 	});
 
 	// DEBUG
@@ -168,6 +170,7 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			datasetNumCommits: dArrayOfCommitNumber || [],
 			datasetAddDelete: dArrayOfAddDelete || [],
 			showHistory: showHistory,
+			editHistoryArray: editHistoryArray || [],
 		});
 	});
 });
@@ -179,15 +182,18 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 	let lineEnd = req.body.lineend
    	//console.log("Before git log: ", filepath, lineStart, lineEnd);
 
+   	// Reset array
+   	editHistoryArray = []
+
    	// Pull data for part D
 	git(__dirname + "/../repo").raw([
 	'log',
 	'--numstat',
-	'--pretty="&&&%n-A%aN%n-D%ad%n-M%s"',
+	'--pretty="%n&&&%n-A%aN%n-D%ad%n-M%s"',
 	'-L',
 	lineStart + ',' + lineEnd + ':' + filepath
 	], (err, result) => {
-		console.log(result)
+		//console.log(result)
 
 		showHistory = true
 
@@ -198,14 +204,10 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 			var currLine = allLines[i]
 
 			// Custom indicator that it is a new Edit (MUST match the git log's pretty format)
-			if (currLine == "&&&") {
-
+			if (currLine == '&&&') {
 				// If not reading the first Edit of the results, 
 				// append the last created Edit object into the array
-				if (i != 0) {
-					arrayOfEdits.push(currentEdit)	
-				}
-
+				arrayOfEdits.push(currentEdit)
 				// Init new Edit object
 				currentEdit = {
 					author: "",
@@ -241,8 +243,9 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 			}
 		}
 
-		console.log(arrayOfEdits)
-
+		// Remove first element because it is always empty
+		arrayOfEdits.shift();
+		editHistoryArray = arrayOfEdits
 
 		// Render page now with the data
 		res.render('file', {
@@ -251,11 +254,26 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 			datasetNumCommits: dArrayOfCommitNumber || [],
 			datasetAddDelete: dArrayOfAddDelete || [],
 			showHistory: showHistory,
+			editHistoryArray: editHistoryArray || [],
 		});
 
 	});
 });	
 
+/*
+var commitData = {
+	arrayOfCommits: [],
+	arrayOfCommitNumber: [],
+	arrayOfAddDelete: [],
+}
+
+var editHistoryData = {
+	showHistory: false,
+	arrayOfEdits: [],
+	lineStart: -1,
+	lineEnd: -1,
+}
+*/
 
 
 module.exports = router;
