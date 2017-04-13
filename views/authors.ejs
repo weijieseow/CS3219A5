@@ -1,27 +1,369 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title>part b and c</title>
+    <!--<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
+    <style>
+        rect {
+            fill: transparent;
+            shape-rendering: crispEdges;
+        }
 
+        .axis path, .axis line {
+            fill: none;
+            stroke: rgba(0, 0, 0, 0.1);
+            shape-rendering: crispEdges;
+        }
+        .axis text, .legend {
+            //font-family: 'Indie Flower', cursive;
+            font-size: .8em;
+        } 
+        .axis .label {
+            //font-family: 'Indie Flower', cursive;
+            font-size: 1em;
+        }
+        .axisLine {
+            fill: none;
+            shape-rendering: crispEdges;
+            stroke: rgba(0, 0, 0, 0.5);
+            stroke-width: 2px;
+        }
+
+        .dot {
+            fill-opacity: .65;
+        }
+
+        .d3-tip {
+            line-height: 1;
+            font-weight: bold;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 1px;
+        }
+
+        /* Creates a small triangle extender for the tooltip */
+        .d3-tip:after {
+            box-sizing: border-box;
+            display: inline;
+            font-size: 10px;
+            width: 100%;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.8);
+            content: "\25BC";
+            position: absolute;
+            text-align: center;
+        }
+
+        /* Style northward tooltips differently */
+        .d3-tip.n:after {
+            margin: -1px 0 0 0;
+            bottom: 100%;
+            left: 0;
+        }
+        
+        #buttons {
+            padding-top: 0.4cm;
+            display: flex;
+            justify-content: center;
+        }
+        #scatter {
+            padding-left: 0.4cm;
+        }
+        
+        #info {
+            font-family: 'Indie Flower', cursive;
+            font-size: 12pt;
+        }
+        circle {
+            cursor:pointer;
+            stroke-width: 2;
+        } 
+        circle.disabled {
+            fill: transparent !important;
+        } 
+      </style>
+  </head>
+  <body>
     <% include templates/header.ejs %>
-
-    <!-- Page Content -->
+    <div class="container" id="buttons">
+        <button name="xAxis" id="fit">Fit xAxis</button>
+        <label><input type="radio" name="xAxis" id="daily">Daily Addition</label>
+        <label><input type="radio" name="xAxis" id="cumulative">Cumulative Addition</label>
+    </div>
     <div class="container">
-        <div class="row">
-            <div class="starter-template">
-                <h1>File</h1>
-
-                <form action="/url" method="post">
-                GitHub repository URL: <input type="text" name="url"/> <input type="submit" value="Submit">
-                </form>
-
+        <div id="info">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Addtions</th>
+                            <th>Deletions</th>
+                            <th>Commit Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- /.row -->
+        <div id="scatter"></div>
     </div>
-    <!-- /.container -->
+    
+    
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script>
+        var data = <%- JSON.stringify(commitsPerDatePerAuthor) %>;
+        
+        var margin = { top: 10, right: 200, bottom: 80, left: 50 },
+            outerWidth = 1250,
+            outerHeight = 580,
+            width = outerWidth - margin.left - margin.right,
+            height = outerHeight - margin.top - margin.bottom;
 
-</body>
+        var x = d3.scale.linear().range([0, width]);
+
+        var y = d3.scale.linear().range([height, 0]);
+        
+        var parseDate = d3.time.format("%Y-%m-%d");
+
+        var details = "details",
+            xCat = "date",
+            yCat = "authorCumAddition",
+            rCat = "commitCount",
+            colorCat = "author";
+        //var parseDate = d3.time.format("%y-%b-%d").parse;
+        (function(d3) {
+            data.forEach(function(d) {
+                d.date = new Date(d.date);
+                d.dateMili = +d.dateMili;
+                d.commitCount = +d.commitCount;
+                d.dayAddition = +d.dayAddition;
+                d.dayDeletion = +d.dayDeletion;
+                d.authorCumAddition = +d.authorCumAddition;
+                d.authorCumDeletion = +d.authorCumDeletion;
+            });
+
+        var xMax = d3.max(data, function(d) { return d[xCat]; }),
+            xMin = d3.min(data, function(d) { return d[xCat]; }),
+            yMax = d3.max(data, function(d) { return d[yCat]; }),
+            yMin = d3.min(data, function(d) { return d[yCat]; }),
+            yMin = yMin > 0 ? 0 : yMin;
+            
+        x.domain([xMin, xMax]);
+        y.domain([yMin, yMax]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom")
+            .tickSize(-height)
+            .tickFormat(function(d) {
+                return parseDate(new Date(d));
+            });
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .tickSize(-width);
+
+        var color = d3.scale.category20();
+
+        var tip = d3.tip()
+            .attr("class", "d3-tip")
+            .offset([100, 0])
+            .html(function(d) {
+                return xCat + ": " + d[xCat] + "<br>" + yCat + ": " + d[yCat] + "<br>" + rCat + ": " + d[rCat] + "<br>" +  colorCat + ": " + d[colorCat];
+            });
+
+        var zoomBeh = d3.behavior.zoom()
+            .x(x)
+            .y(y)
+            .scaleExtent([0, 500])
+            .on("zoom", zoom);
+
+        var svg = d3.select("#scatter")
+            .append("svg")
+            .attr("width", outerWidth)
+            .attr("height", outerHeight)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .call(zoomBeh);
+
+        svg.call(tip);
+
+        svg.append("rect")
+            .attr("width", width)
+            .attr("height", height);
+
+        var xAxisGroup = svg.append("g")
+            .classed("x axis", true)
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+        
+        xAxisGroup
+            .append("text")
+            .classed("label", true)
+            .attr("x", width)
+            .attr("y", margin.bottom - 10)
+            .style("text-anchor", "end")
+            .text(xCat);
+            
+         function rotateXAxisLabels() {
+            xAxisGroup
+            .selectAll(".tick text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-45)");
+        }
+   
+        rotateXAxisLabels();
+
+        svg.append("g")
+            .classed("y axis", true)
+            .call(yAxis)
+            .append("text")
+            .classed("label", true)
+            .attr("transform", "rotate(-90)")
+            .attr("y", -margin.left)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text(yCat);
+
+        var objects = svg.append("svg")
+            .classed("objects", true)
+            .attr("width", width)
+            .attr("height", height);
+
+        objects.append("svg:line")
+            .classed("axisLine hAxisLine", true)
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", width)
+            .attr("y2", 0)
+            .attr("transform", "translate(0," + height + ")");
+                
+        objects.append("svg:line")
+            .classed("axisLine vAxisLine", true)
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", 0)
+            .attr("y2", height);
+
+        var info = d3.select("#info").style("display", "none");
+        var table = info.select(".table");
+            
+        objects.selectAll(".dot")
+            .data(data)
+            .enter().append("circle")
+            .classed("dot", true)
+            .attr("r", function (d) { return 6 * Math.sqrt(d[rCat] / Math.PI); })
+            .attr("transform", transform)
+            .style("fill", function(d) { return color(d[colorCat]); })
+            .on("mouseover", tip.show)
+            .on("mouseout", tip.hide)
+            .on("click", function (d, i) {
+                info.style("display", "block");
+                writeTable(d.details);
+          });
+
+        var legend = svg.selectAll(".legend")
+            .data(color.domain())
+            .enter().append("g")
+            .classed("legend", true)
+            .attr("transform", function(d, i) { return "translate(0," + i * 10 + ")"; });
+
+        legend.append("circle")
+            .attr("r", 3.2)
+            .attr("cx", width + 20)
+            .attr("fill", color)
+            .on("click", function (e) {
+                //hide all other not selected authors by changing opacity to 0
+                //sample d3 that has interactive legend http://dimplejs.org/advanced_examples_viewer.html?id=advanced_interactive_legends
+        });
+            
+        legend.append("text")
+            .attr("x", width + 26)
+            .attr("dy", ".2em")
+            .text(function(d) { return d; });
+
+        d3.select("#fit").on("click", fit);
+        d3.select("#daily").on("click", changeToDailyAddition);
+        d3.select("#cumulative").on("click", changeToCumulativeAddition);
+
+        function fit() {
+            xCat = "date";
+            xMax = d3.max(data, function(d) { return d[xCat]; });
+            xMin = d3.min(data, function(d) { return d[xCat]; });
+
+            zoomBeh.x(x.domain([xMin, xMax])).y(y.domain([yMin, yMax]));
+
+            var svg = d3.select("#scatter").transition();
+
+            svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat); //duration for shifting background plot
+            rotateXAxisLabels();
+            
+            objects.selectAll(".dot").transition().duration(1000).attr("transform", transform); //duration for shifting plot
+        }
+            
+        function changeToDailyAddition() {
+            yCat = "dayAddition";
+            yMax = d3.max(data, function(d) { return d[yCat]; });
+            yMin = d3.min(data, function(d) { return d[yCat]; });
+
+            zoomBeh.x(x.domain([xMin, xMax])).y(y.domain([yMin, yMax]));
+
+            var svg = d3.select("#scatter").transition();
+
+            svg.select(".y.axis").duration(750).call(yAxis).select(".label").text(yCat); //duration for shifting background plot
+
+            objects.selectAll(".dot").transition().duration(1000).attr("transform", transform); //duration for shifting plot
+        }
+            
+        function changeToCumulativeAddition() {
+            yCat = "authorCumAddition";
+            yMax = d3.max(data, function(d) { return d[yCat]; });
+            yMin = d3.min(data, function(d) { return d[yCat]; });
+
+            zoomBeh.x(x.domain([xMin, xMax])).y(y.domain([yMin, yMax]));
+
+            var svg = d3.select("#scatter").transition();
+
+            svg.select(".y.axis").duration(750).call(yAxis).select(".label").text(yCat); //duration for shifting background plot
+
+            objects.selectAll(".dot").transition().duration(1000).attr("transform", transform); //duration for shifting plot
+        }
+
+        function zoom() {
+            svg.select(".x.axis").call(xAxis);
+            svg.select(".y.axis").call(yAxis);
+            rotateXAxisLabels();
+
+            svg.selectAll(".dot")
+                .attr("transform", transform);
+        }
+
+        function transform(d) {
+            return "translate(" + x(d[xCat]) + "," + y(d[yCat]) + ")";
+        }
+        
+        
+        function writeTable(details){
+            var oldTbody = document.querySelector("#info table tbody");
+            var newTbody = document.createElement('tbody');
+            oldTbody.parentNode.replaceChild(newTbody, oldTbody);
+            details.forEach(detail => {
+                var tr = newTbody.insertRow();
+                detail.forEach(d=> {
+                    var td = tr.insertCell();
+                    var newText = document.createTextNode(d);
+                    td.appendChild(newText);
+                });
+            });
+        }
+        
+        })(window.d3);
+      </script>
+  </body>
 </html>
