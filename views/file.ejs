@@ -19,52 +19,61 @@
                 <form action="/file/filepath" method="post">
                     <input type="text" name="filepath"/> <input type="submit" value="Submit">
                 </form>
-                <br>
-                <form>
-                    <label><input type="radio" name="dataset" id="dataset" value="num_commits" checked> Number Of Commits</label>
-                    <br>
-                    <label><input type="radio" name="dataset" id="dataset" value="add_delete"> Additions / Deletions</label>
-                </form>
-                <br>
-                <div id="bar-chart"></div>
-                <br><br><br>
-                <h1>See history of edits for a specific code chunk</h1>
-                <br>
-                <form action="/file/codechunk" method="post">
-                    From Line : <input type="number" name="linestart"/> to <input type="number" name="lineend"/> <input type="submit" value="Submit">
-                </form>
-                
-                <% if (showHistory == true) { %>
                 <br><br>
-                <h3>Showing edit history for lines <%=lineStart%> to <%=lineEnd%></h3>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Author</th>
-                                <th>Date</th>
-                                <th>Commit Message</th>
-                                <th>No. of Additions</th>
-                                <th>No. of Deletions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% console.log("Inside html editHistory: ", editHistoryArray) %>
-                            <% for (var i = 0; i < editHistoryArray.length; i++) { %>
-                            <tr> 
-                                <td><%= i + 1 %></td>
-                                <td><%= editHistoryArray[i].author %></td>
-                                <td><%= editHistoryArray[i].date %></td>
-                                <td><%= editHistoryArray[i].msg %></td>
-                                <td><%= editHistoryArray[i].addition %></td>
-                                <td><%= editHistoryArray[i].deletion %></td>
-                            </tr>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
+
+                <% if (showBarchart == true) { %>
+                    <h4><%= filepath%></h4>
+                    <form>
+                        <label><input type="radio" name="dataset" id="dataset" value="num_commits" checked> Number Of Commits</label>
+                        <br>
+                        <label><input type="radio" name="dataset" id="dataset" value="add_delete"> Additions / Deletions</label>
+                    </form>
+                    <br>
+                    <div id="bar-chart"></div>
+
+                    <br><br>
+                    <hr>
+                    <br><br>
+                    <h1>See history of edits for a specific code chunk</h1>
+                    <br>
+                    <form action="/file/codechunk" method="post">
+                        From Line : <input type="number" name="linestart"/> to <input type="number" name="lineend"/> <input type="submit" value="Submit">
+                    </form>
+                    
+                    <% if (showHistory == true) { %>
+                        <br><br>
+                        <h3>Showing edit history for lines <%=lineStart%> to <%=lineEnd%></h3>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Author</th>
+                                        <th>Date</th>
+                                        <th>Commit Message</th>
+                                        <th>No. of Additions</th>
+                                        <th>No. of Deletions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% console.log("Inside html editHistory: ", editHistoryArray) %>
+                                    <% for (var i = 0; i < editHistoryArray.length; i++) { %>
+                                    <tr> 
+                                        <td><%= i + 1 %></td>
+                                        <td><%= editHistoryArray[i].author %></td>
+                                        <td><%= editHistoryArray[i].date %></td>
+                                        <td><%= editHistoryArray[i].msg %></td>
+                                        <td><%= editHistoryArray[i].addition %></td>
+                                        <td><%= editHistoryArray[i].deletion %></td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    <% } %>
                 <% } %>
+                
+                
 
                 <script src="http://d3js.org/d3.v3.min.js"></script>
                 <script>
