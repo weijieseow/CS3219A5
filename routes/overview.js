@@ -137,7 +137,7 @@ router.get('/', function(req, res) {
 			commitInfo = sortByValues(commitInfo);
 			additionInfo = sortByValues(additionInfo);
 			deletionInfo = sortByValues(deletionInfo);
-			
+			infoArray.sort(function (a, b) {return a.author.toLowerCase() < b.author.toLowerCase()});
 
 			//console.log(commitInfo);
 			//console.log(additionInfo);
@@ -173,6 +173,5 @@ function sortByValues(arrayOfObj) {
 
 	return byValues;
 }
-
 
 module.exports = router;
