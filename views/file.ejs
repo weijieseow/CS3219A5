@@ -122,63 +122,53 @@
                     var margin = {
                         top: 10, 
                         right: 100, 
-                        bottom: 10, 
+                        bottom: 50, 
                         left: 100,
-                    },
+                    }
                     
-                    width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
-                    height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
-
                     var div = d3.select("#bar-chart").append("div").attr("class", "toolTip");
 
-                    //var formatPercent = d3.format("");
-
-                    var y = d3.scale.ordinal()
-                            .rangeRoundBands([height, 0], .2, 0.5);
-
-                    var x = d3.scale.linear()
-                            .range([0, width]);
-
-                    var xAxis = d3.svg.axis()
-                            .scale(x)
-                            .tickSize(-height)
-                            .orient("bottom");
-
-                    var yAxis = d3.svg.axis()
-                            .scale(y)
-                            .orient("left");
-                    //.tickFormat(formatPercent);
-
-                    var svg = d3.select("#bar-chart").append("svg")
-                            .attr("width", width + margin.left + margin.right)
-                            .attr("height", height + margin.top + margin.bottom)
-
-                    var svgGroup = svg.append("g")
-                                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                    svg.append("g")
-                            .attr("class", "x axis")
-                            .attr("width", 50)
-                            .attr("transform", "translate(0," + height + ")")
-                            .call(xAxis);
-
-                    d3.select("input[value=\"total\"]").property("checked", true);
                     change(datasetNumCommits);
 
                     function change(dataset) {
 
-                        // Get new svg chart height based on the number of dataset elements
-                        var newChartHeight = dataset.length * barHeight - margin.top - margin.bottom
+                         // Calculate height based on the number of dataset elements
+                        var height = dataset.length * barHeight - margin.top - margin.bottom
+                        var width = 800
 
-                        // Need to update domain and range for both x and y axes
-                        y.domain(dataset.map(function(d) { return d.label; }))
-                            .rangeRoundBands([newChartHeight, 0], .2, 0.5);
+                        // Setup axes
+                        var y = d3.scale.ordinal()
+                            .rangeRoundBands([height, 0], .2, 0.5)
+                            .domain(dataset.map(function(d) { return d.label; }))
+                            .rangeRoundBands([height, 0], .2, 0.5);
 
-                        x.domain([0, d3.max(dataset, function(d) { return d.value; })]);
+                        var x = d3.scale.linear()
+                                .range([0, width])
+                                .domain([0, d3.max(dataset, function(d) { return d.value; })]);
 
-                        // Set chart to new height
-                        svg.style("height", newChartHeight + margin.top + margin.bottom)
+                        var xAxis = d3.svg.axis()
+                                .scale(x)
+                                .tickSize(-height)
+                                .orient("bottom");
 
+                        var yAxis = d3.svg.axis()
+                                .scale(y)
+                                .orient("left");
+
+                        // Make main svg component in div called bar-chart, and append a group, and name this svg
+                        var svg = d3.select("#bar-chart").append("svg")
+                                .attr("width", width + margin.left + margin.right)
+                                .attr("height", height + margin.top + margin.bottom)
+                                .append("g")
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                        d3.select("input[value=\"total\"]").property("checked", true);
+
+                        // Reset axis
+                        svg.select(".y.axis").remove();
+                        svg.select(".x.axis").remove();
+
+                        // Set new x and y axis
                         svg.append("g")
                                 .attr("class", "x axis")
                                 .attr("transform", "translate(0," + height + ")")
@@ -187,9 +177,6 @@
                                 .attr("x", 350)
                                 .attr("y", 28)
                                 .text("Num Of Commits");
-
-                        svg.select(".y.axis").remove();
-                        svg.select(".x.axis").remove();
 
                         svg.append("g")
                                 .attr("class", "y axis")
@@ -201,7 +188,6 @@
                                 .attr("dx", ".1em")
                                 .style("text-anchor", "end")
                                 .text("Authors");
-
 
                         var bar = svg.selectAll(".bar")
                                 .data(dataset, function(d) { return d.label; });

@@ -36,10 +36,13 @@ router.get('/', function(req, res) {
 
 router.post('/filepath', urlEncodoedParser, function(req, res) {
 
-	// Remember to reset the arrays 
+	// Reset the arrays 
 	dArrayOfCommits = []
 	dArrayOfCommitNumber = []
 	dArrayOfAddDelete = []
+
+	// Reset showHistory: Whenever file changes, history of edits should not be shown
+	showHistory = false
 
    	var dataDict = {}
 
@@ -183,6 +186,7 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 
 router.post('/codechunk', urlEncodoedParser, function(req, res) {
 
+	// Replace old line variables
 	let filepath = req.session.filepath
 	lineStart = req.body.linestart
 	lineEnd = req.body.lineend
