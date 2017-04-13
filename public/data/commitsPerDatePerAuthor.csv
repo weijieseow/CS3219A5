@@ -1,26 +1,1172 @@
 author,date,commitCount,dayAddition,dayDeletion,authorCumAddition,authorCumDeletion,details
-qroll,2017-04-13,1,173,5,173,5,173 5 Implement part e|
-roll,2017-04-13,1,173,5,33,1,33 1 Show tooltip when hovering over y-axis labels|
-roll,2017-03-31,1,19,1,52,2,19 1 Set up session middleware|
-See Loo Jane,2017-04-13,3,151,61,170,108,38 48 Tidy ejs code|121 43 Fixed barchart x axis, add parsing for edit history|11 17 Add text to display showing edit history for which lines|
-See Loo Jane,2017-04-10,1,39,2,209,110,39 2 Add input and linked server side for the link chunk part BUG: When you keep submitting with the file path, first try nth happens, second third try it cumulates the variable Have not did post processing for the code chunk output|
-See Loo Jane,2017-04-13,1,214,96,423,206,214 96 Add grouped bar chart, still need work on tooltips, x axis and y axis names|
-See Loo Jane,2017-04-10,3,624,56,1047,262,28 8 Change file.ejs to have an input bar to take in file path|559 16 Add stub horizontal bar chart code to file.ejs Linked up number of commits json data with bar chart|37 32 Attempt to add x axis label —> Still buggy, can see that it overlaps with the y axis by a little|
-Seow Wei Jie,2017-03-30,3,624,56,37,0,37 0 Initial commit|
-Seow Wei Jie,2017-03-31,1,4,0,41,0,4 0 Create README.md|
-Seow Weijie,2017-04-11,1,4,0,29,9,29 9 Added redirect to authors page using parameters specified by user|
-Seow Weijie,2017-04-06,2,181,50,210,59,52 48 Extracted csv converter into data-controller/postprocessor.js|129 2 Added routing for other url|
-Seow Weijie,2017-04-02,1,144,27,354,86,144 27 Implemented comparison view between authors for addition and deletion|
-Seow Weijie,2017-04-10,1,563,334,917,420,563 334 Implemented horizontal bar chart for overview|
-Seow Weijie,2017-03-31,1,14,3,931,423,14 3 Testing usage of simple-git|
-Seow Weijie,2017-04-10,2,259,162,1190,585,36 14 Added datepicker|223 148 Added table to overview and checkboxes to select authors|
-Seow Weijie,2017-03-31,1,163,0,1353,585,163 0 Configured server and added index page|
-Seow Weijie,2017-04-10,1,122,115,1475,700,122 115 Prevent user from entering overview when no repo is specified|
-Seow Weijie,2017-04-06,1,21,26,1496,726,21 26 Extracted fileWriter into fileUtil|
-Seow Weijie,2017-03-31,2,18,4,1514,730,10 1 Renamed some files and added some comments|8 3 Added comments|
-Seow Weijie,2017-04-13,1,61,41,1575,771,61 41 Prevent user from going into overview when no repo is specified|
-Seow Weijie,2017-03-31,2,390,9,1965,780,377 4 Added overview page|13 5 Able to clone the repo url successfully|
-Seow Weijie,2017-04-13,1,243,8,2208,788,243 8 Added horizontal grouped bar chart|
-Seow Weijie,2017-03-31,1,17,18,2225,806,17 18 Minor changes to index page|
-Seow Weijie,2017-04-13,1,200,58,2425,864,200 58 Added group bar chart to overview|
-Seow Weijie,2017-04-10,1,267,544,2692,1408,267 544 Added commits per author in overview|
+Adam Donahue,2014-08-28,1,1,1,1,1,1~1~Fix typo|
+agusc,2015-06-15,1,6,45,6,45,6~45~removed SUFFIX from scrapy name package|
+Aivars Kalvāns,2015-08-19,1,1,1,1,1,1~1~Make common practices sample code match the comments|
+Akhil Lb,2015-11-04,1,18,1,18,1,18~1~LOG_SHORT_NAMES option|
+Alex,2016-12-28,1,2,2,2,2,2~2~.devN release suffix must be preceded with a dot|
+Alex Cepoi,2014-06-03,1,5,9,5,9,5~9~fix contracts tests|
+Alex Cepoi,2014-05-25,1,81,33,86,42,81~33~improvements to scrapy check/contracts|
+Alexander Chekunkov,2015-05-21,1,10,2,10,2,10~2~keep level_names in scrapy.log for backwards compatibility|
+Alexander Chekunkov,2014-02-15,2,43,9,53,11,3~1~added note about RFPDupeFilter.request_fingerprint overriding to the settings documentation|40~8~test for RFPDupeFilter.request_fingerprint overriding|
+Alexander Chekunkov,2015-05-29,1,4,5,57,16,4~5~Make list of enabled middlewares more readable|
+Alexander Chekunkov,2014-06-02,2,14,2,71,18,13~1~DOWNLOADER setting|1~1~DOWNLOADER setting|
+Alexander Chekunkov,2014-12-19,1,703,665,774,683,703~665~pydispatch - pep8|
+Alexander Chekunkov,2014-07-11,1,30,17,804,700,30~17~Added referer to "Spider error processing" log message + fixed some pep8 issues|
+Alexander Chekunkov,2015-05-27,1,4,2,808,702,4~2~LogCounterHandler is never removed from root handlers list, fix that|
+Alexander Chekunkov,2015-05-26,1,1,0,809,702,1~0~remove CrawlerProcess.stopping as it isn't used any more|
+Alexander Chekunkov,2014-04-26,1,3,1,812,703,3~1~added short RFPDupeFilter.request_fingerprint interface description|
+Alexander Sibiryakov,2015-04-01,3,26,4,26,4,1~1~Fixing underscore size.|21~0~Broad crawls notes.|4~3~Reformat to 80 characters per line.|
+Alexander Sibiryakov,2015-03-31,2,16,0,42,4,11~0~Setting documentation.|5~0~Setting maximum thread pool size in reactor.|
+Alexander Sibiryakov,2015-12-02,1,4,0,46,4,4~0~Ignoring xlib/tx folder, depending on Twisted version.|
+Alexander Sibiryakov,2015-04-02,1,30,5,76,9,30~5~Dns cache size and timeout options|
+Alexander Sibiryakov,2015-11-26,1,4,3,80,12,4~3~nextcall repetitive calls (heartbeats).|
+Alexander Sibiryakov,2015-04-01,1,1,0,81,12,1~0~Removing unnecessary import.|
+Alexey Bezhan,2014-04-17,4,16,5,16,5,6~0~Add a note about reporting security issues|4~4~Bind telnet console and webservice to 127.0.0.1 by default|2~0~Fix PEP8 warnings in project template files|4~1~Fix PEP8 warnings in spider templates|
+Alexey Vishnevsky,2015-03-16,4,2,2,2,2,2~2~Makes scrapy more async by letting to reactor spend another couple of cycles to accomplish its needs.|
+Ally Weir,2015-06-01,4,1,1,1,1,1~1~Spelling correction|
+Andrew Hlynskyi,2016-11-30,4,3,0,3,0,3~0~Fix #396 re-triggered issue|
+Andrew Hlynskyi,2016-09-12,1,3,1,6,1,3~1~Fix completion in `scrapy shell` for new imports|
+Andrew Murray,2015-07-16,1,2,2,2,2,2~2~Fixed typos|
+Andrew Scorpil,2014-10-24,1,80,9,80,9,80~9~[LinkExtractors] Ignore bogus links|
+andrewshir,2014-09-06,1,1,1,1,1,1~1~Fix bug for ".local" host name|
+andrewshir,2014-09-14,1,6,0,7,1,6~0~Test for local domains (without dots) added|
+Aron Bordin,2015-12-30,1,7,5,7,5,7~5~show download warnsize once|
+Aron Bordin,2016-03-05,2,64,16,71,21,10~11~small doc style fixes|54~5~added FEED_TEMPDIR to settings|
+Artur Gaspar,2014-12-11,2,15,9,15,9,15~9~add CSS support for link extractors|
+Artur Gaspar,2016-08-12,2,171,9,186,18,21~8~Ensure bytes objects when needed in data URI downloader.|150~1~data URI download handler.|
+Artur Gaspar,2015-09-01,2,78,70,264,88,21~10~Support for returning deferreds in downloader middleware methods.|57~60~Always check robots.txt before making another request in RobotsTxtMiddleware.|
+Artur Gaspar,2016-01-27,1,4,10,268,98,4~10~Do not forget failed requests in robots.txt middleware.|
+Artur Gaspar,2017-02-08,1,8,91,276,189,8~91~Use w3lib data URI parser.|
+Artur Gaspar,2015-09-02,3,27,3,303,192,22~0~Test for not calling the download function when downloader middleware returns a response in process_request.|4~2~Test for same response object in downloader middleware test.|1~1~Call actual error logger in robots.txt middleware tests.|
+Artur Gaspar,2016-01-27,2,21,1,324,193,12~0~Add test for already failed deferreds when downloading page in robots.txt middleware.|9~1~Fix handling of already failed deferreds when downloading page in robots.txt middleware.|
+Artur Gaspar,2014-12-11,2,21,1,345,194,6~1~documentation for CSS support in link extractors|15~0~tests for CSS support in link extractors|
+Artur Gaspar,2015-09-02,1,6,0,351,194,6~0~Test for robots.txt middleware for processing a request for which the robots.txt parser is ready.|
+Artur Gaspar,2014-12-15,1,13,11,364,205,13~11~move restrict_css argument to end of argument list in link extractors for backwards compatibility, use keyword arguments in link extractor super().__init__() calls|
+Artur Gaspar,2017-02-12,2,2,1,366,206,1~1~Rename data URI downloader module.|1~0~Add data URI download handler to settings.|
+Artur Gaspar,2017-03-02,1,10,0,376,206,10~0~Test response attributes in data URI download handler.|
+Artur Gaspar,2017-02-08,1,1,0,377,206,1~0~Test for binary body content from data URI downloader.|
+Artur Gaspar,2015-09-02,1,17,1,394,207,17~1~Test for robots.txt middleware for logger not being called when the request for robots.txt is ignored.|
+Arvind Chembarpu,2017-02-25,1,2,2,2,2,2~2~Use single quotes uniformly|
+Ashish Kulkarni,2016-08-08,1,10,386,10,386,10~386~Use w3lib.url.canonicalize_url() from w3lib 1.15.0|
+Ashish Kulkarni,2017-02-17,1,5,0,15,386,5~0~document issue with FormRequest.from_response due to bug in lxml|
+Ashish Kulkarni,2016-08-05,1,8,6,23,392,8~6~temporarily deprecate official Ubuntu packages|
+bagratte,2015-04-19,1,9,9,9,9,9~9~minor corrections in documentation.|
+bagratte,2015-04-17,1,38,36,47,45,38~36~add some minor stylistic and grammar corrections to tutorial.rst.|
+bagratte,2015-04-18,1,48,45,95,90,48~45~minor corrections in documentation.|
+Berker Peksag,2015-03-06,1,14,13,14,13,14~13~Import unittest.mock if available.|
+Berker Peksag,2015-03-08,1,3,0,17,13,3~0~assertItemsEqual was renamed to assertCountEqual in Python 3.|
+Berker Peksag,2015-06-09,2,28,18,45,31,19~9~Ignore ScrapyDeprecationWarning warnings properly.|9~9~Fix typos in scrapy/commands/setting.py|
+Bernardas,2016-08-24,3,14,13,14,13,11~12~adjust variable wording and redirect logic|3~1~fix redirect change|
+Bernardas,2016-10-03,1,4,1,18,14,4~1~fix JsonWriterPipeline example|
+Bernardas,2016-08-23,2,35,4,53,18,3~0~fix error when settings are not provided|32~4~add media pipeline settings to enable redirection and handling of certain http statuses|
+Bernardas,2016-10-05,1,1,8,54,26,1~8~Remove unnecessary note for the JsonWriterPipeline example|
+Bernardas,2016-08-23,3,37,4,91,30,18~1~add tests for media pipeline MEDIA_ALLOW_REDIRECTS and MEDIA_HTTPSTATUS_LIST settings|3~3~typo and clarify handling|16~0~add description for media pipeline MEDIA_ALLOW_REDIRECTS and MEDIA_HTTPSTATUS_LIST settings|
+Bernardas,2016-08-24,1,3,2,94,32,3~2~expose allowed_status tuple for media pipeline|
+Bo Pace,2016-10-17,1,7,1,7,1,7~1~Added documentation about accessing header values|
+bopace,2016-10-18,1,4,4,4,4,4~4~Fixed wording of documentation|
+bosnj,2015-05-04,1,16,1,16,1,16~1~added docs and test case, fixed handling empty string vs None|
+bosnj,2015-04-10,1,2,2,18,3,2~2~default return value for extract_first|
+Bryan Crowe,2015-06-11,1,2,2,2,2,2~2~Fix a couple typos|
+Cameron Lane,2014-06-12,2,14,1,14,1,13~0~[#744] Test for allowed domains including NoneTypes|1~1~[#744] Ensure domain is not None before building regex|
+Capi Etheriel,2015-07-24,2,35,3,35,3,35~3~implements FormRequest.from_response CSS support|
+Capi Etheriel,2015-06-25,1,1,1,36,4,1~1~Fix SelectJmes documentation|
+Capi Etheriel,2015-01-19,1,2,4,38,8,2~4~Updates documentation on dynamic item classes.|
+Carlos Rivera,2014-05-06,1,1,1,1,1,1~1~grammatical issue|
+carlosp420,2016-01-19,1,1,1,1,1,1~1~fixed typo You -> you|
+cclauss,2016-01-18,1,1,1,1,1,1~1~Simplify if statement|
+Chris Nilsson,2015-06-06,3,27,6,27,6,6~2~Removed typo, and clarified time unit of setting|19~3~Added MEMUSAGE_CHECK_INTERVAL_SECONDS to Memory usage extension options.|2~1~Moved default value of MEMUSAGE_CHECK_INTERVAL_SECONDS to default_settings|
+Christian Pedersen,2015-10-14,3,3,6,3,6,3~6~Version 1 now exists|
+Daniel Collins,2015-08-29,5,204,7,204,7,145~4~add support for a nested loaders|54~0~provide documentation for nested loaders|5~3~removed commented code and add test for error handling|
+Daniel Collins,2015-09-15,1,11,3,215,10,11~3~updte nested loader documentation|
+Daniel Collins,2015-09-04,1,19,23,234,33,19~23~split nested_loader into seperate methods|
+Daniel Graña,2015-09-17,1,4,0,4,0,4~0~test suite requires recent queuelib to pass because it depends on queuelib test suite|
+Daniel Graña,2014-06-25,1,6,5,10,5,6~5~recognize jl extension as jsonlines exporter and update docs|
+Daniel Graña,2014-08-01,4,43,129,53,134,37~128~Modernize setup.py|4~0~scrapy.bat is not needed anymore|1~1~do not ship tests package|1~0~set zip_safe=False|
+Daniel Graña,2014-08-04,1,3,3,56,137,3~3~update other places where w3lib version is mentioned|
+Daniel Graña,2014-06-25,1,26,19,82,156,26~19~promote LxmlLinkExtractor as default in docs|
+Daniel Graña,2014-08-05,1,1,0,83,156,1~0~There is a trove classifier for Scrapy framework!|
+Daniel Graña,2015-07-25,1,2,2,85,158,2~2~PY3 port scrapy.dupefilters|
+Daniel Graña,2014-08-08,1,39,32,124,190,39~32~Update installation docs|
+Daniel Graña,2014-08-09,4,41,1,165,191,1~1~fix requirement typo|6~0~Add 0.24.4 release notes|33~0~Add 0.24.3 release notes|1~0~precise ships zope.interface 3.6.1|
+Daniel Graña,2014-06-25,1,4,7,169,198,4~7~No need to keep extracted links as instance attribute. fixes #763|
+Daniel Graña,2014-08-15,1,18,818,187,1016,18~818~jsonrpc webservice moved to https://github.com/scrapy/scrapy-jsonrpc repository|
+Daniel Graña,2014-08-18,1,1,1,188,1017,1~1~Update webservice.rst|
+Daniel Graña,2014-06-02,1,2,2,190,1019,2~2~force installation of w3lib and queuelib for trunk env|
+Daniel Graña,2014-09-02,1,27,16,217,1035,27~16~Correctly detect when all managed crawlers are done in CrawlerRunner|
+Daniel Graña,2014-06-02,1,5,5,222,1040,5~5~fix tests after changes introduced by scrapy/w3lib#21|
+Daniel Graña,2014-09-09,1,3,2,225,1042,3~2~Do not pop the crawler from the managed list|
+Daniel Graña,2014-09-10,5,15,4,240,1046,1~1~Twisted 11.1.0 (precise) can not deal with generators in DeferredList|8~1~SPIDER_MODULES can be set as a csv string|1~0~oops, restore Pillow from precise test requirements|2~2~Stop logobserver only when set|3~0~Add the tests changes for previous commit|
+Daniel Graña,2014-03-06,1,71,0,311,1046,71~0~Add a LevelDB cache backend|
+Daniel Graña,2014-04-14,1,7,0,318,1046,7~0~remove .re() shortcut|
+Daniel Graña,2016-01-26,1,16,2,334,1048,16~2~Add test case for marshal item exporter|
+Daniel Graña,2014-06-26,1,2,2,336,1050,2~2~Bump version: 0.23.0 → 0.24.0|
+Daniel Graña,2015-09-18,1,4,0,340,1050,4~0~Revert "test suite requires recent queuelib to pass because it depends on queuelib test suite"|
+Daniel Graña,2014-06-02,1,2,2,342,1052,2~2~limit Twisted support to pre-14.0.0 while #718 is fixed|
+Daniel Graña,2014-06-26,1,2,2,344,1054,2~2~Bump version: 0.24.0 → 0.25.0|
+Daniel Graña,2014-11-05,2,5,1,349,1055,4~0~pywin32 is required by Twisted. closes #937|1~1~Update install.rst|
+Daniel Graña,2014-06-26,1,2,2,351,1057,2~2~set 0.24.0 release date|
+Daniel Graña,2015-09-17,1,4,0,355,1057,4~0~Add PyPI download stats badge|
+Daniel Graña,2017-02-13,2,12,2,367,1059,10~0~Release notes for 1.3.2|2~2~Bump version: 1.3.1 → 1.3.2|
+Daniel Graña,2014-06-27,1,55,4,422,1063,55~4~Fix deprecated CrawlerSettings and increase backwards compatibility with .defaults attribute|
+Daniel Graña,2014-11-21,2,2,1,424,1064,1~0~mitmproxy 0.10.1 needs netlib 0.10.1 too|1~1~pin mitmproxy 0.10.1 as >0.11 does not work with tests|
+Daniel Graña,2014-06-27,1,7,0,431,1064,7~0~Add 0.24.1 release notes|
+Daniel Graña,2014-06-03,1,5,2,436,1066,5~2~Avoid IPython warning. thanks @bryant1410. closes #623|
+Daniel Graña,2014-06-23,1,21,0,457,1066,21~0~add leveldb cache backend docs|
+Daniel Graña,2014-07-01,2,2,2,459,1068,1~1~Update python compatible version set to debian packages|1~1~there is not support for python3 yet|
+Daniel Graña,2015-12-30,1,52,0,511,1068,52~0~Add 1.0.4 release notes|
+Daniel Graña,2014-07-08,2,44,10,555,1078,36~10~Use a mutable mapping to proxy deprecated settings.overrides and settings.defaults attribute|8~0~Add 0.24.2 release notes|
+Daniel Graña,2014-07-09,2,3,3,558,1081,2~2~Bump version: 0.25.0 → 0.25.1|1~1~deploy to pypi only on even minor version|
+Daniel Graña,2015-09-09,1,4,4,562,1085,4~4~fix scrapy squeue tests after recent changes to queuelib|
+Daniel Graña,2015-01-29,2,6,1,568,1086,1~1~Contribute to master branch|5~0~Tentative attention message about what document to read for contributions|
+Daniel Graña,2014-07-09,1,3,0,571,1086,3~0~better testcase for settings.overrides.setdefault|
+Daniel Graña,2014-06-23,1,76,1,647,1087,76~1~Add 0.24.0 release notes|
+Daniel Graña,2015-02-25,1,26,0,673,1087,26~0~Add 0.24.5 release notes|
+Daniel Graña,2015-05-22,1,9,2,682,1089,9~2~update docstring and release notes|
+Daniel Graña,2014-06-24,1,2,2,684,1091,2~2~indent parsed-literal as part of ordered list|
+Daniel Graña,2014-06-25,5,42,15,726,1106,17~3~Upload sdist and wheel packages to pypi using travis-ci deploys|14~10~address latest comments|8~0~Add bumpversion config|2~2~Revert "limit Twisted support to pre-14.0.0 while #718 is fixed"|1~0~hold a reference to backwards compatible _contextFactory|
+Daniel Graña,2016-02-03,1,2,2,728,1108,2~2~Bump version: 1.2.0dev1 → 1.2.0dev2|
+Daniel Graña,2015-07-25,1,14,865,742,1973,14~865~PY3 port signals|
+Daniel Graña,2015-05-23,1,18,3,760,1976,18~3~Unquote request path before passing to FTPClient, it already escape paths|
+Daniel Graña,2014-06-25,1,28,1,788,1977,28~1~Restore compatibility with Settings.overrides while still deprecating it|
+Daniel Graña,2014-07-24,3,9,11,797,1988,1~3~pytest 2.6.0 is on pypi now|4~0~Add tox env for python 3.4|4~8~items: Use BaseItem.__hash__ and six.add_metaclass decorator|
+Daniel Graña,2015-08-13,4,30,3,827,1991,8~0~Forward coverage envvars needed to cover subprocess|7~0~Document how to get coverage report|2~2~Do not be verbose with coverage report by default|13~1~Increase coverage of version command|
+Daniel Graña,2015-03-18,1,4,4,831,1995,4~4~fix truncated 0.24.5 release notes. closes #1084|
+Daniel Graña,2015-08-12,3,53,14,884,2009,18~6~Add openssl version to version command|29~4~Add coverage report trough codecov.io|6~4~Replace usage of deprecated class by its parsel\'s counterpart|
+Daniel Graña,2015-08-11,1,2,1,886,2010,2~1~explicit close file on file:// scheme handler|
+Daniel Graña,2014-01-22,1,26,1,912,2011,26~1~Add basic top-level shortcuts|
+Daniel Graña,2014-07-30,5,167,84,1079,2095,1~1~move tests requirements under tests dir|4~2~use pytest.ini to enable twisted plugin|2~2~fix Twisted package name|68~72~move tests under root dir|92~7~Collect the list of packages not working on python3|
+Daniel Graña,2016-01-19,1,8,5,1087,2100,8~5~optional_features has been removed|
+Daniel Graña,2015-08-11,1,5,4,1092,2104,5~4~Use log formatting and pass crawler reference|
+Daniel Graña,2014-07-30,1,79,45,1171,2149,79~45~normalize header values to bytes|
+Daniel Graña,2015-06-15,1,6,4,1177,2153,6~4~Generated version as pep440 and dpkg compatible|
+Daniel Graña,2014-06-03,1,1,1,1178,2154,1~1~sort spiders in "scrapy list" cmd. closes #736|
+Daniel Graña,2014-04-24,2,25,4,1203,2158,15~1~Restore and deprecate "sel" shortcut|10~3~Ammend example nesting selectors|
+Daniel Graña,2014-04-14,2,112,100,1315,2258,105~96~update docs|7~4~update spider templates|
+Daniel Graña,2014-07-31,2,93,4,1408,2262,5~0~The sum up of travis-ci builds are taking like 50min to complete|88~4~Fix bench command|
+Daniel Graña,2015-07-01,1,12,2,1420,2264,12~2~Add 1.0.1 release notes|
+Daniel Graña,2014-04-14,1,2,4,1422,2268,2~4~Remove "sel" shortcut from scrapy shell$|
+Daniel Graña,2014-04-24,1,18,0,1440,2268,18~0~document shortcuts in TextResponse class|
+Daniel Graña,2015-08-11,1,6,0,1446,2268,6~0~Add 1.0.3 release notes|
+Daniel Graña,2015-08-10,2,8,2,1454,2270,4~0~Add docstrings|4~2~Log errors importing or initializing download handlers|
+Daniel Graña,2014-07-31,1,1,10,1455,2280,1~10~remove more references to runtests.sh|
+Daniel Graña,2015-08-10,4,106,13,1561,2293,9~1~log errors importing or instanciating handlers|2~1~py3: port dictionary itervalues call|89~10~PY3: port scrapy.utils.trackref|6~1~Do not fail representing non-http requests|
+Daniel Graña,2014-07-31,1,56,0,1617,2293,56~0~remove obsolete shell scripts used to run tests suite|
+Daniel Graña,2015-04-12,1,3,3,1620,2296,3~3~More replaces of references to old `sel` shortcut|
+Daniel Graña,2015-08-10,1,1,1,1621,2297,1~1~Workaround for travis#253|
+Daniel Graña,2014-07-31,1,1,1,1622,2298,1~1~update tox usage on contributing.rst|
+Daniel Graña,2015-08-10,1,6,7,1628,2305,6~7~lints|
+Daniel Graña,2014-07-31,1,1,1,1629,2306,1~1~fix requirements.txt for tests under precise|
+Daniel Graña,2014-08-01,1,3,3,1632,2309,3~3~PY3: port scrapy/utils/httpobj.py|
+Daniel Graña,2015-04-20,1,10,0,1642,2309,10~0~Add 0.24.6 release notes|
+Daniel Graña,2015-08-06,1,10,0,1652,2309,10~0~Add 1.0.2 release notes|
+Daniel Graña,2015-08-05,1,15,0,1667,2309,15~0~Twisted 15.3.0 does not raises expected exception serializing lambda functions|
+Daniel Graña,2016-02-03,1,2,2,1669,2311,2~2~Enable travis builds on tag patterns|
+Daniel Graña,2015-08-03,2,23,6,1692,2317,21~6~Do not break cookie parsing on non-utf8 headers|2~0~Do not propagate cookie log messages in tests so TopLevelFormatter does not rewrite them|
+Daniel Graña,2014-01-22,1,33,12,1725,2329,33~12~cleanup toplevel namespace|
+Daniel Graña,2015-08-03,1,74,8,1799,2337,74~8~PY3 port COOKIES_DEBUG and add tests|
+Daniel Graña,2014-08-01,1,4,4,1803,2341,4~4~PY3: port scrapy/utils/gz.py|
+Daniel Graña,2015-07-31,5,61,55,1864,2396,5~5~indent travis yaml|3~0~cache pip cache|1~16~Use new travis-ci container based builds|3~3~fix form requests tests on py3|49~31~PY3 port http cookies handling|
+Daniel Graña,2014-08-01,3,31,21,1895,2417,14~7~PY3: port scrapy/utils/conf.py|15~12~lint scrapy/http/request/*.py|2~2~fix ftp test cases|
+Daniel Graña,2015-07-25,2,12,0,1907,2417,9~0~Remove ignored passing tests from py3 branch|3~0~ignore moved files from py3 tests|
+Darshan Chaudhary,2015-10-29,2,33,2,33,2,33~2~Include signal example|
+Darshan Chaudhary,2015-11-21,1,20,4,53,6,20~4~Change name, log once|
+Darshan Chaudhary,2015-11-25,1,2,1,55,7,2~1~Include deprecated warning|
+darshanime,2016-07-25,1,18,8,18,8,18~8~update docs for settings|
+darshanime,2016-07-26,1,6,5,24,13,6~5~update log demo print|
+David Chen,2015-11-16,1,11,11,11,11,11~11~Fixed minor grammar issues.|
+David Tagatac,2015-07-31,1,1,1,1,1,1~1~minor: scrapy.Spider grammar and clarity|
+David Tagatac,2015-08-27,1,3,3,4,4,3~3~minor: scrapy.Spider docs grammar|
+Demelziraptor,2015-07-02,1,2,0,2,0,2~0~interpreting application/x-json as TextResponse|
+Demelziraptor,2015-09-18,1,2,0,4,0,2~0~interpreting json-amazonui-streaming as TextResponse|
+Dharmesh Pandav,2015-04-06,1,7,2,7,2,7~2~Update form.py to improve existing capability|
+Diana Huang,2015-04-12,1,4,9,4,9,4~9~Remove references to the `sel` object in shell.rst|
+Diego Allen,2016-06-16,1,9,2,9,2,9~2~Add set serialization to ScrapyJSONEncoder|
+dinesh,2015-04-03,1,0,0,0,0,0~0~Move scrapy_zsh_completion inside extras directory|
+dinesh,2014-11-02,1,26,0,26,0,26~0~Added zsh completion for the Scrapy command-line tool|
+dinesh,2015-04-03,1,1,1,27,1,1~1~Remove deploy command from arguments|
+dinesh,2015-04-05,2,2,2,29,3,1~1~Remove server command|1~1~Remove deploy and server commands from bash completion|
+dinesh,2015-04-03,1,1,1,30,4,1~1~Fix zsh completion path|
+djrobust,2017-02-04,1,2,2,2,2,2~2~Use 'yield' when parsing multiple responses|
+djunzu,2016-03-31,5,189,67,189,67,21~13~Change ImagesPipeline class attributes to instance attributes.|77~0~Add tests.|19~17~Move default settings to settings/default_settings.py.|16~10~Change FilesPipeline class attributes to instance attributes.|56~27~Update docs.|
+djunzu,2016-03-01,1,2,1,191,68,2~1~Add pps extension to IGNORED_EXTENSIONS|
+drack3800,2015-03-22,1,3,1,3,1,3~1~Fixed bug with no specified Content-Length header by ScrapyHTTPClientFactory for POST request with no given body|
+drack3800,2015-03-21,1,12,0,15,1,12~0~Added webclient test for checking Content-Length header in response for POST request with no given body|
+drack3800,2015-03-22,1,4,1,19,2,4~1~Fixed bug with no specified Content-Length header by ScrapyHTTPClientFactory for POST request with no given body|
+Dracony,2016-06-08,1,69,7,69,7,69~7~added FEED_EXPORT_ENCODING setting to allow encoding specification|
+Elias Dorneles,2015-04-21,1,37,15,37,15,37~15~expanded crawling primer with examples, and applied other suggestions from the review|
+Elias Dorneles,2016-01-21,1,1,1,38,16,1~1~fix version number to appear new feature|
+Elias Dorneles,2016-09-16,1,3,1,41,17,3~1~mentions stackoverflow as help channel (fixes #2255)|
+Elias Dorneles,2016-02-03,1,3,3,44,20,3~3~favor beta over basic to describe PY3 support|
+Elias Dorneles,2016-09-21,2,14,8,58,28,10~5~recommend learn python the hard way for beginners|4~3~better description for start_requests expected return value|
+Elias Dorneles,2016-01-21,1,3,4,61,32,3~4~re-enable skipped feed export tests|
+Elias Dorneles,2016-01-23,1,25,25,86,57,25~25~restore bytes instead of text, for easier reviewing|
+Elias Dorneles,2016-02-03,2,9,13,95,70,6~10~applying more review comments|3~3~fix comment about disabling robots.txt|
+Elias Dorneles,2016-09-16,1,4,3,99,73,4~3~mention that spiders need to subclass scrapy.Spider|
+Elias Dorneles,2014-08-13,1,8,8,107,81,8~8~fix IPython shell scope issue and load IPython user config|
+Elias Dorneles,2016-09-16,1,65,13,172,94,65~13~tutorial: update section about following links, expand examples adding an AuthorSpider to demonstrate further a different crawling arrangement.|
+Elias Dorneles,2015-09-13,2,20,22,192,116,9~9~minor refactor on metarefresh redirect mware test|11~13~refactoring redirect logic|
+Elias Dorneles,2015-09-11,1,13,3,205,119,13~3~made encoding conversion more explicit, added test for header with utf-8 encoding replicating what browsers do|
+Elias Dorneles,2015-09-10,1,10,0,215,119,10~0~adding test for latin1 location|
+Elias Dorneles,2015-08-11,1,3,3,218,122,3~3~make Parsel's Selector more private, remove direct dependency of ParselSelectorList|
+Elias Dorneles,2015-09-10,1,12,10,230,132,12~10~PY3 port redirect middleware|
+Elias Dorneles,2016-08-01,1,22,0,252,132,22~0~remove bumpversion prerelease configuration I propose to remove the prerelease configuration from bumpversion, because I think its behavior is just too confusing.|
+Elias Dorneles,2015-09-10,1,15,18,267,150,15~18~preparatory refactor in redirect mware|
+Elias Dorneles,2015-10-09,1,53,10,320,160,53~10~make BaseItemExporter export unicode, pushed down previous behavior for classes that need it|
+Elias Dorneles,2015-10-08,1,1,0,321,160,1~0~remove test_exporters from py3 ignores|
+Elias Dorneles,2016-09-19,1,80,195,401,355,80~195~[wip] changing introduction to scraping with selectors|
+Elias Dorneles,2015-04-11,1,159,93,560,448,159~93~documenting Files Pipeline together with Images Pipeline|
+Elias Dorneles,2016-09-20,2,62,34,622,482,61~33~address review comments, add debug log to initial spider|1~1~minor grammar fix|
+Elias Dorneles,2016-02-03,1,3,3,625,485,3~3~makes more explicit source of problems in Python 3 limitations|
+Elias Dorneles,2015-04-15,2,19,17,644,502,13~13~addressing issues from review at #1150|6~4~images.rst -> media-pipeline.rst|
+Elias Dorneles,2016-09-20,1,7,4,651,506,7~4~fix tox docs build, adjust title|
+Elias Dorneles,2016-02-03,1,2,2,653,508,2~2~Bump version: 1.1.0dev1 → 1.1.0rc1|
+Elias Dorneles,2016-01-24,1,31,0,684,508,31~0~added tests for feed export marshal and pickle|
+Elias Dorneles,2015-08-09,1,21,13,705,521,21~13~warning when ambiguous root arguments and minor cleanups|
+Elias Dorneles,2016-01-21,2,32,65,737,586,20~64~PY3 port csv exporter|12~1~add test for PythonItemExporter binary mode|
+Elias Dorneles,2015-08-09,1,28,630,765,1216,28~630~cleanup tests for selectors and translators|
+Elias Dorneles,2015-08-07,1,5,10,770,1226,5~10~upgrade parsel and use its function to instantiate root for finding form|
+Elias Dorneles,2016-02-06,1,34,0,804,1226,34~0~add deprecation for pydispatch (thanks for the help @redapple)|
+Elias Dorneles,2016-01-21,1,1,1,805,1227,1~1~fix indentation|
+Elias Dorneles,2015-08-07,1,10,4,815,1231,10~4~upgrade parsel and using promoted root attribute|
+Elias Dorneles,2015-08-06,3,67,6,882,1237,8~2~remove lxmldocument dependency from http.request.form|58~0~remove deprecated module lxmldocument|1~4~avoid harcoded check for selector type|
+Elias Dorneles,2016-02-03,1,2,2,884,1239,2~2~Bump version: 1.1.0rc1 → 1.2.0dev1|
+Elias Dorneles,2015-04-20,1,105,31,989,1270,105~31~some improvements for Scrapy tutorial|
+Elias Dorneles,2015-08-05,1,4,6,993,1276,4~6~use response.selector in link extractors instead of instantiating new Selector|
+Elias Dorneles,2016-09-22,1,33,30,1026,1306,33~30~addressing review comments and other minor editing|
+Elias Dorneles,2016-09-20,1,69,50,1095,1356,69~50~address more review comments|
+Elias Dorneles,2015-08-05,1,18,9,1113,1365,18~9~update minimal parsel version, add deprecated classes for csstranslator modules, fix test|
+Elias Dorneles,2015-08-04,1,20,11,1133,1376,20~11~remove selector support for LxmlDocument DOM cache and add deprecation warning for _root argument|
+Elias Dorneles,2015-08-03,1,15,156,1148,1532,15~156~migrating scrapy Selector to use Parsel|
+Elias Dorneles,2015-04-21,1,1,1,1149,1533,1~1~fixing example CSS expr|
+Elias Dorneles,2015-08-03,1,3,1,1152,1534,3~1~fix support to legacy _root argument|
+Elias Dorneles,2016-01-22,1,6,1,1158,1535,6~1~add back test for latin-1 encoding|
+Elias Dorneles,2016-09-20,1,84,57,1242,1592,84~57~more reviewing and editing, minor restructure, syntax fixes|
+Elias Dorneles,2016-09-21,1,34,0,1276,1592,34~0~add better messages for when response content isn't text (closes #2264)|
+Elias Dorneles,2016-01-21,1,3,5,1279,1597,3~5~fix: use is_listlike|
+Elias Dorneles,2015-04-21,1,8,7,1287,1604,8~7~change data extraction in crawl example to be consistent with tutorial, removed statement implying mandatory usage of Item|
+Elias Dorneles,2015-08-03,1,6,88,1293,1692,6~88~cleanup csstranslator module, keeping only imports|
+Elias Dorneles,2016-01-25,1,16,2,1309,1694,16~2~fallback to repr when can't convert to native string|
+Elias Dorneles,2015-11-03,1,3,3,1312,1697,3~3~make utils.project.data_path return path unmodified when outside project|
+Elias Dorneles,2016-01-25,1,4,0,1316,1697,4~0~add test for invalid option|
+Elias Dorneles,2016-01-21,1,64,47,1380,1744,64~47~PY3: ported json(lines), xml exporters|
+Elias Dorneles,2016-09-14,1,15,14,1395,1758,15~14~updated tutorial as per review comments|
+Elias Dorneles,2016-09-28,1,12,11,1407,1769,12~11~docs: update data flow description and image (fixes: #2278) This fixes the explanation to use Requests instead of URLs, which is what actually happens, and is also consistent with the new tutorial, which already explains how URLs become Request objects.|
+Elias Dorneles,2016-09-29,3,50,9,1457,1778,3~2~update data_path dosctring|3~4~restore explanation loop to step 1 (see comment in 3ac3ac4)|44~3~add .scrapy when outside spider too, add tests|
+Elias Dorneles,2016-09-30,3,8,3,1465,1781,1~0~test abs path outside project as well|3~0~update release notes with changes from #1581|4~3~improve description of engine|
+Elias Dorneles,2016-09-15,1,12,10,1477,1791,12~10~use harcoded URLs, remove item reference on second spider|
+Elias Dorneles,2015-03-10,1,11,1,1488,1792,11~1~updating list of Request.meta special keys|
+Elias Dorneles,2015-03-12,1,4,1,1492,1793,4~1~added example value to set for proxy meta key|
+Elias Dorneles,2015-03-14,1,54,3,1546,1796,54~3~adding more settings to project template|
+Elias Dorneles,2015-04-25,1,9,11,1555,1807,9~11~favoring web scraping over screen scraping in the descriptions|
+Elias Dorneles,2015-03-16,1,17,1,1572,1808,17~1~updating new settings to template, as pointed in PR review|
+Elias Dorneles,2014-07-22,1,123,0,1695,1808,123~0~adding some xpath tips to selectors docs|
+Elias Dorneles,2016-09-21,1,8,5,1703,1813,8~5~recommend Dive into Python and Python tutorial instead of LPTHW for non-beginners|
+Elias Dorneles,2015-03-17,1,8,7,1711,1820,8~7~using default values for settings that are off by default|
+Elias Dorneles,2014-07-23,1,24,24,1735,1844,24~24~improved explanations, clarified blog post as source, added link for XPath string functions in the spec|
+Elias Dorneles,2016-09-15,1,2,2,1737,1846,2~2~minor grammar fix|
+Elias Dorneles,2016-09-16,1,21,15,1758,1861,21~15~tutorial: updating extracting data section to introduce CSS and XPath equally|
+Elias Dorneles,2017-01-03,1,19,55,1777,1916,19~55~docs: installation instructions, mention conda in the beginning (closes #2475)|
+Elias Dorneles,2014-07-23,1,7,7,1784,1923,7~7~removes weird indentation in the shell results|
+Elias Dorneles,2016-12-27,3,57,30,1841,1953,3~0~show CoC in its own section|52~28~update code of conduct http://contributor-covenant.org/version/1/4|2~2~mention contributing document before CoC in the README|
+Elias Dorneles,2016-02-03,1,5,3,1846,1956,5~3~add note about robots.txt waiting and make it explicit builtin extensions only are ported|
+Elias Dorneles,2015-05-03,1,66,0,1912,1956,66~0~automatic settings list for docs [WIP]|
+Elias Dorneles,2016-02-03,1,23,19,1935,1975,23~19~applying review comments|
+Elias Dorneles,2016-01-23,1,12,1,1947,1976,12~1~added feedexport test for xml output|
+Elias Dorneles,2015-08-11,2,13,8,1960,1984,5~8~using bytes for response body in tests|8~0~set base_url in kwargs to be fully backward compatible|
+Elias Dorneles,2015-06-23,1,9,1,1969,1985,9~1~support empty password for http_proxy config|
+Elias Dorneles,2015-03-19,1,19,19,1988,2004,19~19~making commented code indentation consistent|
+Elias Dorneles,2015-05-09,1,40,20,2028,2024,40~20~fixes referencing, and list only settings not documented in current document|
+Elias Dorneles,2016-02-03,1,2,1,2030,2025,2~1~added note about how to revert to old behavior for robotstxt|
+Elias Dorneles,2015-06-14,1,36,10,2066,2035,36~10~improvements for docs on how to access settings|
+Elias Dorneles,2015-08-11,1,39,2,2105,2037,39~2~upgrade parsel and add shim for deprecated selectorlist methods|
+Elias Dorneles,2016-09-15,1,44,52,2149,2089,44~52~docs: update overview spider code to use toscrape.com and minor changes So, this will replace the spider example code from the overview that scrapes questions from StackOverflow by a spider scraping quotes (much like the one in the tutorial), and upates the text around it to be consistent.|
+Elias Dorneles,2016-01-23,1,2,1,2151,2090,2~1~uses ScrapyDeprecationWarning instead of silenced PendingDeprecationWarning|
+Elias Dorneles,2016-09-15,2,44,97,2195,2187,1~1~use better condition in example spider|43~96~tutorial: remove item class definition and present start_requests first This changes the tutorial, removing the step of creating an item class and also starts by presenting the start_requests method instead of start_urls.|
+Elias Dorneles,2016-09-16,1,11,9,2206,2196,11~9~update after review comments (thanks @stummjr)|
+Elias Dorneles,2015-05-11,1,12,5,2218,2201,12~5~sort settings list by name and wrap it in a bullet list|
+Elias Dorneles,2015-03-25,1,65,188,2283,2389,65~188~some improvements to overview page|
+Elias Dorneles,2015-03-26,6,120,83,2403,2472,10~4~added bit about async requests, improved phrasing|58~31~addressing comments from the review plus further editing|17~12~addressing more review comments, to avoid ambiguity on desired reading flow|15~15~fixing indentation|1~1~fix community link|19~20~moved example data to a better place|
+Elias Dorneles,2015-03-27,2,10,10,2413,2482,4~4~some more minor grammar fixes|6~6~some minor grammar fixes|
+eltermann,2014-09-02,2,1,1,1,1,1~1~Removed unused 'load=False' parameter from walk_modules()|
+Erick,2016-10-21,2,1,1,1,1,1~1~Fix warning to duplicated spider. Issue 2181|
+Eugenio Lacuesta,2016-11-15,2,18,6,18,6,18~6~handle relative sitemap urls in robots.txt|
+Eugenio Lacuesta,2017-02-14,1,12,6,30,12,12~6~Doc: binary mode is required for exporters|
+Eugenio Lacuesta,2016-12-23,1,30,0,60,12,30~0~Validate values for components order|
+Eugenio Lacuesta,2017-02-08,1,23,4,83,16,23~4~Add HTTPPROXY_ENABLED setting (default True)|
+Eugenio Lacuesta,2017-02-03,1,57,15,140,31,57~15~Use credentials from request.meta['proxy'] if present|
+Eugenio Lacuesta,2017-01-24,1,17,2,157,33,17~2~Preserve request class when converting to/from dicts (utils.reqser)|
+Faisal Anees,2014-03-23,1,2,0,2,0,2~0~Updated architecture.rst|
+Felipe Ruhland,2016-05-23,1,7,5,7,5,7~5~Updated docs for new option in command line|
+Felipe Ruhland,2016-05-24,3,9,5,16,10,3~3~Fix py35 compatibility tests|4~2~Fix template description after create project|2~0~Removed validation of project_name dir exists|
+Felipe Ruhland,2016-07-19,1,5,4,21,14,5~4~Fix scrapy.cfg validation|
+Felipe Ruhland,2016-05-24,1,9,31,30,45,9~31~Simplified copytree function|
+Felipe Ruhland,2016-05-23,2,76,7,106,52,59~7~Created project_dir optional parameter in startproject command line|17~0~Created new tests for implementation|
+Felipe Ruhland,2016-05-24,1,2,0,108,52,2~0~Added tests for more or less parameters|
+Felipe Ruhland,2016-07-19,1,8,0,116,52,8~0~Included implementation notes in docstring|
+Felix Yan,2014-07-15,1,58,65,58,65,58~65~PY3: use six.BytesIO and six.moves.cStringIO|
+Felix Yan,2014-07-14,3,58,46,116,111,3~6~use six.moves version for MIMEMultipart, MIMEText, and MIMEBase|5~6~PY3: fix has_key and use six.moves.configparser|50~34~PY3: use six.iterkeys, six.iteritems, and tempfile|
+Felix Yan,2014-07-15,2,72,45,188,156,69~41~use io.BytesIO and cStringIO instead of six.BytesIO as suggested|3~4~fix tests by using a tempfile instead of BytesIO|
+Felix Yan,2014-07-14,1,43,40,231,196,43~40~PY3: use six for robotparser and urlparse|
+Felix Yan,2014-07-25,1,33,14,264,210,33~14~PY3: use MutableMapping instead of DictMixin|
+Felix Yan,2014-07-14,1,17,8,281,218,17~8~PY3: fix xmlrpclib and email imports|
+Felix Yan,2014-07-15,1,2,2,283,220,2~2~use .seek(0) instead of reset() for compatibility|
+Felix Yan,2014-07-14,1,9,6,292,226,9~6~PY3: use six.moves.cPickle|
+Gregory Vigo Torres,2015-07-31,1,4,4,4,4,4~4~using bytes for body constant|
+Gregory Vigo Torres,2015-07-29,1,2,2,6,6,2~2~from_content_disposition|
+Gregory Vigo Torres,2015-07-30,1,1,1,7,7,1~1~removed test_responsetypes from py3ignores|
+Gregory Vigo Torres,2015-07-29,2,2,1,9,8,1~0~PY3 port responsetypes from_body|1~1~from_content_type|
+Gustavo de Andrade,2016-11-01,2,1,2,1,2,1~2~Update selectors.rst|
+gustavodeandrade,2016-10-21,2,5,0,5,0,5~0~Fix issue 1704|
+HalfCrazy,2014-11-06,2,1,1,1,1,1~1~Afterwords->Afterwards|
+harshasrinivas,2017-03-24,3,6,1,6,1,2~1~Update Makefile to open webbrowser in MacOS (#2661)|4~0~Remove __nonzero__ from SelectorList docs|
+Hoat Le,2015-10-07,3,1,1,1,1,1~1~fix ValueError: Invalid XPath: //div/[id="not-exists"]/text() on selectors.rst|
+hoatle,2015-10-07,3,1,1,1,1,1~1~fix another invalid xpath error|
+hy,2015-09-16,3,2,2,2,2,2~2~fix typos in downloader-middleware.rst and exceptions.rst, middlware -> middleware|
+immerrr,2014-12-11,3,19,2,19,2,19~2~S3DownloadHandler: fix auth for requests with quoted paths/query params|
+Irhine,2014-04-14,4,7,1,7,1,2~0~add encoding utf-8 to the first line|5~1~support i18n by using utf-8 coding template files|
+ivan,2014-07-08,4,3,4,3,4,3~4~Using CRLF as line marker according to http 1.1 definition|
+ivannotes,2014-08-01,5,14,5,14,5,2~0~Bugfix for leaking Proxy-Authorization header to remote host when using tunneling|12~5~Add test case for tunneling proxy|
+Jakob de Maeyer,2015-08-26,5,36,26,36,26,36~26~Move scrapy.utils.conf.remove_none_values to s.u.python.without_none_values|
+Jakob de Maeyer,2015-10-27,1,21,10,57,36,21~10~Fix backwards-compatibility for users who explicitly set _BASE settings|
+Jakob de Maeyer,2015-10-29,2,26,6,83,42,22~2~Add missing tests for scrapy.settings module|4~4~PEP8ify scrapy.settings tests|
+Jakob de Maeyer,2015-08-25,1,2,1,85,43,2~1~Add __repr__ method for BaseSettings|
+Jakob de Maeyer,2015-06-19,1,278,63,363,106,278~63~Introduce BaseSettings with full dictionary interface|
+Jakob de Maeyer,2015-11-06,3,231,165,594,271,171~90~Bring back _BASE settings|29~30~Overwrite, not update, dictionary-like settings|31~45~Replace BaseSettings._getcomposite() with public .getwithbase() method|
+Jakob de Maeyer,2015-06-19,1,268,239,862,510,268~239~Deprecate _BASE settings, unify _BASE backwards-compatibility|
+Jakob de Maeyer,2015-11-10,1,6,8,868,518,6~8~Simplify BaseSettings.__get__(), .getpriority()|
+Jakob de Maeyer,2015-08-25,2,5,3,873,521,1~1~Remove unused import in scrapy.settings|4~2~PEP8ify settings module|
+Jakob de Maeyer,2015-08-21,1,20,1,893,522,20~1~Fix RedirectMiddleware not honouring meta handle_httpstatus keys|
+Jakob de Maeyer,2015-08-10,1,64,1,957,523,64~1~Add ExecutionEngine.close() method|
+Jakob de Maeyer,2015-04-12,1,3,3,960,526,3~3~Fixed deprecated settings API in cmdline test|
+Jakob de Maeyer,2015-07-30,1,1,0,961,526,1~0~Remove incorrect path for Sphinx autodoc|
+Jakob de Maeyer,2015-07-17,1,1,1,962,527,1~1~Fix RedirectMiddleware test|
+Jakob de Maeyer,2015-07-16,1,25,4,987,531,25~4~Make RedirectMiddleware respect Spider.handle_httpstatus_list|
+Jakob de Maeyer,2015-07-03,1,1,0,988,531,1~0~Make Sphinx autodoc use local, not system-wide Scrapy|
+Jakob de Maeyer,2015-07-02,1,195,207,1183,738,195~207~Move Settings documentation to docstrings|
+Jakob de Maeyer,2015-11-06,1,35,16,1218,754,35~16~Add backwards compatibility for build_component_list|
+Jamey Sharp,2014-12-28,2,13,2,13,2,8~2~Let spiders ignore bogus Cache-Control headers.|5~0~Allow setting RFC2616Policy to cache unconditionally.|
+Jamey Sharp,2014-12-29,1,14,5,27,7,14~5~Allow client to bound max-age for revalidation.|
+Jamey Sharp,2014-12-28,2,43,0,70,7,19~0~Support "Cache-Control: max-stale" in requests.|24~0~Use cached responses if revalidation errors out.|
+Jay Patel,2016-10-20,2,1,1,1,1,1~1~Typo (through was misspelled)|
+Jeff Paine,2014-11-09,2,1,1,1,1,1~1~Update docs copyright year range|
+Jesús Losada,2016-07-22,5,28,13,28,13,8~1~Add documentation on Amazon S3 ACLs|1~1~Fix IMAGES_EXPIRES default value|1~1~Fix ImagesPipeline test settings|18~10~Document S3 capabilities in FilesPipeline and ImagesPipeline|
+Jesús Losada,2016-07-21,1,4,0,32,13,4~0~Add the IMAGES_STORE_S3_ACL setting|
+Joakim Uddholm,2016-06-12,1,1,1,1,1,1~1~Suggested fix for is_gzipped|
+Joakim Uddholm,2016-09-08,1,7,2,8,3,7~2~Two fixes for when using the parse command and the '-r' flag (rules). 1. Use default "parse" as callback when the matching rule has no callback. 2. Log error and return when no rule matches the parsed url.|
+Joakim Uddholm,2016-06-12,1,15,1,23,4,15~1~Test to show bug with is_gzipped and Content-Type: application/gzip;charset.|
+Joakim Uddholm,2016-06-14,1,1,1,24,5,1~1~is_gzipped: improved readability|
+Joakim Uddholm,2016-08-08,1,1,1,25,6,1~1~Fixed typo in error message when selecting a callback method for the parse command.|
+Joakim Uddholm,2016-06-14,1,3,1,28,7,3~1~is_gzipped: Separated tests again.|
+Joakim Uddholm,2016-06-12,1,14,5,42,12,14~5~Separated tests based on case|
+Joakim Uddholm,2016-06-14,1,3,2,45,14,3~2~is_gzipped: Changed to regex to check the content-type header. Also suggested by @redapple.|
+Joakim Uddholm,2016-09-19,1,156,147,201,161,156~147~Moved parse command tests to its own file. Added some checks to check for logged errors.|
+Joakim Uddholm,2016-06-14,1,16,2,217,163,16~2~Added new testcases suggested by @redapple.|
+John O'Connor,2016-10-28,1,2,2,2,2,2~2~Fix typo in media pipeline docs|
+John-Scott Atlakson,2014-09-14,1,1,1,1,1,1~1~Update request-response.rst|
+Jonas Brunsgaard,2014-10-07,1,4,0,4,0,4~0~Deleted bin folder from root, fixes #913|
+Jonas Tingeborn,2015-01-21,1,30,9,30,9,30~9~add gzip compression to filesystem http cache backend|
+jorenham,2017-03-02,1,10,7,10,7,10~7~Move cache storage logging to the individual storage classes|
+jorenham,2017-03-03,2,6,7,16,14,4~4~Log full cache file path instead of cache directory for the storages that cache to single files.|2~3~Moved cache dir logging to `open_spider` in FilesystemCacheStorage for consistency|
+jorenham,2017-03-02,1,7,0,23,14,7~0~Logging the cache directory at HttpCacheMiddleware instantiation #2604|
+jorenham,2017-03-09,1,9,0,32,14,9~0~Removed contrib section; contrib is deprecated|
+jorenham,2017-03-08,1,1,1,33,15,1~1~Fixed the FIXME; more specific exception catching|
+Jose Ricardo,2016-10-18,3,19,9,19,9,5~1~Add downloader middleware ordering details to the docs|6~1~Add details to the spider middlewares docs|8~7~Make architecture overview references a little more clear on the docs|
+José Ricardo,2015-04-17,3,1,1,1,1,1~1~Fix small typo in the docs|
+Julia Medina,2015-04-10,6,44,11,44,11,6~3~Support crawlers as first positional arg in CrawlerRunner.crawl()|13~8~Update docs for CrawlerRunner.crawl() new usage|5~0~Delete `crawler_deferreds` doc in CrawlerRunner|20~0~Verify SPIDER_MANAGER_CLASS interface in CrawlerRunner|
+Julia Medina,2015-06-19,1,2,2,46,13,2~2~Update release date for 1.0|
+Julia Medina,2015-04-09,1,5,5,51,18,5~5~Avoid name clashing in deploy.py, fixes #1143|
+Julia Medina,2015-05-09,1,1,1,52,19,1~1~Delete tab used as indentation in docs/topics/loaders.rst|
+Julia Medina,2015-05-22,1,2,2,54,21,2~2~Bump version: 1.0.0rc1 → 1.1.0dev1|
+Julia Medina,2015-04-01,1,12,21,66,42,12~21~Move spider settings population to Crawler.__init__|
+Julia Medina,2015-03-19,1,19,0,85,42,19~0~Add Response.urljoin() helper|
+Julia Medina,2015-05-04,1,9,0,94,42,9~0~Add deprecation warning to HtmlParserLinkExtractor|
+Julia Medina,2015-03-19,4,138,66,232,108,30~31~Change Scrapy log output through docs|59~1~Add a filter to replace '__name__' loggers with 'scrapy'|34~34~Change 'scrapy' logger for '__name__' on every module|15~0~Basic example on manually configuring log handlers|
+Julia Medina,2015-03-18,4,15,4,247,112,6~0~Document `re_first`|2~2~Run linkfix over current docs|6~1~Add linkfix rule to docs Makefile|1~1~Use generator sintax in re_first|
+Julia Medina,2015-05-04,1,1,0,248,112,1~0~Don't collect tests by their class name|
+Julia Medina,2015-03-10,1,167,76,415,188,167~76~Update Logging topic on docs|
+Julia Medina,2015-08-19,2,8,16,423,204,7~13~Replace alternative OSX install workaround with virtualenv|1~3~Reference Homebrew's homepage for installation instructions|
+Julia Medina,2015-05-15,2,59,77,482,281,1~1~Use method to get traceback of failures in failure_to_exc_info|58~76~Replace FailureFormatter with direct exc_info conversions in log calls|
+Julia Medina,2015-03-10,1,9,3,491,284,9~3~Update `logger` attr and `log` method in the Spiders topic on docs|
+Julia Medina,2015-05-27,1,3,2,494,286,3~2~Update 1.0 release notes|
+Julia Medina,2015-05-18,1,358,0,852,286,358~0~Add 1.0 release notes|
+Julia Medina,2015-05-04,1,3,3,855,289,3~3~Increase stacklevel in deprecation warnings from linkextractors|
+Julia Medina,2015-05-14,1,1,1,856,290,1~1~Fix in docs for error introduced in #1218|
+Julia Medina,2015-03-10,1,27,18,883,308,27~18~Fix logging usage across docs|
+Julia Medina,2015-03-05,1,29,2,912,310,29~2~Parametrize log formatting strings|
+Julia Medina,2015-03-04,1,37,0,949,310,37~0~Deprecate more frequently used functions from scrapy/log.py|
+Julia Medina,2015-02-28,9,436,518,1385,828,72~0~Add a logging filter to mimic Twisted's log.err formating for Failures|35~8~Create a logger for every Spider and adapt Spider.log to log through it|102~135~Use LogCapture in testfixtures package for tests|50~30~Restructure LogFormatter to comply with std logging calls|51~7~New scrapy/utils/log.py file with basic log helpers|7~328~Deprecate scrapy/log.py|52~9~Custom handler to count log level occurrences in a crawler|28~0~Set root handlers based on settings in configure_logging|39~1~Stdout redirect in configure_logging|
+Julia Medina,2015-02-27,1,401,222,1786,1050,401~222~Replace scrapy.log calls for their equivalents in the logging std module|
+Julia Medina,2015-02-15,1,14,5,1800,1055,14~5~Support new _getEndpoint Agent signatures on Twisted 15.0.0|
+Julia Medina,2015-05-27,1,1,1,1801,1056,1~1~Extend regex for tags that deploy to PyPI to support new release cycle|
+Julia Medina,2015-05-29,1,107,9,1908,1065,107~9~Add helper to update deprecated class paths|
+Julia Medina,2015-09-08,1,5,0,1913,1065,5~0~Add note to ubuntu install section about debian compatibility|
+Julia Medina,2015-07-10,1,8,0,1921,1065,8~0~Add oldest supported tox version to contributing docs|
+Julia Medina,2015-01-19,1,21,9,1942,1074,21~9~Test the parse command locally instead of against an external url|
+Julia Medina,2014-12-30,1,19,1,1961,1075,19~1~Patches Twisted issue while closing the connection pool on HTTPDownloadHandler|
+Julia Medina,2015-07-10,4,80,8,2041,1083,63~0~Add OS X installation section to docs|10~0~Add non-python dependencies to Ubuntu install section in the docs|3~6~Fix a recent mock regression by not using it in a test|4~2~Note in install docs about pip being already included in python>=2.7.9|
+Julia Medina,2015-05-14,2,12,3,2053,1086,2~2~Build docs in a temporary folder to avoid caching|10~1~Create separate testenvs to build docs and check links|
+Julia Medina,2015-05-18,1,0,0,2053,1086,0~0~Move exporters/__init__.py to exporters.py|
+Julia Medina,2015-05-14,1,1,0,2054,1086,1~0~Add docs toxenv to .travis.yml|
+Julia Medina,2015-04-29,1,5,1,2059,1087,5~1~Allow configure_logging to accept dicts as Settings objects|
+Julia Medina,2015-06-04,1,2,2,2061,1089,2~2~Remove deprecated %z formatting from the default LOG_DATEFORMAT|
+Julia Medina,2015-04-28,1,8,0,2069,1089,8~0~scrapy/linkextractor.py shim|
+Julia Medina,2015-06-05,1,6,3,2075,1092,6~3~Update release notes for 1.0.0rc2|
+Julia Medina,2015-04-28,1,15,16,2090,1108,15~16~Move scrapy/command.py to scrapy/commands/__init__.py|
+Julia Medina,2014-09-07,2,4,9,2094,1117,2~7~Erase unneeded flag in CrawlerProcess.start|2~2~Run root logger in CrawlerProcess creation instead of in its start method|
+Julia Medina,2015-04-28,2,21,7,2115,1124,8~0~scrapy/command.py shim|13~7~Move scrapy/linkextractor.py to scrapy/linkextractors/__init__.py|
+Julia Medina,2014-08-14,4,78,23,2193,1147,2~2~Non mutable default in Spider.custom_settings|8~4~Change error type when updating frozen settings|29~7~Add example on running spiders outside projects|39~10~Deprecate Crawler.spiders attribute|
+Julia Medina,2015-05-09,1,1,1,2194,1148,1~1~Title underline too short in docs/topics/selectors.rst|
+Julia Medina,2015-04-26,1,49,18,2243,1166,49~18~Add CrawlerProcess to "Running multiple spiders[...]" doc section|
+Julia Medina,2015-05-09,1,0,0,2243,1166,0~0~Delete scrapy/commands/__init__.py|
+Julia Medina,2014-08-14,2,34,7,2277,1173,8~6~Minor refactor in the docs and functions used in the shell command|26~1~Test verifying that CrawlerRunner populates spider class settings|
+Julia Medina,2014-08-13,2,36,7,2313,1180,24~6~Per-spider settings documentation|12~1~Per-spider settings implementation|
+Julia Medina,2015-04-26,1,52,22,2365,1202,52~22~Add CrawlerProcess to "Run Scrapy from a script" doc section|
+Julia Medina,2014-08-13,1,11,0,2376,1202,11~0~Per-spider settings tests|
+Julia Medina,2015-05-09,1,8,0,2384,1202,8~0~Delete scrapy/linkextractors/__init__.py|
+Julia Medina,2015-04-24,1,4,1,2388,1203,4~1~Add autodocs Sphinx extension|
+Julia Medina,2014-08-08,1,22,66,2410,1269,22~66~Drop support for scrapy.project.crawler (And scrapy.stats consequently)|
+Julia Medina,2014-08-06,1,65,51,2475,1320,65~51~Adjust spiders' utils to new SpiderManager API|
+Julia Medina,2014-08-05,1,71,23,2546,1343,71~23~Support multiple simultaneous LogObservers listening different crawlers|
+Julia Medina,2015-04-24,2,40,2,2586,1345,33~1~Extend CrawlerProcess documentation|7~1~Property for CrawlerRunner.crawlers so it can be autodocumented with Sphinx|
+Julia Medina,2014-08-01,1,20,15,2606,1360,20~15~Both getdict and getlist return copies of the requested values|
+Julia Medina,2015-04-24,1,45,46,2651,1406,45~46~Use autoclass for CrawlerRunner in docs/topics/api.rst|
+Julia Medina,2014-07-31,2,161,193,2812,1599,1~27~Drop support for ScrapyCommand.crawler property|160~166~Update tests utils, fixing get_crawler and removing docrawl|
+Julia Medina,2015-04-23,1,15,5,2827,1604,15~5~Relax SpiderLoader interface check|
+Julia Medina,2014-07-31,1,36,41,2863,1645,36~41~Fix usage of crawler_process in ScrapyCommands|
+Julia Medina,2014-07-30,1,143,77,3006,1722,143~77~CrawlerProcess cleanup changes|
+Julia Medina,2015-04-23,4,30,9,3036,1731,7~0~scrapy/squeue.py shim|7~0~scrapy/statscol.py shim|9~9~Rename scrapy/statscol.py to scrapy/statscollectors.py|7~0~scrapy/dupefilter.py shim|
+Julia Medina,2015-05-09,1,4,0,3040,1731,4~0~Mark as orphan the doc topics not listed in the index|
+Julia Medina,2014-07-29,2,118,41,3158,1772,42~41~Crawler interface cleanup|76~0~Add Settings.copy, freeze and frozencopy method|
+Julia Medina,2015-04-23,1,4,4,3162,1776,4~4~Rename scrapy/utils/decorator.py to scrapy/utils/decorators.py|
+Julia Medina,2014-07-17,2,109,54,3271,1830,85~54~SpiderManager interface cleanup|24~0~Connect spider_closed signal after a crawler is bound to a Spider|
+Julia Medina,2015-05-09,2,4,1,3275,1831,1~1~Wrong bullet list indentation in docs/topics/media-pipeline.rst|3~0~Delete scrapy/spiders/__init__.py|
+Julia Medina,2015-06-12,2,29,27,3304,1858,24~24~DOC indent additional docs for configure_logging|5~3~Update release notes for 1.0.0rc3|
+Julia Medina,2015-04-23,1,4,4,3308,1862,4~4~Rename scrapy/dupefilter.py to scrapy/dupefilters.py|
+Julia Medina,2015-05-09,1,96,94,3404,1956,96~94~Move scrapy/spider.py to scrapy/spiders/__init__.py|
+Julia Medina,2015-04-23,3,28,21,3432,1977,7~0~scrapy/utils/decorator.py shim|5~5~Rename scrapy/squeue.py to scrapy/squeues.py|16~16~Rename scrapy/loader/processor.py to scrapy/loader/processors.py|
+Julia Medina,2015-04-22,2,38,6,3470,1983,7~3~Fix backward compatible functions in scrapy.log|31~3~Add backward compatibility to LogFormatter|
+Julia Medina,2015-04-21,1,25,25,3495,2008,25~25~Move scrapy/contrib/spiders to scrapy/spiders|
+Julia Medina,2014-06-30,2,121,13,3616,2021,31~0~Update from_crawler method as well as set_crawler on CrawlSpider|90~13~Add from_crawler class method to base Spider|
+Julia Medina,2015-04-21,1,69,80,3685,2101,69~80~Move scrapy/contrib remaining top-level files to scrapy/extensions|
+Julia Medina,2014-06-10,1,10,9,3695,2110,10~9~Settings topic updated|
+Julia Medina,2014-06-09,3,16,10,3711,2120,8~2~Fix settings usage in runspider and crawl commands|3~3~Fix settings repr on the logs of the shell and tutorial docs topics|5~5~Fix settings usage across tests|
+Julia Medina,2014-06-03,3,73,15,3784,2135,59~2~setmodule helper method on Settings class|13~12~Change how settings are overriden in ScrapyCommands|1~1~Change command's default_settings population in cmdline.py|
+Julia Medina,2015-04-21,1,77,0,3861,2135,77~0~Top-level scrapy/contrib shims|
+Julia Medina,2014-06-03,1,10,9,3871,2144,10~9~get_project_settings now returns a Settings instance|
+Julia Medina,2014-05-30,1,75,8,3946,2152,75~8~Fix and extend the documentation of the new Settings api|
+Julia Medina,2014-05-27,1,162,82,4108,2234,162~82~Settings and SettingsAtribute tests|
+Julia Medina,2014-05-26,1,8,2,4116,2236,8~2~Deprecate CrawlerSettings, as its functionality is replicable by Settings class|
+Julia Medina,2014-05-24,1,26,7,4142,2243,26~7~New set and setdict method using SettingsAttribute in Settings|
+Julia Medina,2015-04-21,3,96,26,4238,2269,35~0~scrapy/contrib/spidermiddleware shims|26~26~Move scrapy/contrib/spidermiddleware to scrapy/spidermiddlewares|35~0~scrapy/contrib/spiders shims|
+Julia Medina,2015-04-20,1,25,22,4263,2291,25~22~Move scrapy/contrib/linkextractors to scrapy/linkextractors|
+Julia Medina,2014-05-24,1,8,0,4271,2291,8~0~Settings priorities dictionary|
+Julia Medina,2015-04-20,4,208,93,4479,2384,7~0~scrapy/contrib/exporter shims|24~24~Move scrapy/contrib/exporter to scrapy/exporters|105~0~scrapy/contrib/downloadermiddleware shims|72~69~Move scrapy/contrib/downloadermiddleware to scrapy/downloadermiddlewares|
+Julia Medina,2014-05-24,1,4,11,4483,2395,4~11~Update get_crawler method in utils/test.py with new Settings interface|
+Julia Medina,2014-05-22,1,25,0,4508,2395,25~0~New SettingsAttribute class|
+Julia Medina,2015-04-20,6,127,37,4635,2432,35~0~scrapy/contrib/linkextractors shims|21~0~scrapy/contrib/loader shims|15~13~Move scrapy/contrib/pipeline to scrapy/pipelines|28~0~scrapy/contrib/pipeline shims|24~24~Move scrapy/contrib/loader to scrapy/loader|4~0~Remove djangoitem topic from index|
+Julia Medina,2015-04-19,1,3,358,4638,2790,3~358~Remove djangoitem since we moved it to scrapy/scrapy-djangoitem|
+Julia Medina,2015-05-09,2,11,3,4649,2793,8~0~scrapy/spider.py shim|3~3~Wrong topic link in docs/intro/overview.rst|
+Julia Medina,2014-04-24,1,226,54,4875,2847,226~54~sep#19 proposed changes|
+Julia Medina,2015-05-22,2,22,3,4897,2850,19~0~New release cycle in .bumpversion.cfg|3~3~Bump version: 0.25.1 → 1.0.0rc1|
+Julia Medina,2015-05-15,1,11,10,4908,2860,11~10~Replace logger.exception calls for Python compatibility|
+Kenneth Schnall,2016-07-12,1,1,1,1,1,1~1~Update practices.rst|
+Kenneth Schnall,2016-07-15,1,1,1,2,2,1~1~Update logging.rst|
+Kevin Yap,2015-03-17,1,8,6,8,6,8~6~Use Shields.io SVGs for README badges|
+klangner,2015-02-09,1,6,3,6,3,6~3~py3-ignores.txt supports comments|
+klangner@gmail.com,2015-02-10,1,3,3,3,3,3~3~fixed variable name|
+Konstantin Lopuhin,2016-01-14,12,98,75,98,75,2~0~skip ftp tests on py3 for now|7~5~fix import of test_downloader_handlers.py: use @implementer, move failing on py3 imports into corresponding tests|7~6~py3: pass http proxy tests|6~5~py3: fix http10 downloader - unicode host expected here|9~9~py3: pass all of HttpTestCase|7~2~py3 compat: encode delimiter, method and path in ScrapyHTTPPageGetter|3~0~unskip tests and modules ported to py3|8~5~webclient tests, py3: fix setUp, pass test_getPage|3~0~decode body from utf-8, as scrapy stores body as bytes, and twisted has already converted  to unicode|2~2~pass test_getPageHead on py3|5~2~pass test_externalUnicodeInterference - the logic for py3 is clearly inverse of what was expected in this test, as scrapy Request url must be unicode|39~39~fix ScrapyHTTPPageGetterTests for py3 - we expect bytes here|
+Konstantin Lopuhin,2016-01-24,1,2,0,100,75,2~0~py3: unskip test_mail and scrapy/mail.py|
+Konstantin Lopuhin,2016-01-14,13,101,85,201,160,15~12~unskip part of test_download_gzip_response on py3, file a twisted issue for the remaining part|7~7~py3 test fix: putChild expects bytes as path|12~8~py3 test fixes in test_webclient - expect bytes as page body|4~4~py3 fix in testFactoryInfo - factory attirbutes are bytes in twisted|1~1~py3 compat in test_timeoutTriggering cleanup|1~1~py3 fix testRedirect: url is bytes here|2~0~all tests pass in test_webclient.py on py3 - removing from py3-ignores|13~13~make ScrapyHTTPClientFactory comply to twisted HTTPClientFactory protocol - use bytes (encoding are likely wrong at this stage)|5~6~py3: remove comments, utf-8 is fine here: as twisted ultimately uses urllib.parse.quote that assepts bytes and assumes utf-8|2~0~rm note to self: to be discussed in PR|10~8~py3: fix webclient tests after making ScrapyHTTPClientFactory use bytes as in twisted|11~11~py3 fixes in tests.mockserver|18~14~py3: pass first http downloader test, simple crawler works now, yay!|
+Konstantin Lopuhin,2016-01-15,2,25,7,226,167,23~7~add https test for http10 handler (no luck with testing https with http11 so far)|2~0~add a check that byte url is not accepted in http.Response on py3|
+Konstantin Lopuhin,2016-02-15,1,4,0,230,167,4~0~Pass env variables required for running tests against real s3 via tox.|
+Konstantin Lopuhin,2016-01-15,6,49,44,279,211,4~3~some py3 fixes for RFC2616Policy|7~6~py3: fix LeveldbCacheStorage - using bytes as keys and values in leveldb|4~4~py3: fix _BaseTest in httpcache|26~26~py3 compat in httpcache - headers are bytes|4~1~py3: add leveldb to py33 test env, fix anydbm module name on py3|4~4~py3: body to bytes in tests, unskip test file|
+Konstantin Lopuhin,2016-02-15,1,50,21,329,232,50~21~add direct test for S3FilesStore|
+Konstantin Lopuhin,2016-02-05,1,8,6,337,238,8~6~add Headers.to_native_string_dict - useful when interfacing with other libraries|
+Konstantin Lopuhin,2016-02-15,3,11,9,348,247,6~5~Update feedstorage docs: add botocore, mention that boto is supported only on Python 2|2~2~fix assertRaises for precise env|3~2~S3FeedStorageTest: pass on py3, add some non-ascii content to be sure|
+Konstantin Lopuhin,2016-01-15,5,8,3,356,250,2~0~py3: unskip tests/test_downloadermiddleware_httpcache.py and scrapy/downloadermiddlewares/httpcache.py|2~2~py3 fix for ignoring cache controls - map is not a list|2~1~py3 fix for rfc1123_to_epoch - "except Exception" was hiding bytes/str error|1~0~fix error reporting in test: we can fail in process_request too, so result should always be defined|1~0~skip this file on py3 again - it has one compression test, sould be done separately|
+Konstantin Lopuhin,2016-02-15,1,1,0,357,250,1~0~py3: reviewed s3 downloader handlers|
+Konstantin Lopuhin,2016-01-18,9,87,35,444,285,11~10~this is a test for TunnelingTCP4ClientEndpoint - move into Http11ProxyTestCase|1~2~py3 webclient: I was mistaken about unicode body, revert conversion to bytes and fix HEAD response|28~3~add webclient test - check that non-standart body encoding matches Content-Encoding header|1~1~revert bogus change|13~5~py3: webclient assumes that urls come from Request.url and are ascii-only|5~1~add https 1.1 downloader test - localhost is a valid DNS-ID|5~3~py3: fix http 1.1 test with https, and use self.host everywhere|19~5~https proxy tunneling - add a test (not perfect, but covers all impl) and fix for py3|4~5~py3: remove extra encoding/decoding of url: pass it as bytes only when required|
+Konstantin Lopuhin,2016-02-05,1,9,4,453,289,9~4~fix anon test: in this case we do no signing, just change the url|
+Konstantin Lopuhin,2016-01-18,4,30,29,483,318,3~3~clarify: rename r_transform to response_transform|10~9~revert most changes to this test, and clarify - it is valid only on py2, because urls are strictly unicode on py3|16~17~py3: port compression downloader middleware and tests|1~0~common test_downloadermiddleware.py also passes now due to fixes in compression middleware|
+Konstantin Lopuhin,2016-02-05,1,67,34,550,352,67~34~mock date in s3 tests when using botocore|
+Konstantin Lopuhin,2016-01-18,2,6,6,556,358,5~5~fix test skipping logic - this is (temporary) py2-only part|1~1~move comment about test skipped on py3 into a proper place|
+Konstantin Lopuhin,2016-02-05,1,65,33,621,391,65~33~using botocore for s3 request signing: proof of concept|
+Konstantin Lopuhin,2016-01-18,1,5,4,626,395,5~4~py3: fix EngineTest.test_crawler|
+Konstantin Lopuhin,2016-01-19,8,37,29,663,424,17~16~py3: pass first crawl test (test_follow_all): fix mock server|5~2~py3: fix getarg|10~8~py3: pass CrawlTestCase.test_referer_header, fixing Echo resource in mockserver and json decoding in test|1~0~py3: unskip test_crawl|1~1~raise minimal twisted version for py3|1~0~remove unused import|1~1~more pythonic check of noconnect in proxy params|1~1~move leveldb to tests/requirements-py3.txt|
+Konstantin Lopuhin,2016-02-05,1,7,3,670,427,7~3~botocore not only does not allow passing our own Date header, but does not handle x-amz-date according to the spec|
+Konstantin Lopuhin,2016-01-24,3,7,0,677,427,4~0~py3: properly skip s3 tests on py3|1~0~py3: reviewed passing test_spidermiddleware_httperror.py|2~0~reviewed py3 compat in pipelines/images.py and pipelines/files.py|
+Konstantin Lopuhin,2016-01-19,7,36,31,713,458,1~0~py3 backout skipping test_closespider - it was fixed on another branch|1~0~py3: unskip test_closespider - it passes after fixing mockserver.Follow resouce on py3|1~1~py3 compat: use range, fixes CrawlTestCase.test_start_requests_bug_yielding|3~3~fix engine tests - this callback (spider_closed_callback) should accept one argument, but the error was hidden on py2|1~0~py3: unskip passing test_engine|21~23~py3: port fetch and shell commands, and review + enable already passing test_closespider.py and tests/test_utils_template.py|8~4~py3 fetch command: it may actually be better to try to print bytes as-is|
+Konstantin Lopuhin,2016-02-15,1,1,1,714,459,1~1~py3 fix for TestS3FilesStore: checksum is a native string|
+Konstantin Lopuhin,2016-01-20,2,5,8,719,467,3~5~cleanup http11 tunneling connection after #1678 - construct string and then convert to bytes|2~3~use byte constants for prefix instead of encoding it|
+Konstantin Lopuhin,2017-02-21,1,74,7,793,474,74~7~Respect log settings in custom_settings: fixes GH-1612|
+Konstantin Lopuhin,2016-02-15,1,1,0,794,474,1~0~use absolute_import to import external boto package|
+Konstantin Lopuhin,2016-02-05,1,2,2,796,476,2~2~use botocore by default, boto is still used in "precise" env|
+Konstantin Lopuhin,2016-02-15,3,71,43,867,519,46~20~botocore support for S3FilesStore|19~21~Fix assert_aws_environ: check for botocore with boto fallback on PY2|6~2~Fix S3TestCase for precise env: we reraise TypeError as NotConfigured in this case|
+Konstantin Lopuhin,2016-02-18,1,5,2,872,521,5~2~Fix method name: this always returns unicode keys and values|
+Konstantin Lopuhin,2016-02-15,1,77,46,949,567,77~46~S3FeedStorageTest: add botocore support, and organize boto/botocore checks|
+Konstantin Lopuhin,2016-03-25,1,1,1,950,568,1~1~Fix handling of meta=None in S3FilesStore.persist_file|
+Konstantin Lopuhin,2016-02-19,1,17,1,967,569,17~1~See #1778 - change default S3 ACL to "private" and allow customization via settings|
+Konstantin Lopuhin,2016-03-27,1,2,1,969,570,2~1~Fix a race condition in the FilesPipeline|
+Konstantin Lopuhin,2016-02-15,1,3,1,972,571,3~1~S3FeedStorageTest: delete key after test|
+Konstantin Lopuhin,2016-01-24,1,2,2,974,573,2~2~py3: fix test_mail - get_payload returns bytes when decode is True|
+Konstantin Lopuhin,2016-05-27,1,1,1,975,574,1~1~Use "url" variable in the example|
+Konstantin Lopuhin,2016-01-24,1,1,2,976,576,1~2~py3: add boto to py3 test requirements, test_pipeline_files and test_pipeline_images passing now|
+Konstantin Lopuhin,2017-03-07,1,2,2,978,578,2~2~Revert unneeded test_crawl changes|
+Konstantin Lopuhin,2016-04-12,1,2,9,980,587,2~9~Fix FAQ entry about python versions support|
+Konstantin Lopuhin,2016-02-24,1,13,16,993,603,13~16~Fix documentation for S3_STORE_ACL (now settings.FILES_STORE_S3_ACL) settings: it has nothing to do with feed exporters.|
+Konstantin Lopuhin,2016-02-05,1,7,0,1000,603,7~0~check that no extra kwargs are silently discarded|
+Konstantin Lopuhin,2016-02-18,1,53,5,1053,608,53~5~Support headers in S3FilesStore.persist_file for botocore|
+Lazar-T,2014-10-25,1,1,1,1,1,1~1~comma instead of fullstop|
+Lazar-T,2014-11-09,1,1,1,2,2,1~1~typo|
+Lele,2016-03-18,1,1,1,1,1,1~1~Changed sel. to response. for clarity|
+Leonid Amirov,2015-12-03,1,5,7,5,7,5~7~code formatting fix|
+Leonid Amirov,2015-11-03,1,8,14,13,21,8~14~issue GH #1550 - rewritten add_http_if_no_scheme()|
+Leonid Amirov,2015-11-02,3,29,10,42,31,14~7~issue GH #1550 - fixed bugs in scrapy.utils.url.add_http_if_no_scheme(): when given URI where scheme is present, but not 'http' the function gave bad result|12~1~issue GH #1550 - scrapy shell argument fixes: "example.com" requests "http://example.com"; "example" requests "file://example"; "./example.com" requests "file://example.com"|3~2~issue GH #1550 - fixed error: shell command wasn't accepting files URIs|
+Leonid Amirov,2015-12-03,1,9,4,51,35,9~4~added more verbosity for log and for exception when download is cancelled because of a size limit|
+Leonid Amirov,2015-11-03,1,3,2,54,37,3~2~issue GH #1550 - six library is used instead of urlparse for python3 compatibility|
+Lev Berman,2014-11-27,1,33,2,33,2,33~2~An attempt to resolve #977, add signal to be sent when request is dropped by the scheduler|
+Lev Berman,2014-11-28,1,23,7,56,9,23~7~#977 - test dropping requests|
+Lisimia,2014-07-28,1,1,1,1,1,1~1~Update shell.rst typo|
+LMKight,2017-04-03,1,4,4,4,4,4~4~changed code according to request|
+LMKight,2017-04-02,1,3,2,7,6,3~2~fixed command list|
+Lorena,2016-08-04,2,17,17,17,17,2~3~updated graph for organization/clarity|15~14~text updates to match graphic|
+Luar Roji,2014-08-05,2,1,1,1,1,1~1~Fixed buildbot tests, after 242c085|
+Luar Roji,2015-08-21,1,17,11,18,12,17~11~Fixed banner display in all 3 python shells|
+Lucas Moauro,2016-02-25,1,7,4,7,4,7~4~Refactored SpiderLoader class constructor for easier subclassing|
+Luiz Fernando Mattos Schlindwein,2016-10-18,1,2,0,2,0,2~0~added a note about invalid spider names in python 2|
+Lukas Anzinger,2017-02-03,1,1,1,1,1,1~1~Fix typo in downloader-middleware.rst.|
+Maik Röder,2015-02-04,1,1,1,1,1,1~1~Update form.py|
+mangogao,2017-02-25,1,4,4,4,4,4~4~Add omitted "self" arguments|
+Marco DallaG,2015-06-24,1,2,2,2,2,2~2~DOC Bring Ubuntu and Archlinux outside of Windows subsection|
+Marius Gedminas,2015-09-28,2,2,2,2,2,1~1~Fix list formatting|1~1~Typo|
+Martin Olveyra,2014-11-21,2,9,3,9,3,9~3~Force to read DOWNLOAD_TIMEOUT as int (for example to pass using environment variable)|
+Marven Sanchez,2015-06-01,3,137,0,137,0,86~0~Add tests for RFC2616 policy enhancements Add `scrapy/downloadermiddlewares/httpcache.py` to `tests/py3-ignores.txt|51~0~Update HTTPCache middleware docs|
+Mateusz Golewski,2014-02-02,3,5,5,5,5,5~5~Fix extract_first() docs|
+Mateusz Golewski,2014-01-30,4,33,2,38,7,2~2~Optimize extract_first()|17~0~Add tests to extract_first()|10~0~Add docs for extract_first()|4~0~Add extract_first() method to SelectorList|
+Mateusz Golewski,2014-02-02,1,34,5,72,12,34~5~Add re_first() to SelectorList and iflatten() to utils.python|
+Matt O'Connell,2016-06-13,1,3,3,3,3,3~3~Typo fixes|
+Matti Remes,2016-09-03,1,1,1,1,1,1~1~Update exceptions.rst|
+Matvei Nazaruk,2016-06-13,1,26,5,26,5,26~5~Added test for http11 choosing response type without content-type header.|
+Matvei Nazaruk,2016-05-19,1,1,1,27,6,1~1~Fixed choosing of response class based on body.|
+mgachhui,2016-05-08,1,1,1,1,1,1~1~Added Python 3.3+ to readme|
+Michael Fladischer,2017-01-24,1,4,4,4,4,4~4~Fix spelling error in scrapy.1 manpage.|
+Mikael Åhlén,2014-09-13,2,58,8,58,8,11~0~added a test-case for wrong quotechar|47~8~Allow to specify the quotechar in CSVFeedSpider|
+MikeinRealLife,2017-02-22,3,6,0,6,0,2~0~fixed typo|4~0~fixed ticket #2574|
+Mikhail Korobov,2015-07-23,4,38,11,38,11,7~7~TST fix to_bytes and to_unicode tests in Python 3.x|31~4~PY3 port flatten and iflatten|
+Mikhail Korobov,2017-02-07,3,131,84,169,95,100~12~initial response.follow implementation|30~71~Remove code required to support ancient twisted versions. See GH-1887.|1~1~drop unneeded urlparse call|
+Mikhail Korobov,2014-08-01,1,34,5,203,100,34~5~TST enable doctests for Python 3|
+Mikhail Korobov,2015-07-25,2,163,169,366,269,2~0~PY3 enable Request and Response tests|161~169~partial port of Request and Response|
+Mikhail Korobov,2014-08-01,1,14,13,380,282,14~13~PY3 port scrapy.contrib.feedexport|
+Mikhail Korobov,2015-07-25,1,23,20,403,302,23~20~PY3 port utils.request|
+Mikhail Korobov,2017-02-16,1,55,39,458,341,55~39~TST remove temporary files and folders|
+Mikhail Korobov,2014-07-22,1,2,2,460,343,2~2~fix tests to account for https://github.com/scrapy/w3lib/pull/23|
+Mikhail Korobov,2015-07-25,2,59,27,519,370,58~26~[tmp] improve python 3 support for scrapy.utils.url|1~1~PY3: fixed scrapy.utils.defer|
+Mikhail Korobov,2017-02-15,2,233,98,752,468,119~93~Response.follow|114~5~handle whitespace in response.follow; add tests|
+Mikhail Korobov,2016-09-07,1,1,1,753,469,1~1~typo fix in HttpProxyMiddleware|
+Mikhail Korobov,2017-02-15,1,4,4,757,473,4~4~fixed tests in Python 2|
+Mikhail Korobov,2017-02-07,1,3,3,760,476,3~3~LinkExtractor: don’t check all regexes if one of them matches|
+Mikhail Korobov,2014-06-28,1,1,1,761,477,1~1~DOC fix formatting in release notes|
+Mikhail Korobov,2014-08-01,1,35,34,796,511,35~34~TST modernize some of the asserts|
+Mikhail Korobov,2015-07-28,2,24,0,820,511,1~0~fixed RFPDupeFilter persistence|23~0~TST a test to show that dupefilter persistence is not working|
+Mikhail Korobov,2017-02-07,1,13,7,833,518,13~7~fix deprecated link extractors|
+Mikhail Korobov,2016-08-26,1,63,35,896,553,63~35~DOC move Data Flow below the picture; add links to components|
+Mikhail Korobov,2014-04-09,1,241,233,1137,786,241~233~DOC use top-level shortcuts in docs|
+Mikhail Korobov,2014-04-24,1,10,10,1147,796,10~10~DOC selectors.rst cleanup|
+Mikhail Korobov,2017-02-07,1,8,7,1155,803,8~7~cleanup MetaRefreshMiddleware: remove redundant check|
+Mikhail Korobov,2017-02-09,1,16,4,1171,807,16~4~FormRequest: handle whitespaces in action attribute properly|
+Mikhail Korobov,2014-04-09,1,8,8,1179,815,8~8~use "import scrapy" in templates|
+Mikhail Korobov,2014-04-10,1,10,10,1189,825,10~10~suggest scrapy.Selector in deprecation warnings|
+Mikhail Korobov,2015-07-29,1,1,0,1190,825,1~0~PY3: enable RobotsTxtMiddleware tests|
+Mikhail Korobov,2015-01-19,1,2,2,1192,827,2~2~DOC a couple more references are fixed|
+Mikhail Korobov,2017-02-07,1,2,3,1194,830,2~3~strip URL extracted from selectors (as per html5 standard)|
+Mikhail Korobov,2015-01-19,1,1,1,1195,831,1~1~DOC fix a reference|
+Mikhail Korobov,2017-02-07,1,52,7,1247,838,52~7~canonicalize=False by default for LinkExtractor. Fixes GH-1941.|
+Mikhail Korobov,2014-08-01,1,3,0,1250,838,3~0~PY3 enable more tests|
+Mikhail Korobov,2015-01-22,1,18,25,1268,863,18~25~DOC reorder topics|
+Mikhail Korobov,2015-05-05,1,1,0,1269,863,1~0~fixed backwards compatibility for scrapy.contrib.exporter.PythonItemExporter|
+Mikhail Korobov,2016-12-16,2,120,57,1389,920,38~1~DOC how to override log level for a specific Scrapy component|82~56~DOC update examples with long longger names|
+Mikhail Korobov,2015-07-31,1,11,9,1400,929,11~9~small ResponseTypes cleanup|
+Mikhail Korobov,2016-12-09,1,24,23,1424,952,24~23~TST cleanup runspider tests|
+Mikhail Korobov,2017-02-17,1,33,7,1457,959,33~7~fix make_requests_from_url deprcation implementation, add tests|
+Mikhail Korobov,2014-08-01,1,3,3,1460,962,3~3~PY3 MimeTypes wants files in text mode.|
+Mikhail Korobov,2017-02-17,1,34,1,1494,963,34~1~fixed method override check in Python 2|
+Mikhail Korobov,2015-08-01,3,57,33,1551,996,7~2~remove scrapy.utils.testsite from PY3 ignores|49~30~PY3 port scrapy.utils.response|1~1~fix request_httprepr docstring|
+Mikhail Korobov,2017-02-08,1,15,26,1566,1022,15~26~use w3lib.html.strip_html5_whitespace function; expand docs; strip consistently before calling process_value|
+Mikhail Korobov,2014-07-02,1,36,119,1602,1141,36~119~deprecate SgmlLinkExtractor|
+Mikhail Korobov,2017-02-16,2,67,27,1669,1168,13~0~TST more response.follow tests|54~27~DOC document response.follow methods; expand the tutorial|
+Mikhail Korobov,2014-08-01,1,9,10,1678,1178,9~10~PY3 fix test_utils_sitemap.|
+Mikhail Korobov,2017-02-01,1,2,1,1680,1179,2~1~DOC mention LevelDB cache storage backend|
+Mikhail Korobov,2014-08-02,1,19,18,1699,1197,19~18~PY3 port scrapy.link|
+Mikhail Korobov,2015-08-04,1,24,12,1723,1209,24~12~PY port scrapy.utils.reqser|
+Mikhail Korobov,2014-08-02,1,4,9,1727,1218,4~9~PY3 top-level shortcuts work|
+Mikhail Korobov,2014-09-21,1,11,1,1738,1219,11~1~DOC request queue memory usage|
+Mikhail Korobov,2015-05-12,3,46,25,1784,1244,18~9~TST, DOC document that Scrapy only infers field names for CSV|1~2~Fix GH-1223|27~14~TST add a test for JSON lines item exporter|
+Mikhail Korobov,2015-05-13,1,19,7,1803,1251,19~7~support FEED_EXPORT_FIELDS=[]|
+Mikhail Korobov,2014-09-21,4,47,31,1850,1282,7~6~TST small cleanup of a cookie test|1~1~CookieJar cleanup|26~6~DOC bring back notes about multiple spiders per process because it is now documented how to do that|13~18~DOC simplify extension docs|
+Mikhail Korobov,2015-08-08,2,36,4,1886,1286,24~0~TST a test for --profile option|12~4~PY3 nicer log messages in FilesPipeline|
+Mikhail Korobov,2014-09-22,2,10,0,1896,1286,2~0~RobotsTxtMiddleware: remove unused attribute|8~0~drop support for CONCURRENT_REQUESTS_PER_SPIDER|
+Mikhail Korobov,2014-09-23,2,86,21,1982,1307,24~1~DOC document download_timeout Request.meta key and download_timeout spider attribute.|62~20~dont_obey_robotstxt meta key; don't process requests to /robots.txt|
+Mikhail Korobov,2015-05-18,2,15,19,1997,1326,14~18~drop support for FEED_EXPORT_FIELD=[] meaning "no fields"|1~1~fixed FeedExporter shutdown log messages|
+Mikhail Korobov,2015-04-14,1,16,14,2013,1340,16~14~TST cleanup: use assertIn instead of assert_|
+Mikhail Korobov,2015-05-19,1,10,0,2023,1340,10~0~TST remove unnecessary lines from py3-ignores|
+Mikhail Korobov,2015-04-14,2,33,16,2056,1356,1~9~remove deprecated code from FeedExporter|32~7~allow Crawler, CrawlerRunner and CrawlerProcess to accept dicts instead of Setting objects|
+Mikhail Korobov,2014-09-24,1,1,4,2057,1360,1~4~don't hide original exception in scrapy.utils.misc.load_object|
+Mikhail Korobov,2015-04-15,3,37,49,2094,1409,4~8~DOC update docs readme file - sphinx >= 1.3 is now required.|25~38~DOC tweak deployment docs|8~3~PY3 disable scrapy.telnet if twisted.conch is not available|
+Mikhail Korobov,2015-08-11,1,3,2,2097,1411,3~2~add service_identity to scrapy install_requires|
+Mikhail Korobov,2016-12-09,1,15,0,2112,1411,15~0~TST tests for LOG_SHORT_NAMES|
+Mikhail Korobov,2014-09-25,1,65,6,2177,1417,65~6~DOC document from_crawler method for item pipelines; add an example.|
+Mikhail Korobov,2015-05-27,1,1,1,2178,1418,1~1~DOC fix non-working link (by removing it).|
+Mikhail Korobov,2014-10-02,1,1,1,2179,1419,1~1~DOC typo fix in leaks.rst|
+Mikhail Korobov,2015-04-15,1,4,3,2183,1422,4~3~PY3 fix Python 3 syntax errors in ajaxcrawl.py|
+Mikhail Korobov,2017-02-14,1,6,7,2189,1429,6~7~make retry middleware changes backwards compatible|
+Mikhail Korobov,2017-02-16,1,4,1,2193,1430,4~1~TST fixed ProjectUtilsTest on OS X|
+Mikhail Korobov,2015-08-12,1,5,0,2198,1430,5~0~Add Python 3 porting status badge to the README|
+Mikhail Korobov,2015-04-15,1,657,0,2855,1430,657~0~DOC remove css file which isno longer needed|
+Mikhail Korobov,2015-05-30,1,13,3,2868,1433,13~3~fixed CrawlerProcess when settings are passed as dicts|
+Mikhail Korobov,2015-04-15,3,54,2,2922,1435,15~2~DOC make local docs use the same theme as readthedocs.org|3~0~TST skip a test in Python 3 because it imports some parts of Twisted which are not ported yet|36~0~TST add a test for GH-1050.|
+Mikhail Korobov,2015-06-03,2,15,2,2937,1437,1~2~fixed spider custom_settings|14~0~TST a test case to show custom_settings doesn't always work|
+Mikhail Korobov,2015-04-16,2,20,3,2957,1440,17~1~TST don't collect tests from deprecated modules.|3~2~TST install service_identity package in tests to prevent warnings|
+Mikhail Korobov,2015-06-06,2,19,5,2976,1445,6~1~Stop reactor on Ctrl-C regardless of 'stop_after_crawl'. Fixes GH-1279.|13~4~CrawlerProcess cleanup|
+Mikhail Korobov,2015-04-16,1,145,108,3121,1553,145~108~rename scrapy.spidermanager.SpiderManager to scrapy.spiderloader.SpiderLoader|
+Mikhail Korobov,2015-04-17,1,57,41,3178,1594,57~41~rename CrawlerRunner.spiders to CrawlerRunner.spider_loader|
+Mikhail Korobov,2015-08-26,3,25,20,3203,1614,2~0~add coverage files to gitignore|3~3~PY3 port test_logformatter|20~17~fix Referer logging|
+Mikhail Korobov,2015-06-06,1,49,37,3252,1651,49~37~(backwards-incompatible) allow to pass settings=None to configure_logging|
+Mikhail Korobov,2015-08-26,1,2,5,3254,1656,2~5~enable test_stats and test_utils_log tests in Python 3|
+Mikhail Korobov,2016-01-19,1,1,130,3255,1786,1~130~Remove --lsprof command-line option. Fixes GH-1531|
+Mikhail Korobov,2017-02-13,1,19,9,3274,1795,19~9~fixed tls in Twisted 17+|
+Mikhail Korobov,2015-08-27,3,672,626,3946,2421,55~33~refactor test_linkextractors|3~0~enable console tests in PY3|614~593~PY3 port LinkExtractor|
+Mikhail Korobov,2015-08-28,3,76,53,4022,2474,36~19~PY3 port scrapy.spiders|11~10~PY3 depth, offsite and referer spider middlewares; Crawler|29~24~PY3 raise an exception if bytes are passed as url to Link constructor|
+Mikhail Korobov,2015-06-06,1,34,29,4056,2503,34~29~make "settings" argument optional for Crawler, CrawlerRunner and CrawlerProcess|
+Mikhail Korobov,2016-12-09,1,6,0,4062,2503,6~0~TST end-to-end test for LOG_LEVEL option|
+Mikhail Korobov,2015-06-08,1,2,0,4064,2503,2~0~extract CrawlerRunner._crawl method which always expects Crawler|
+Mikhail Korobov,2015-08-31,1,5,10,4069,2513,5~10~TST split LinkExtractorTestCase.test_extraction into several methods; remove duplicated test|
+Mikhail Korobov,2015-09-01,3,26,15,4095,2528,19~9~PY3 fix DownloaderStats middleware tests|6~6~PY3 fix UserAgentMiddleware tests|1~0~PY3 enable DownloadTimeoutMiddleware tests|
+Mikhail Korobov,2015-06-08,1,64,64,4159,2592,64~64~DOC SignalManager docstrings. See GH-713.|
+Mikhail Korobov,2015-04-17,1,1,0,4160,2592,1~0~don't expose deprecated crawler.spiders attribute in telnet console|
+Mikhail Korobov,2015-09-01,2,10,9,4170,2601,8~6~PY3 fix DefaultHeadersMiddleware tests|2~3~PY3 fix AjacCrawlable middleware tests|
+Mikhail Korobov,2016-07-06,1,4,4,4174,2605,4~4~TST pin pytest-cov to 2.2.1; upgrade pytest|
+Mikhail Korobov,2015-09-01,1,8,10,4182,2615,8~10~PY3 fix HttpAuthMiddleware tests|
+Mikhail Korobov,2014-07-11,1,1,1,4183,2616,1~1~too much drama|
+Mikhail Korobov,2015-06-09,2,41,41,4224,2657,39~41~DOC remove FailureFormatter mentions, stop copy-pasting configure_logging docstring|2~0~DOC spider_error doesn't support deferreds|
+Mikhail Korobov,2015-06-10,1,2,4,4226,2661,2~4~DOC remove unnecessary links; fix references in send_catch_log_deferred docstring|
+Mikhail Korobov,2017-02-16,1,1,1,4227,2662,1~1~TST fix a weird OS X testing issue|
+Mikhail Korobov,2017-02-08,1,66,18,4293,2680,66~18~Strip leading/trailing whitespaces in link extractors. Fixes GH-838.|
+Mikhail Korobov,2014-04-10,1,83,1,4376,2681,83~1~response.selector, response.xpath(), response.css() and response.re()|
+Mikhail Korobov,2014-07-02,1,13,7,4389,2688,13~7~PY3 make it possible to run some tests in Python3|
+Mikhail Korobov,2016-01-21,1,2,2,4391,2690,2~2~correctly process arguments for bench server|
+Mikhail Korobov,2015-09-04,1,4,0,4395,2690,4~0~don't run tests twice on Travis if a PR is made from a scrapy/scrapy branch|
+Mikhail Korobov,2016-01-21,1,7,6,4402,2696,7~6~PY3 fixed scrapy bench command|
+Mikhail Korobov,2014-07-02,1,13,13,4415,2709,13~13~rename "sflo" local variables to less cryptic "log_observer"|
+Mikhail Korobov,2016-01-22,1,2,0,4417,2709,2~0~PY3 enable tests for scrapy parse command|
+Mikhail Korobov,2016-02-17,1,27,2,4444,2711,27~2~Preserve tracebacks better. Fixes GH-1760.|
+Mikhail Korobov,2015-09-04,1,3,4,4447,2715,3~4~fixed compatibility with Twisted 15.4.0|
+Mikhail Korobov,2014-07-02,1,30,13,4477,2728,30~13~Deprecate scrapy.python.utils.FixedSGMLParser|
+Mikhail Korobov,2015-03-17,3,5,10,4482,2738,2~7~CSVFeedSpider cleanup: use iterate_spider_output|1~1~DOC contribute to master branch|2~2~remove unnecessary check from scrapy.utils.spider.iter_spider_output|
+Mikhail Korobov,2014-07-14,1,4,4,4486,2742,4~4~TST clean temporary file explicitly|
+Mikhail Korobov,2017-02-21,1,16,3,4502,2745,16~3~TST fixed compatibility with new link extractor whitespace handling|
+Mikhail Korobov,2015-09-13,1,18,16,4520,2761,18~16~style fixes for settings.py created by scrapy startproject|
+Mikhail Korobov,2015-03-18,1,1,1,4521,2762,1~1~typo fix in scrapy.contrib.pipeline.media|
+Mikhail Korobov,2015-06-24,2,22,4,4543,2766,5~3~don't access settings from downloader.Slot|17~1~Slot.__str__ and __repr__ methods; remove unused import|
+Mikhail Korobov,2015-03-18,1,313,170,4856,2936,313~170~Allow spiders to return dicts. See GH-1064.|
+Mikhail Korobov,2017-02-08,1,2,1,4858,2937,2~1~RegexLinkExtractor: add \x0c to whitespace characters, as per html5 standard|
+Mikhail Korobov,2015-04-15,1,165,13,5023,2950,165~13~FEED_EXPORT_FIELDS option|
+Mikhail Korobov,2014-04-15,1,1,1,5024,2951,1~1~TST fix tests that became broken after adding top-level imports and switching to py.test.|
+Mikhail Korobov,2014-07-03,2,29,20,5053,2971,21~0~Remove FixedSGMLParser: it is both useless and unused.|8~20~FixedSGMLParser is useless.|
+Mikhail Korobov,2015-06-26,2,8,8,5061,2979,7~7~DOC fix authrottle docs|1~1~AutoThrottle: respect download_delay=0 spider attribute|
+Mikhail Korobov,2015-09-21,1,2,1,5063,2980,2~1~TST pin pytest to 2.7.3|
+Mikhail Korobov,2016-01-26,1,13,4,5076,2984,13~4~Enable robots.txt handling by default for new projects. Fixes GH-1668.|
+Mikhail Korobov,2015-06-26,3,21,9,5097,2993,1~3~drop support for AUTOTHROTTLE_MIN_DOWNLOAD_DELAY|7~2~move AutoThrottle default options to default_settings.py|13~4~make AutoThrottle._adjust_delay easier to understand|
+Mikhail Korobov,2015-06-27,1,93,21,5190,3014,93~21~add AUTOTHROTTLE_TARGET_CONCURRENCY option and expand AutoThrottle docs|
+Mikhail Korobov,2016-01-26,1,8,0,5198,3014,8~0~deprecate unused and untested scrapy.utils.datatypes.SiteNode|
+Mikhail Korobov,2015-03-19,1,102,77,5300,3091,102~77~DOC change structure of spider docs:|
+Mikhail Korobov,2014-06-26,1,4,0,5304,3091,4~0~add utf8 encoding header to spider templates|
+Mikhail Korobov,2014-04-15,1,1,0,5305,3091,1~0~remove unused import|
+Mikhail Korobov,2017-02-16,1,14,3,5319,3094,14~3~HttpErrorMiddleware stats|
+Mikhail Korobov,2015-10-06,1,6,13,5325,3107,6~13~DOC fix docs after GH-1289.|
+Mikhail Korobov,2016-01-26,1,16,1,5341,3108,16~1~deprecate unused and untested scrapy.utils.datatypes.MultiValueDict|
+Mikhail Korobov,2016-01-27,1,58,42,5399,3150,58~42~response.text. Fixes GH-1729.|
+Mikhail Korobov,2015-10-06,1,1,1,5400,3151,1~1~TST don't use broken Pillow version in tests|
+Mikhail Korobov,2016-01-27,1,1,1,5401,3152,1~1~fixed ReST syntax|
+Mikhail Korobov,2015-10-06,2,68,23,5469,3175,16~3~CrawlerRunner.create_crawler method|52~20~TST improve CrawlerRunner tests|
+Mikhail Korobov,2017-02-16,1,4,0,5473,3175,4~0~DOC remove “Python 3 progress” badge|
+Mikhail Korobov,2016-01-27,1,20,29,5493,3204,20~29~deprecate Spider.make_requests_from_url. Fixes #1495.|
+Mikhail Korobov,2015-03-19,2,51,38,5544,3242,48~34~DOC mention dicts in documentation; explain better what are Items for|3~4~DOC move .. module: declaration to a proper place|
+Mikhail Korobov,2017-02-13,1,2,0,5546,3242,2~0~add a couple more lines to gitignore|
+Mikhail Korobov,2016-01-27,1,1,1,5547,3243,1~1~DOC typo fix|
+Mikhail Korobov,2014-07-04,1,2,2,5549,3245,2~2~fix a couple of typos in sep-19|
+Mikhail Korobov,2014-04-16,1,2,1,5551,3246,2~1~fix scrapy.version_info when SCRAPY_VERSION_FROM_GIT is set|
+Mikhail Korobov,2015-10-12,1,39,34,5590,3280,39~34~PY3 port bench, startproject, genspider, list and runspider commands|
+Mikhail Korobov,2016-01-28,1,6,6,5596,3286,6~6~call .text from .body_as_unicode() and not the other way around|
+Mikhail Korobov,2015-10-12,1,1,2,5597,3288,1~2~drop coveralls support|
+Mikhail Korobov,2017-02-13,1,6,6,5603,3294,6~6~TST replace Ubuntu 12.04 tox environment with 14.04|
+Mikhail Korobov,2015-04-22,1,17,2,5620,3296,17~2~fixed backwards compatibility for SPIDER_MANAGER_CLASS option|
+Mikhail Korobov,2016-01-28,1,1,1,5621,3297,1~1~PY3 fix downloader slots GC|
+Mikhail Korobov,2017-02-13,1,3,3,5624,3300,3~3~require w3lib 1.17+|
+Mikhail Korobov,2014-08-01,1,6,6,5630,3306,6~6~PY3 port scrapy.utils.spider|
+Mikhail Korobov,2015-03-23,1,18,0,5648,3306,18~0~DOC remove Dynamic Creation of Item Classes section|
+Mikhail Korobov,2016-03-25,2,36,22,5684,3328,2~2~DOC clarify Architecture docs|34~20~DOC improved Architecture overview|
+Mikhail Korobov,2014-08-01,1,2,7,5686,3335,2~7~PY3 enable more tests|
+Mikhail Korobov,2016-02-17,1,21,20,5707,3355,21~20~TST clean up RunSpiderCommandTest|
+Mikhail Korobov,2016-02-03,1,1,1,5708,3356,1~1~PY3 fixed CrawlerRunner.stop|
+Mikhail Korobov,2015-10-30,1,1,2,5709,3358,1~2~TST cleanup scrapy.utils.test.get_crawler|
+Mikhail Korobov,2016-02-03,1,17,6,5726,3364,17~6~more efficient ExecutionEngine.spider_is_idle|
+Mikhail Korobov,2014-08-01,1,13,6,5739,3370,13~6~PY3 port scrapy.utils.misc.arg_to_iter; fix scrapy.utils.misc.md5sum doctest|
+Mikhail Korobov,2016-03-01,2,29,9,5768,3379,25~9~Extract a function to build CONNECT request; add tests for it. See GH-1701 and GH-1808.|4~0~declare Python 3 support in setup.py|
+Mikhail Korobov,2017-02-07,2,51,14,5819,3393,7~5~Enable memusage extension by default. Fixes GH-2187.|44~9~retry stats|
+Mikhail Korobov,2015-07-23,1,83,67,5902,3460,83~67~Rename unicode_to_str and str_to_unicode method. Fixes GH-778.|
+Mikhail Korobov,2016-02-19,1,1,1,5903,3461,1~1~Remove unneeded `raise` (thanks @lopuhin).|
+Mikhail Korobov,2015-07-23,2,56,35,5959,3496,13~8~cleanup|43~27~port utils.python|
+Mikhail Korobov,2014-01-15,1,28,54,5987,3550,28~54~Update leaks.rst: there is now only a single spider in a process.|
+Mikhail Lyundin,2015-09-04,1,11,11,11,11,11~11~Optimization - avoid temporary list objects, unnecessary function call|
+Mikhail Lyundin,2015-09-03,1,4,10,15,21,4~10~equal_attributes function optimization|
+Mikhail Lyundin,2015-09-02,1,1,1,16,22,1~1~Avoid creation of temporary list object in iflatten|
+Mikhail Lyundin,2015-08-05,1,1,1,17,23,1~1~Minor method name fix|
+Moisés Guimarães,2016-12-05,2,8,2,8,2,2~2~fixes params types in docs.|6~0~removes note from docs.|
+Moisés Guimarães,2016-12-04,1,2,2,10,4,2~2~fixes docs|
+Moisés Guimarães,2016-10-18,2,21,5,31,9,1~1~fixes import for py35 env.|20~4~(fixes #2272) using arg_to_iter() to wrap single values and list() to avoid consuming from generators.|
+MrMenezes,2016-10-21,2,6,1,6,1,6~1~Fix warning to duplicated spider. Issue 2181|
+mrpandav,2015-04-15,2,2,2,2,2,2~2~changes `test_from_response_formname_notexists_fallback_formid` unit test for pull request #1137 - addition of new shortcut for html form election by formid attribute|
+mrpandav,2015-04-12,1,1,1,3,3,1~1~adding feature improvement  for selecting form using form-id, in addition to formname , formnumer before we go for xpath.. making it more idiomatic in nature|
+mrpandav,2015-04-15,1,54,0,57,3,54~0~Adding tests for pull request #1137 - addition of new shortcut for html form election by formid attribute|
+muriloviana,2016-10-19,1,41,25,41,25,41~25~change settings middleware name and updating middleware template|
+muriloviana,2016-10-18,1,24,0,65,25,24~0~add middleware to template project|
+muriloviana,2016-10-19,3,23,6,88,31,6~2~define method spider_opened and update class instructions|16~3~add from_crawler method to template and turn the returns methods explicit|1~1~use crawler only to register signals in from_crawler()|
+nanolab,2016-03-23,3,1,1,1,1,1~1~Update httpcache.py|
+nblock,2016-04-11,3,1,1,1,1,1~1~Fix spelling mistake|
+ncp1113,2014-03-31,3,3,3,3,3,3~3~for loops have to have a : at the end of the line|
+Nicolas Pennequin,2016-01-04,3,55,2,55,2,55~2~MailSender.send: allow passing a charset.|
+Nicolas Pennequin,2016-01-06,1,4,1,59,3,4~1~Update the email doc for the charset argument to send().|
+Nikola Pavlović,2015-07-10,1,2,2,2,2,2~2~Fix reference.|
+Nikolaos-Digenis Karagiannis,2014-07-03,1,1,1,1,1,1~1~selector.__repr__ test, rename method|
+Nikolaos-Digenis Karagiannis,2014-10-08,1,2,4,3,5,2~4~Compatibility with .15 leftover|
+Nikolaos-Digenis Karagiannis,2015-04-20,1,21,0,24,5,21~0~loader test with processors that use item's values|
+Nikolaos-Digenis Karagiannis,2014-07-03,1,1,1,25,6,1~1~selector.__repr__ test, repr type is bytesarray|
+Nikolaos-Digenis Karagiannis,2014-11-17,1,14,9,39,15,14~9~encode invalid xpath with unicode_escape under PY2|
+Nikolaos-Digenis Karagiannis,2014-07-02,1,10,0,49,15,10~0~selector.__repr__ test|
+Nikolaos-Digenis Karagiannis,2014-06-14,1,16,0,65,15,16~0~Document signal "request_scheduled"|
+Nikolaos-Digenis Karagiannis,2014-05-12,1,5,0,70,15,5~0~document spider.closed() shortcut|
+Nikolaos-Digenis Karagiannis,2015-04-20,1,1,1,71,16,1~1~ItemLoader.load_item: iterate over copy of fields|
+Nikolaos-Digenis Karagiannis,2014-07-03,1,9,0,80,16,9~0~selector.__repr__ test, unicode query|
+nramirezuy,2015-05-13,1,31,8,31,8,31~8~item fields defined on fields class attribute fix|
+nramirezuy,2014-07-28,1,22,0,53,8,22~0~httpcache dont_cache meta #19 #689|
+nramirezuy,2014-07-23,1,11,11,64,19,11~11~renamed UserTimeoutError and ServerTimeouterror #583|
+nramirezuy,2014-07-17,1,3,0,67,19,3~0~get_func_args maximum recursion fix #728|
+nramirezuy,2013-07-17,1,80,7,147,26,80~7~Item multi inherit fixed|
+nramirezuy,2014-07-25,1,42,28,189,54,42~28~exitcode and prints fixed, some code reworking|
+Nuno Maximiano,2013-10-18,1,20,15,20,15,20~15~add project name validation|
+nyov,2015-07-12,1,39,31,39,31,39~31~lazy-load s3 boto|
+nyov,2016-02-27,1,9,5,48,36,9~5~Allow core Scheduler priority queue customization|
+nyov,2016-03-02,1,68,67,116,103,68~67~Update documentation links|
+nyov,2016-03-06,1,23,15,139,118,23~15~Rename isbinarytext function to binary_is_text for clarity|
+nyov,2016-03-26,1,6,13,145,131,6~13~Remove duplicate code now handled by newer w3lib|
+nyov,2016-12-02,2,17,20,162,151,11~15~Deprecate scrapy.xlib.tx|6~5~Import xlib.tx code from twisted proper|
+nyov,2015-07-25,1,5,5,167,156,5~5~replace rfc822 with email.utils|
+nyov,2015-07-29,2,23,20,190,176,12~10~PY3 split requirements into files|11~10~PY3 fix test cmdline|
+nyov,2016-12-01,1,6837,0,7027,176,6837~0~Remove obsolete xlib code for Twisted 13.1.0|
+nyov,2014-05-20,2,4,4,7031,180,1~1~better call to parent class|3~3~update a link reference|
+nyov,2016-12-01,2,195,146,7226,326,116~48~Strip xlib.tx code of Twisted 10|79~98~Bump Twisted dependency to 13.1.0 (released June 2013)|
+nyov,2015-04-03,1,139,144,7365,470,139~144~dissolve `scrapy.contrib_exp`|
+nyov,2015-07-29,2,15,11,7380,481,11~9~PY3 renames (six types)|4~2~PY3 fix tests pipelines files|
+nyov,2015-07-11,1,7,0,7387,481,7~0~Unset environment proxies for tests|
+nyov,2015-07-29,3,23,20,7410,501,6~4~PY3 fix tests pipelines images|8~7~PY3 fix test loader|9~9~PY3 response bodies as bytes|
+nyov,2015-07-12,1,43,17,7453,518,43~17~lazy-loading for DownloadHandlers|
+nyov,2014-10-03,1,1,7,7454,525,1~7~Drop old engine code|
+nyov,2016-12-02,1,253,0,7707,525,253~0~Wipe scrapy.xlib.tx|
+nyov,2014-12-16,1,1,1,7708,526,1~1~t.i.b.ThreadedResolver is now a new-style class|
+nyov,2015-07-12,2,36,27,7744,553,8~23~drop deprecated "optional_features" set|28~4~Support anonymous connections in S3DownloadHandler|
+nyov,2015-03-24,4,72,276,7816,829,33~2~Add Response.urljoin() testcase|5~274~remove scrapy deploy command|8~0~handle TLS SNI if we have twisted>=14.0|26~0~config: look in ~/.config/scrapy.cfg as well|
+nyov,2015-03-25,1,162,31,7978,860,162~31~Add support for bpython console.|
+nyov,2015-07-24,1,4,0,7982,860,4~0~Put a blurb about support channels in CONTRIBUTING|
+nyov,2015-03-30,1,28,23,8010,883,28~23~more python3 compatibility changes for urllib|
+nyov,2015-04-01,1,2,2,8012,885,2~2~documentation build warning fixes|
+nyov,2015-07-25,3,116,44,8128,929,99~34~PY3 port scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware|2~3~PY3 fix test pipeline media|15~7~PY3 fix test middleware|
+nyov,2015-07-29,1,4,2,8132,931,4~2~LinkExtractor PY3 'unicode' type fix|
+nyov,2015-07-25,1,4,5,8136,936,4~5~PY3 fix test downloadermiddleware decompression|
+Olaf Dietsche,2015-07-12,2,37,3,37,3,34~0~Add tests with incomplete buttons|3~3~Make sure value attribute values are set.|
+Olaf Dietsche,2015-07-11,2,40,4,77,7,34~0~Add test: submit form with button control|6~4~Allow button cotrols to submit form|
+omer,2016-05-25,2,1,1,1,1,1~1~fix issue with '' in python 3|
+omer,2016-05-24,1,3,0,4,1,3~0~Do not decode of head response (2)|
+omer,2016-05-23,1,10,0,14,1,10~0~Do not decode of head response|
+Omer Schleifer,2017-02-20,1,24,6,24,6,24~6~[MRG+2] add flags to request (#2082)|
+orangain,2015-12-17,1,5,13,5,13,5~13~DOC: Update MetaRefreshMiddlware's setting variables|
+orangain,2015-12-12,1,6,0,11,13,6~0~DOC: Add captions to toctrees which appear in sidebar|
+orangain,2016-02-07,2,27,4,38,17,23~3~PY3: Implement some attributes of WrappedRequest required in Python 3|4~1~PY3: Fix TypeError when outputting to stdout|
+orangain,2016-02-06,1,13,1,51,18,13~1~Fix SitemapSpider to extract sitemap urls from robots.txt properly|
+Pablo Hoffman,2015-04-09,1,1,1,1,1,1~1~fix typo in deploy.rst|
+Pablo Hoffman,2015-05-01,1,22,18,23,19,22~18~move documentation about registering commands via setup.py to commands doc|
+Pablo Hoffman,2015-04-09,1,0,0,23,19,0~0~rename deployment.rst -> deploy.rst (consist with others like debug.rst)|
+Pablo Hoffman,2015-09-17,1,1,0,24,19,1~0~disable log on startproject command|
+Pablo Hoffman,2015-09-25,1,2,0,26,19,2~0~disable log on version command. closes #1426|
+Pablo Hoffman,2015-03-19,1,2,2,28,21,2~2~fix doc links|
+Pablo Hoffman,2015-03-18,1,5,5,33,26,5~5~emphasize web crawling over screen scraping on scrapy description. closes #586|
+Pablo Hoffman,2015-05-01,1,1,1,34,27,1~1~restore wrongly commented line in sphinx conf.py|
+Pablo Hoffman,2014-10-02,1,1,1,35,28,1~1~mark SEP-019 as Final|
+Pablo Hoffman,2014-08-19,1,114,0,149,28,114~0~removed scrapy-ws.py, moved to scrapy-jsonrpc package|
+Pablo Hoffman,2014-07-03,1,1,1,150,29,1~1~fix typo|
+Pablo Hoffman,2014-06-24,1,4,3,154,32,4~3~doc: use |version| substitution in ubuntu packages|
+Pablo Hoffman,2014-06-14,1,2,2,156,34,2~2~minor change to request_scheduled signal doc|
+Pablo Hoffman,2015-05-01,1,21,0,177,34,21~0~remove empty experimental section from doc|
+Pablo Hoffman,2015-04-09,1,63,20,240,54,63~20~improve scrapy deploy documentation|
+Pablo Hoffman,2016-11-16,1,3,1,243,55,3~1~mention scrapoxy in best practices doc|
+Pablo Hoffman,2015-05-01,1,7,0,250,55,7~0~add note to doc README about using 'make watch'|
+Pablo Hoffman,2014-06-10,1,5,0,255,55,5~0~crate release notes for 0.24 and #699 to it|
+Pablo Hoffman,2014-05-04,1,1,1,256,56,1~1~add Julia to SEP-019 authors|
+Pablo Hoffman,2015-05-25,1,1,1,257,57,1~1~update old crawlera link|
+Pablo Hoffman,2015-06-22,1,2,2,259,59,2~2~remove version suffix from ubuntu package|
+Pablo Hoffman,2014-04-25,1,2,2,261,61,2~2~signals doc: make argument order more consistent with code (although it doesn't matter in practice)|
+palego,2016-01-16,1,2,2,2,2,2~2~split-up the assertIn|
+palego,2016-01-03,1,2,1,4,3,2~1~change os.mknod() for open()|
+palego,2015-10-31,1,40,10,44,13,40~10~custom project templates|
+palego,2016-01-04,1,1,1,45,14,1~1~indentation|
+Panayiotis Lipiridis,2016-05-09,1,5,5,5,5,5~5~Github >> GitHub|
+Patrick Connolly,2016-04-24,1,2,2,2,2,2~2~Place brackets on own lines with JsonItemExporter.|
+Paul Tremberth,2014-04-26,1,39,1,39,1,39~1~Add tests for start requests, filtered and non-filtered|
+Paul Tremberth,2016-02-03,1,2,0,41,1,2~0~Add AUTOTHROTTLE_TARGET_CONCURRENCY versionadded note|
+Paul Tremberth,2016-05-11,3,20,13,61,14,8~9~Update release notes and date for 1.1.0|3~1~Prevent empty warnings in case of certificate verification failures|9~3~Merge 1.0.6 release notes|
+Paul Tremberth,2017-03-09,1,23,0,84,14,23~0~Update settings docs for new SPIDER_LOADER_WARN_ONLY|
+Paul Tremberth,2016-05-17,2,13,12,97,26,10~9~DOC Place FEED_TEMPDIR setting at lexicographical position|3~3~[DOC][Overview] Use idiomatic .extract_first()|
+Paul Tremberth,2016-05-18,2,66,1,163,27,1~1~DOC Update copyright notice|65~0~DOC Add info and example on errbacks|
+Paul Tremberth,2017-03-09,2,2,4,165,31,1~2~Do not only warn on wrong spider modules for "scrapy list"|1~2~Do not use self.assertRaises() as context manager|
+Paul Tremberth,2017-03-07,2,29,12,194,43,1~1~Use 3-bytes for gzip archive type sniffing|28~11~Add SPIDER_LOADER_WARN_ONLY to toggle between spiderloader failure and warning|
+Paul Tremberth,2016-01-26,1,6,1,200,44,6~1~Disable SpiderState extension if no JOBDIR set|
+Paul Tremberth,2016-02-19,1,4,1,204,45,4~1~Implement IPolicyForHTTPS|
+Paul Tremberth,2016-01-26,2,39,1,243,46,6~0~Add test for raised exception with SpiderState extension when no JOBDIR used|33~1~Update docs about local files support for "scrapy shell"|
+Paul Tremberth,2017-03-07,1,21,14,264,60,21~14~Warn only once for all spiders|
+Paul Tremberth,2016-01-26,1,20,2,284,62,20~2~Clarify priority adjust settings docs|
+Paul Tremberth,2014-01-23,1,260,101,544,163,260~101~Add LxmlLinkExtractor class similar to SgmlLinkExtractor (#528)|
+Paul Tremberth,2016-01-26,1,3,1,547,164,3~1~Fix logging of enabled middlewares|
+Paul Tremberth,2016-02-19,1,70,26,617,190,70~26~Use best practices for TLS connections when using Twisted>=14.0|
+Paul Tremberth,2016-01-26,1,4,0,621,190,4~0~Disable CloseSpider extension if no CLOSPIDER_* setting set|
+Paul Tremberth,2017-03-07,1,3,3,624,193,3~3~Fix dupe spider name warning string tests|
+Paul Tremberth,2016-06-08,1,22,1,646,194,22~1~Do not fail on canonicalizing URLs with wrong netlocs|
+Paul Tremberth,2016-01-26,1,18,16,664,210,18~16~Rewrite warning about shell with local files as note|
+Paul Tremberth,2017-03-07,1,10,2,674,212,10~2~Warn about modules where duplicate spider names were found|
+Paul Tremberth,2016-06-10,1,32,0,706,212,32~0~Add FAQ entry on using BeautifulSoup in spider callbacks|
+Paul Tremberth,2017-03-07,1,9,9,715,221,9~9~Revert to using self.assert methods|
+Paul Tremberth,2016-01-26,1,2,1,717,222,2~1~Use long classes names for enabled middlewares in startup logs|
+Paul Tremberth,2016-01-25,1,1,1,718,223,1~1~Move urlparsing statement in add_http_if_no_scheme()|
+Paul Tremberth,2016-01-22,4,144,100,862,323,39~57~Use pytest.mark.parametrize decorator|103~42~Extract guess_scheme function and refactor tests|1~1~Remove unused import|1~0~Remove unused re import|
+Paul Tremberth,2014-04-16,1,6,2,868,325,6~2~Support case-insensitive domains in url_is_from_any_domain()|
+Paul Tremberth,2016-06-14,1,1,2,869,327,1~2~Do not commit on any HTML parsing speed assumption with BS4+lxml|
+Paul Tremberth,2016-01-22,2,129,111,998,438,72~72~Regex-based guess_scheme() + refactor tests|57~39~Revert "Use pytest.mark.parametrize decorator"|
+Paul Tremberth,2016-06-14,1,13,4,1011,442,13~4~Add note on how to choose parser with BeautifulSoup|
+Paul Tremberth,2016-01-21,1,41,0,1052,442,41~0~Add local file tests for scrapy shell command|
+Paul Tremberth,2017-03-06,3,37,2,1089,444,18~0~Update release notes for 1.0.7, 1.1.4 and 1.2.3|13~2~Fix referrer policy from response headers and support explicit empty string|6~0~DOC Mention brotli support in HttpCompressionMiddleware section|
+Paul Tremberth,2017-03-03,3,50,39,1139,483,2~3~Revert "expose allowed_status tuple for media pipeline"|2~1~Fix setting lookup for MEDIA_ALLOWED_REDIRECTS|46~35~Refactor without MEDIA_HTTPSTATUS_LIST setting|
+Paul Tremberth,2016-01-21,1,2,3,1141,486,2~3~Remove relpath filepath|
+Paul Tremberth,2017-03-03,3,66,43,1207,529,1~3~Remove redundant slot.add_request() call in ExecutionEngine|58~32~Refactor settings tests|7~8~Cleanup|
+Paul Tremberth,2016-06-20,1,27,2,1234,531,27~2~[HttpCompressionMiddleware] Do not decompress binary/octet-stream responses|
+Paul Tremberth,2016-06-21,2,26,15,1260,546,19~14~Add "Host" header in CONNECT requests to HTTPS proxies|7~1~Fix CONNECT request timeout (with an ugly hack)|
+Paul Tremberth,2016-02-19,1,2,8,1262,554,2~8~Add missing import for implementer|
+Paul Tremberth,2017-03-02,3,21,16,1283,570,2~2~Fix tests|5~0~Remove Legacy Policy which is equivalent to UnsafeUrl Policy|14~14~Refactor (WIP)|
+Paul Tremberth,2016-07-06,2,15,3,1298,573,13~0~Catch and ignore TLS verification exception for IP-address hosts|2~3~Cleanup unused argument|
+Paul Tremberth,2016-01-20,1,3,3,1301,576,3~3~Invert PY2/PY3 test for conditional read1() definition|
+Paul Tremberth,2016-07-11,2,44,5,1345,581,4~5~Simplify regex conditions|40~0~Update release notes for upcoming 1.1.1 release|
+Paul Tremberth,2016-07-12,1,1,1,1346,582,1~1~Rephrase warning|
+Paul Tremberth,2017-03-29,1,8,1,1354,583,8~1~FAQ Rewrite note on Python 3 support on Windows|
+Paul Tremberth,2017-03-02,2,38,38,1392,621,9~9~Rename arguments|29~29~Rename arguments (bis)|
+Paul Tremberth,2016-07-13,2,18,6,1410,627,1~1~Update 1.1.1 release date|17~5~Update notes with latest 1.1 commits|
+Paul Tremberth,2016-02-20,1,47,1,1457,628,47~1~Add "Content-Length: 0" for body-less HTTP/1.1 POST requests|
+Paul Tremberth,2016-07-13,1,12,5,1469,633,12~5~Change wording of warning + docstring for ScrapyClientTLSOptions|
+Paul Tremberth,2016-01-19,2,20,8,1489,641,1~0~Remove unused import statement|19~8~Use if Py2/Py3 function instead of custom GzipFile class method|
+Paul Tremberth,2016-01-18,2,5,3,1494,644,3~1~Test for AttributeError when pickling objects (Python>=3.5)|2~2~Stick with ValueError for queue/serialization exception tests|
+Paul Tremberth,2016-02-20,1,1,1,1495,645,1~1~Fix super() call|
+Paul Tremberth,2016-01-15,2,72,11,1567,656,16~11~Use .read1() if available when using GzipFile|56~0~Add Code of Conduct Version 1.3.0 from http://contributor-covenant.org/|
+Paul Tremberth,2017-03-01,2,404,65,1971,721,364~50~Add test for Referer header on HTTP redirections|40~15~Warn or fail with exception on unknown policies|
+Paul Tremberth,2016-01-15,1,1,1,1972,722,1~1~Use "unicode" string for lxml.etree.tostring() serialization|
+Paul Tremberth,2017-03-01,2,82,1,2054,723,75~1~Add tests for policy fallback on unknown policies from meta and headers|7~0~Fix strip_url() tests|
+Paul Tremberth,2016-01-15,1,3,0,2057,723,3~0~Allow failures for Python 3.5 for now|
+Paul Tremberth,2016-01-14,1,2,2,2059,725,2~2~Travis: run tox with Python 3.5 + add Python 3.5 tests|
+Paul Tremberth,2016-01-13,4,51,30,2110,755,7~0~Add tests for input type in xmliter calls|5~0~Add Python 3.5 tox env and Python 3.4 tests in Travis CI|16~25~Refactored test code|23~5~Use explicit Unicode and bytes for XML body in tests|
+Paul Tremberth,2016-01-12,2,57,11,2167,766,55~6~Support unicode tags in xml iterators (fixes #1665)|2~5~Changes following comments|
+Paul Tremberth,2016-08-18,1,14,0,2181,766,14~0~Add release notes for 1.1.2 version|
+Paul Tremberth,2017-02-27,2,71,32,2252,798,40~3~Update tests|31~29~Pass URLs around instead of Request/Responses|
+Paul Tremberth,2016-01-06,1,21,15,2273,813,21~15~PY3: port utils/iterators|
+Paul Tremberth,2016-02-20,2,133,88,2406,901,5~61~Fix import for Ubuntu 12.04 precise (Twisted 11.1.0)|128~27~Backward compatibility for HTTP/10 context factory|
+Paul Tremberth,2017-02-27,1,16,25,2422,926,16~25~Re-enable FTP tests on Python 3|
+Paul Tremberth,2016-02-21,2,2,2,2424,928,1~1~Fix typo in comment|1~1~Pass exception directly to SkipTest()|
+Paul Tremberth,2014-06-21,1,75,9,2499,937,75~9~Add doc on LxmlLinkExtractor class|
+Paul Tremberth,2016-02-21,1,1,1,2500,938,1~1~Fix SkipTest() message for botocore import test|
+Paul Tremberth,2016-02-22,1,17,5,2517,943,17~5~Explicitly call Twisted transport stopProducing() on HTTP/1.1 timeouts|
+Paul Tremberth,2017-02-21,1,26,26,2543,969,26~26~Rename setting to REFERRER_POLICY (with 2 Rs)|
+Paul Tremberth,2016-09-01,5,80,1,2623,970,1~0~Remove "precise" test env from Travis-CI config|43~0~Update release notes for upcoming 1.2.0 version|21~1~Enable PyPy tests on Travis|14~0~Add Debian Jessie test env|1~0~Add "jessie" build to Travis-CI config|
+Paul Tremberth,2016-02-22,1,5,0,2628,970,5~0~Explicitly call Twisted transport stopProducing() on HTTP/1.0 timeouts|
+Paul Tremberth,2017-02-21,1,54,28,2682,998,54~28~Add autoclass directives to document built-in policies|
+Paul Tremberth,2017-02-20,4,21,6,2703,1004,2~2~Update default password|7~0~Explicitly remove test directories in FTP tests|8~0~Add note on FTP_PASSWORD default value|4~4~Set context factory implementation based on Twisted version|
+Paul Tremberth,2016-09-12,1,82,0,2785,1004,82~0~Add tests for crawl command non-default cases|
+Paul Tremberth,2016-09-14,1,3,0,2788,1004,3~0~Add flush() method to StreamLogger|
+Paul Tremberth,2017-02-20,1,1,1,2789,1005,1~1~Use bytearray for the CONNECT message bytes buffer|
+Paul Tremberth,2016-02-23,1,5,3,2794,1008,5~3~Revert "[MRG+1] Cleanup http11 tunneling connection after #1678"|
+Paul Tremberth,2014-07-10,2,62,17,2856,1025,61~16~Extract links from XHTML documents with MIME-Type "application/xml"|1~1~Match dot using character class (avoids escaping headaches)|
+Paul Tremberth,2016-09-15,1,1,0,2857,1025,1~0~Update shell help with availability of scrapy module|
+Paul Tremberth,2014-07-10,1,1,1,2858,1026,1~1~Fix Travis CI config for conditional releases|
+Paul Tremberth,2014-07-11,1,4,0,2862,1026,4~0~Add PyPI Pin for Wheels compatibility|
+Paul Tremberth,2014-08-03,1,6,6,2868,1032,6~6~Use w3lib.html.replace_entities() (remove_entities() is deprecated)|
+Paul Tremberth,2016-09-15,1,7,0,2875,1032,7~0~Add shell test for using scrapy.Request() directly without importing scrapy|
+Paul Tremberth,2014-08-04,1,1,1,2876,1033,1~1~Update w3lib requirement to 1.8.0|
+Paul Tremberth,2016-09-15,1,3,0,2879,1033,3~0~Make scrapy available in shell without explicit import statement|
+Paul Tremberth,2016-02-24,3,25,9,2904,1042,4~3~Use context factory class name in warning message|7~3~Add warning for context factories not accepting `method` param|14~3~Backward-compatibility for common Scrapy context factory patterns|
+Paul Tremberth,2016-02-03,1,9,1,2913,1043,9~1~Add 1.0.5 release notes|
+Paul Tremberth,2016-02-24,1,3,2,2916,1045,3~2~Make warning message a bit nicer in logs|
+Paul Tremberth,2017-02-09,1,6,6,2922,1051,6~6~Use consistent selectors for author field in tutorial|
+Paul Tremberth,2017-04-11,1,6,3,2928,1054,6~3~DOC Rearrange selector sections|
+Paul Tremberth,2017-02-08,2,3,3,2931,1057,2~2~Bump version: 1.3.0 → 1.3.1|1~1~Set date for 1.3.1 release|
+Paul Tremberth,2016-09-17,2,57,7,2988,1064,55~6~Feed exporter: start exporting only on first item|2~1~Flush StreamLogger handlers|
+Paul Tremberth,2016-02-25,1,2,1,2990,1065,2~1~Update release notes|
+Paul Tremberth,2016-02-26,2,79,0,3069,1065,72~0~Document DOWNLOADER_* settings for HTTP/1.0 and TLS|7~0~Update release notes about HTTPS downloader|
+Paul Tremberth,2016-09-19,1,12,2,3081,1067,12~2~Update 1.2 release notes with latest changes|
+Paul Tremberth,2016-02-03,1,1,0,3082,1067,1~0~Blank line before CoC|
+Paul Tremberth,2016-09-20,1,16,5,3098,1072,16~5~Remove mention of odd-numbered versions for development releases|
+Paul Tremberth,2016-02-29,1,4,1,3102,1073,4~1~Update release notes about change of default S3 ACL policy to "private"|
+Paul Tremberth,2016-09-20,1,6,0,3108,1073,6~0~Add note on "to" and "cc" as lists for sending emails|
+Paul Tremberth,2016-02-03,2,53,55,3161,1128,45~43~Reword some of "New Features and Enhancements"|8~12~Format "Code refactoring" subsection|
+Paul Tremberth,2016-09-20,2,30,3,3191,1131,28~1~Raise log level for HttpErrorMiddleware to INFO (from DEBUG)|2~2~Log warning when request cannot be serialized (instead of error)|
+Paul Tremberth,2016-02-03,1,6,6,3197,1137,6~6~Format "Logging" subsection|
+Paul Tremberth,2016-03-01,1,3,0,3200,1137,3~0~Build universal wheels|
+Paul Tremberth,2017-02-06,1,48,0,3248,1137,48~0~Update changelog for upcoming 1.3.1 release|
+Paul Tremberth,2016-02-17,1,11,3,3259,1140,11~3~More liberal Content-Disposition header parsing|
+Paul Tremberth,2014-04-26,1,3,1,3262,1141,3~1~Check pending start_requests before calling _spider_idle() in engine (fixes #706)|
+Paul Tremberth,2017-03-12,1,49,30,3311,1171,49~30~Refactor to also test FilesPipeline|
+Paul Tremberth,2016-09-22,2,20,3,3331,1174,16~0~Update release notes for upcoming 1.1.3 bugfix release|4~3~Set release date, fix typo and add tutorial improvement issue number|
+Paul Tremberth,2016-02-03,1,331,1,3662,1175,331~1~Add 1.1 release notes (draft)|
+Paul Tremberth,2016-09-23,2,17,2,3679,1177,4~2~Mention \uXXXX escapes in regards to FEED_EXPORT_ENCODING|13~0~Mention new Debian Jessie baseline|
+Paul Tremberth,2017-02-02,1,1,1,3680,1178,1~1~Add trailing dot|
+Paul Tremberth,2016-09-26,1,1,1,3681,1179,1~1~Fix Debian number|
+Paul Tremberth,2017-02-02,2,7,6,3688,1185,2~0~Remove unused imports|5~6~Make DNS retry test compatible with Twisted 17+|
+Paul Tremberth,2016-09-28,2,126,45,3814,1230,125~44~Update installation guide|1~1~Fix title underline|
+Paul Tremberth,2016-09-29,1,13,13,3827,1243,13~13~Move mention|
+Paul Tremberth,2017-03-10,1,1,1,3828,1244,1~1~Update version added for SPIDER_LOADER_WARN_ONLY|
+Paul Tremberth,2016-02-03,1,2,0,3830,1244,2~0~Add versionadded note for MEMUSAGE_CHECK_INTERVAL_SECONDS|
+Paul Tremberth,2016-02-01,1,7,0,3837,1244,7~0~Add pretty-printting of settings as dict if using IPython shell|
+Paul Tremberth,2016-09-29,2,93,93,3930,1337,92~92~Change release section titles to have correct links in ToC|1~1~Fix typo|
+Paul Tremberth,2016-01-29,2,33,12,3963,1349,18~4~Remove __str__ and __repr__ from settings, introduce copy_to_dict() instead|15~8~Update tests for settings copy_to_dict()|
+Paul Tremberth,2017-03-10,1,13,1,3976,1350,13~1~Update changelog for upcoming 1.3.3|
+Paul Tremberth,2017-02-02,1,2,2,3978,1352,2~2~Bump parsel requirement to at least parsel v1.1|
+Paul Tremberth,2016-10-03,2,3,3,3981,1355,1~1~Add release date for scrapy 1.2|2~2~Bump version: 1.2.0dev2 → 1.2.0|
+Paul Tremberth,2016-02-03,1,3,3,3984,1358,3~3~Fix recently added HTTPCACHE_ settings versionadded notes|
+Paul Tremberth,2016-10-05,6,621,181,4605,1539,58~17~Use urlparse_cached() on request and responses|252~90~Add tests for the different referrer policies|279~1~WIP Add Referrer policies|15~15~Refactor ReferrerPolicy methods|14~57~Remove all non-cached urlparsing references|3~1~Use urlparse_cached() for OriginPolicy|
+Paul Tremberth,2016-01-29,1,1,0,4606,1539,1~0~Remove unused import in tests|
+Paul Tremberth,2016-03-30,1,7,2,4613,1541,7~2~Add support for Sphinx 1.4|
+Paul Tremberth,2016-10-05,1,9,10,4622,1551,9~10~Use urlparse_cached() for OriginWhenCrossOriginPolicy|
+Paul Tremberth,2017-02-01,1,5,0,4627,1551,5~0~Don't run coverage stats when on PyPy|
+Paul Tremberth,2017-01-30,1,1,2,4628,1553,1~2~Remove unused --headers option for view command|
+Paul Tremberth,2016-10-07,1,7,2,4635,1555,7~2~Use OpenSSL default ciphers|
+Paul Tremberth,2016-10-11,4,327,217,4962,1772,11~11~Change __init__ default "settings" arg handling|15~1~Support case-insensitive policy names in settings|285~202~Add tests for referrer policy via settings and via Request meta|16~3~Make default referrer policy customizable via settings|
+Paul Tremberth,2016-01-29,1,9,2,4971,1774,9~2~Amend "settings" command to output JSON for dict settings|
+Paul Tremberth,2016-10-12,4,102,6,5073,1780,20~3~Patch "Referer" header on HTTP redirects if necessary|37~1~Update documentation about REFERER_POLICY setting|32~2~Add test for custom referrer policy via settings|13~0~Add tests for referrer-policy set in response HTTP headers|
+Paul Tremberth,2016-01-28,1,1,4,5074,1784,1~4~Amend guess_scheme() docstring|
+Paul Tremberth,2017-01-30,1,6,0,5080,1784,6~0~Update docs on view command|
+Paul Tremberth,2016-01-28,2,88,90,5168,1874,26~29~Move guess_scheme() to scrapy.utils.url|62~61~Move guess_scheme() tests to relevant test module|
+Paul Tremberth,2017-01-30,2,40,18,5208,1892,25~3~Support 'True' and 'False' strings as boolean settings values|15~15~Use table for referrer policy options|
+Paul Tremberth,2016-01-27,1,19,2,5227,1894,19~2~Add note for DEPTH_PRIORITY|
+Paul Tremberth,2017-01-26,1,3,3,5230,1897,3~3~Edit text|
+Paul Tremberth,2017-03-10,2,179,0,5409,1897,163~0~Add integration tests for MEDIA_ALLOW_REDIRECTS|16~0~Add file listing resource + redirecting resource to MockServer|
+Paul Tremberth,2016-04-06,1,10,1,5419,1898,10~1~Fix HTTP Pool key for HTTPS proxy tunneled connections (CONNECT method)|
+Paul Tremberth,2016-04-08,1,8,2,5427,1900,8~2~Fix link extractor tests for non-ASCII characters from latin1 document|
+Paul Tremberth,2016-04-09,1,23,13,5450,1913,23~13~Add link extractor test for non-ASCII characters in query part of URL|
+Paul Tremberth,2016-01-27,1,11,5,5461,1918,11~5~More explicit description of DEPTH_PRIORITY|
+Paul Tremberth,2016-04-12,1,228,65,5689,1983,228~65~Use newer w3lib.url.safe_url_string() and re-enable HTTP request tests|
+Paul Tremberth,2016-10-19,1,133,36,5822,2019,133~36~Move URL credentials stripping to a helper function|
+Paul Tremberth,2016-04-12,1,5,2,5827,2021,5~2~Reference StackOverflow's "minimal, complete, and verifiable example" guide|
+Paul Tremberth,2016-10-20,4,94,20,5921,2041,7~7~Do not interpret non-ASCII bytes in "Location" and percent-encode them (#2322)|24~0~Update release notes for upcoming 1.2.1|1~0~Remove debug print statement|62~13~Support Anonymous FTP|
+Paul Tremberth,2016-01-27,1,1,1,5922,2042,1~1~Add link to CoC mardown file on Github|
+Paul Tremberth,2016-04-14,1,41,7,5963,2049,41~7~Catch VerificationError but keep the rest of ClientTLSOptions|
+Paul Tremberth,2016-10-21,1,1,1,5964,2050,1~1~Set date for 1.2.1 release|
+Paul Tremberth,2016-04-14,1,8,1,5972,2051,8~1~Ignore HTTPS certificate verification failures|
+Paul Tremberth,2016-10-21,1,2,2,5974,2053,2~2~Bump version: 1.2.0 → 1.2.1|
+Paul Tremberth,2017-01-25,1,2,2,5976,2055,2~2~Update scrapy.1|
+Paul Tremberth,2016-04-18,1,4,1,5980,2056,4~1~Set SNI properly when using CONNECT|
+Paul Tremberth,2016-10-24,3,195,93,6175,2149,28~0~Document new FTP_* settings|11~9~Change FTP_* settings names|156~84~Rename helper function to strip_url() + add more tests|
+Paul Tremberth,2016-10-26,1,20,0,6195,2149,20~0~Add tests for stripping userinfo with percent-encoded delimiters|
+Paul Tremberth,2017-01-19,1,1,1,6196,2150,1~1~Fix view command against new --no-redirect option|
+Paul Tremberth,2017-01-18,1,18,10,6214,2160,18~10~Update docs|
+Paul Tremberth,2016-11-07,1,4,2,6218,2162,4~2~Test Slot's heartbeat state before stopping it|
+Paul Tremberth,2017-01-18,1,8,0,6226,2162,8~0~Update docs for new "referrer_policy" Request.meta key|
+Paul Tremberth,2016-11-08,1,23,0,6249,2162,23~0~Add testcase for catching exception from open_spider() from pipeline|
+Paul Tremberth,2017-01-18,1,8,6,6257,2168,8~6~Reword warning on no-referrer-when-downgrade policy|
+Paul Tremberth,2016-11-08,1,1,1,6258,2169,1~1~Update docstring|
+Paul Tremberth,2017-01-17,1,11,4,6269,2173,11~4~Fix tests|
+Paul Tremberth,2016-11-08,1,1,0,6270,2173,1~0~Add assertion on crawler not running|
+Paul Tremberth,2016-11-09,2,92,20,6362,2193,78~16~Always decompress Content-Encoding: gzip at HttpCompression stage|14~4~Parse robots.txt content as native str|
+Paul Tremberth,2016-11-10,2,18,6,6380,2199,16~1~Use body to chose response type after decompression content|2~5~Do not silently fail on gzip unzipping|
+Paul Tremberth,2016-11-15,1,5,1,6385,2200,5~1~Pass user-agent as native str when checking URLs against robots.txt|
+Paul Tremberth,2017-01-17,1,12,3,6397,2203,12~3~Update docs with "strict-..." policies|
+Paul Tremberth,2016-11-16,1,4,0,6401,2203,4~0~DOC Remove "Ubuntu" section from sidebar/ToC|
+Paul Tremberth,2016-04-19,1,8,3,6409,2206,8~3~Fall back to no-SNi context factory is Twisted<14 is used|
+Paul Tremberth,2016-11-16,1,2,0,6411,2206,2~0~Add "orphan" metadata for Ubuntu packages page|
+Paul Tremberth,2016-11-22,1,17,2,6428,2208,17~2~Print more dependencies versions in "scrapy version" verbose output|
+Paul Tremberth,2016-11-23,2,50,0,6478,2208,1~0~Remove extra blank line|49~0~Add tests for duplicate spider name warnings|
+Paul Tremberth,2016-11-24,6,67,13,6545,2221,8~0~Add deprecation warning for ChunkedTransfer middleware|2~2~Update warning wording|17~0~Remove docs for deprecated ChunkedTransfer middleware|7~3~Remove ChunkedTransferMiddleware from default settings|20~0~Add test for fetch command with redirections disabled|13~8~Handle redirects transparently by default in shell and fetch|
+Paul Tremberth,2017-01-17,1,28,12,6573,2233,28~12~Fix implementation|
+Paul Tremberth,2016-11-29,1,1,1,6574,2234,1~1~Fix indent|
+Paul Tremberth,2017-01-17,1,2,3,6576,2237,2~3~Update StrictOriginPolicy|
+Paul Tremberth,2016-12-01,1,35,0,6611,2237,35~0~Update changelog for upcoming 1.2.2 release|
+Paul Tremberth,2016-04-20,1,1,1,6612,2238,1~1~Bump up w3lib requirement to v1.14.2|
+Paul Tremberth,2017-01-17,2,80,15,6692,2253,6~14~Update NoReferrerWhenDowngradePolicy|74~1~Update Referrer tests for "strict-" policies|
+Paul Tremberth,2017-01-13,1,5,2,6697,2255,5~2~Enforce DNS resolution timeout|
+Paul Tremberth,2016-04-20,1,183,4,6880,2259,183~4~Add HTTPS tests with non-hostname-maching server certificate|
+Paul Tremberth,2016-04-21,2,217,22,7097,2281,215~22~Fix canonicalize_url() on Python 3 and re-enable tests|2~0~Allow more pre-releases with bumpversion|
+Paul Tremberth,2016-02-18,1,2,2,7099,2283,2~2~Minor change on quotes|
+Paul Tremberth,2016-04-26,2,15,2,7114,2285,13~0~Add idempotence tests for canonicalize_url|2~2~Use six.PY2 also for conditional imports|
+Paul Tremberth,2017-01-13,1,10,1,7124,2286,10~1~Buffer CONNECT response bytes from proxy until all HTTP headers are received|
+Paul Tremberth,2017-01-12,1,49,0,7173,2286,49~0~Add new "strict-" policies|
+Paul Tremberth,2016-12-06,4,5,5,7178,2291,1~1~Add reference to fixed scheduler settings documentation|2~2~Bump version: 1.2.1 → 1.2.2|1~1~TST: Randomize IMAGES_EXPIRES above 90 days|1~1~Set release date for 1.2.2|
+Paul Tremberth,2016-12-07,3,59,11,7237,2302,30~11~Let framework handle only HTTP redirects by default for fetch and shell commands|10~0~Add tests for shell command with and without --no-redirect|19~0~Add test for fetch(url) within shell with and without redirect|
+Paul Tremberth,2016-12-08,2,97,27,7334,2329,75~24~Update documentation about --no-redirect option|22~3~Warn user instead of failing for wrong SPIDER_MODULES setting|
+Paul Tremberth,2016-12-09,1,20,0,7354,2329,20~0~Update changelog for upcoming 1.3.0 release|
+Paul Tremberth,2017-01-11,1,34,0,7388,2329,34~0~DOC Mention XPath variables in Selectors section|
+Paul Tremberth,2016-04-26,1,13,15,7401,2344,13~15~Use six.PY2 instead of six.PY3 for Python version variations|
+Paul Tremberth,2016-12-09,2,6,5,7407,2349,4~3~Add stacktrace in warning message|2~2~Support kwargs for response.xpath()|
+Paul Tremberth,2017-01-10,1,1,1,7408,2350,1~1~Update spiders.rst|
+Paul Tremberth,2016-12-12,2,63,3,7471,2353,62~1~Add tests for SequenceExclude container|1~2~Use built-in range()|
+Paul Tremberth,2017-01-09,1,1,0,7472,2353,1~0~Update classifiers in setup.py|
+Paul Tremberth,2017-01-06,1,14,8,7486,2361,14~8~Use matrix build config|
+Paul Tremberth,2016-12-16,1,6,0,7492,2361,6~0~Add note on HttpErrorMiddleware new logging level|
+Paul Tremberth,2016-12-19,2,9,1,7501,2362,4~1~Amend note on --no-redirect option for shell tool|5~0~Add note on LOG_SHORT_NAMES|
+Paul Tremberth,2017-01-06,2,2,2,7503,2364,1~1~Use python 3.6 directly|1~1~Use Python 3.6-dev on Travis|
+Paul Tremberth,2016-12-20,1,32,0,7535,2364,32~0~Add tests for passing kwargs on response .xpath() shortcut|
+Paul Tremberth,2016-12-21,7,25,16,7560,2380,7~11~Merge logging changes into "New features" section|8~0~Add preamble on why 1.3.0 comes so soon after 1.2.2|3~1~Reword things a tiny bit|3~0~Add note on HTTP redirects with shell and fetch|1~1~Set release date for 1.3.0|2~2~Bump version: 1.2.2 → 1.3.0|1~1~TST: Randomize FILES_EXPIRES above 90 days|
+Paul Tremberth,2016-04-28,1,22,3,7582,2383,22~3~Update release notes with recent features and bug fixes.|
+Paul Tremberth,2017-01-06,1,5,0,7587,2383,5~0~Add Python 3.6 tox env + Travis CI build for it|
+Paul Tremberth,2016-04-28,1,4,0,7591,2383,4~0~Add notes on botocore support and JsonItemExporter opening/closing brackets|
+Paul Tremberth,2016-04-29,1,2,2,7593,2385,2~2~Bump w3lib version dependency in setup.py|
+Paul Tremberth,2017-03-10,1,1,1,7594,2386,1~1~Set release date in changelog for v1.3.3|
+Paulius Aleksiūnas,2017-01-10,1,1,1,1,1,1~1~Update architecture.rst|
+Pawel Miech,2016-06-15,1,37,19,37,19,37~19~[files_pipeline] unify tests for files pipeline|
+Pawel Miech,2016-06-17,1,6,2,43,21,6~2~[docs] warnings about windows + python 3 in faq and install|
+Pawel Miech,2016-06-20,1,52,13,95,34,52~13~[FilesPipeline, ImagesPipeline] fix for cls attrs with DEFAULT prefix|
+Pawel Miech,2017-02-06,1,1,0,96,34,1~0~[httpcompression] add brotlipy for python 3|
+Pawel Miech,2016-05-13,1,27,22,123,56,27~22~[image_pipeline] bring back uppercase pipeline attributes|
+Pawel Miech,2015-06-08,1,1,1,124,57,1~1~[settings/default_settings.py] dont retry 400|
+Pawel Miech,2016-07-04,1,6,3,130,60,6~3~docs on Scrapy on Windows + Python 3|
+Pawel Miech,2016-07-12,2,36,32,166,92,32~28~[image_pipeline] style edits|4~4~[image_pipeline] dont use assert in doctest|
+Pawel Miech,2017-03-17,1,1,2,167,94,1~2~[logformatter] backward compat comments|
+Pawel Miech,2016-11-29,1,30,1,197,95,30~1~add docs for some scheduler settings|
+Pawel Miech,2017-03-13,1,28,0,225,95,28~0~[logformatter] 'flags' format spec backward compatibility|
+Pawel Miech,2016-07-13,1,6,5,231,100,6~5~[image_pipeline] minor style tweaks|
+Pawel Miech,2016-05-18,1,27,0,258,100,27~0~[image_pipeline] tests for class attrs backward compatibility|
+Pawel Miech,2016-06-17,1,1,1,259,101,1~1~[docs] add note about windows + python3|
+Pawel Miech,2016-06-15,5,283,106,542,207,14~0~[image_pipeline] another test for subclass inheritance|12~3~[files-pipeline] update docs with note about settings|109~35~[media-pipeline, file-pipeline] allow setting custom settings for subclasses|125~65~[image_pipeline] refactor and simplify tests for image settings|23~3~[files_pipeline] ensure class attributes are preserved|
+Pawel Miech,2017-02-07,1,2,3,544,210,2~3~[httpcompression] minor style edits|
+Pawel Miech,2016-06-14,1,39,41,583,251,39~41~[image_pipeline] unify and simplify tests for setting loading|
+Pawel Miech,2016-06-10,1,40,11,623,262,40~11~[image-pipeline] image settings with class name|
+Pawel Miech,2017-02-06,2,24,11,647,273,10~4~[httpcompression] skip test if no brotli|14~7~[httpcompression] import brotli when available|
+Pawel Miech,2016-09-23,1,52,3,699,276,52~3~[docs] document that process_item can return Deferred|
+Pawel Miech,2017-02-06,1,18,2,717,278,18~2~[httpcompression] add support for br - brotli content encoding|
+pawelmhm,2016-09-24,1,8,5,8,5,8~5~[docs/item_pipeline] process_item returning Deferred docs|
+pawelmhm,2016-09-15,1,54,13,62,18,54~13~[image & file pipeline] loading setting for user classes|
+pawelmhm,2016-03-12,1,7,8,69,26,7~8~response_status_message should not fail on non-standard HTTP codes|
+Pengyu CHEN,2015-10-29,1,2,2,2,2,2~2~fixed: Issue #1564 (Incorrectly picked URL in `scrapy.linkextractors.regex.RegexLinkExtractor` when there is a `<base>` tag. )|
+Pengyu CHEN,2015-11-02,2,36,0,38,2,17~0~added: Test case for the fix.|19~0~added: Test case for the fix|
+Pengyu CHEN,2015-10-29,1,3,2,41,4,3~2~fixed: Issue #1562 (Incorrectly picked URL in `scrapy.http.FormRequest.from_response` when there is a `<base>` tag)|
+Pengyu CHEN,2015-11-19,1,3,0,44,4,3~0~removed: Unused code|
+Pengyu CHEN,2016-05-09,1,2,1,46,5,2~1~Added: Retrying scrapy.core.downloader.handlers.http11.TunnelError|
+Pengyu CHEN,2016-04-02,1,1,1,47,6,1~1~Added: Making it case-insensitive when extracting sitemap URLs from a robots.txt|
+Peter Bronez,2015-03-26,1,4,4,4,4,4~4~Converted sel.xpath() calls to response.xpath() in Extracting the data|
+preetwinder,2015-09-16,1,28,1,28,1,28~1~add_scheme_if_missing for scrapy shell command|
+preetwinder,2015-09-24,1,107,42,135,43,107~42~Restructure tests for add_http_if_no_scheme function|
+preetwinder,2015-09-18,1,44,17,179,60,44~17~adds docstring, tests and correction|
+preetwinder,2015-09-24,1,5,3,184,63,5~3~Minor changes to add_http_if_no_scheme|
+Rafal Jagoda,2014-05-02,1,5,2,5,2,5~2~add response arg to item_dropped signal handlers #710|
+Rafał Gutkowski,2015-05-07,1,22,6,22,6,22~6~support link rel attribute with multiple values|
+Rahul Kant,2016-11-07,1,1,1,1,1,1~1~Add closing tag in <tbody>|
+rajathkumarmp,2015-04-18,1,1,1,1,1,1~1~Added link to ipython in doc.|
+Ralph Gutkowski,2016-01-15,2,7,7,7,7,4~4~Update stats.rst|3~3~Update Stats Collection documentation|
+Ramiro Morales,2015-03-25,3,2,2,2,2,1~1~Oops|1~1~Add missing callback arg in jobs topic example.|
+Randy Pen,2016-10-07,4,2,2,2,2,1~1~fix example code|1~1~update|
+Raul Gallegos,2016-01-20,4,42,4,42,4,42~4~adding configurable encoding for httpproxy authentication|
+Raul Gallegos,2017-01-14,1,7,1,49,5,7~1~adding formid to FormRequest documentation|
+Raul Gallegos,2017-01-22,1,6,0,55,5,6~0~changing README to README.rst|
+Raul Gallegos,2016-10-11,1,1,3,56,8,1~3~making start_urls a list in basic genspider template|
+Raul Gallegos,2016-12-24,1,1,1,57,9,1~1~settings: fixing name of the pipeline template|
+Raul Gallegos,2015-12-10,1,9,13,66,22,9~13~py3 fix HttpProxy and Retry Middlewares|
+Raul Gallegos,2016-10-05,1,4,4,70,26,4~4~genspider: removing www. from starturl templates|
+Raul Gallegos,2016-07-05,1,6,6,76,32,6~6~prioritize default headers over user agent|
+Rendaw,2014-05-07,1,2,1,2,1,2~1~Elaborated request priority value.|
+Richard Dowinton,2015-03-31,1,31,2,31,2,31~2~Added deployment section covering scrapyd-deploy and shub|
+Rick,2015-08-23,1,2,2,2,2,2~2~Small grammatical change|
+Robert Weindl,2015-09-02,1,1,1,1,1,1~1~Update tutorial.rst|
+Rocio Aramberri,2014-08-15,1,36,13,36,13,36~13~fix dont settings on meta behaviour, add docs and tests|
+Rolando Espinoza,2015-09-29,1,23,3,23,3,23~3~Added installation notes about using Conda for Windows and other OSes.|
+Rolando Espinoza,2016-11-08,1,8,3,31,6,8~3~Update conda channel to conda-forge and show conda version badge.|
+Rolando Espinoza,2015-06-11,1,3,0,34,6,3~0~Do leveldb compactation for the httpcache on closing.|
+Rolando Espinoza,2017-01-24,1,54,1,88,7,54~1~BUG: Fix __classcell__ propagation.|
+Rolando Espinoza,2016-12-01,1,12,3,100,10,12~3~TST Include nested a nested spider in spider loader test.|
+Rolando Espinoza,2015-12-05,1,1,4,101,14,1~4~DOC Removed pywin32 from install instructions as it's already declared as dependency.|
+Rolando Espinoza,2016-12-01,1,2,1,103,15,2~1~DOC State explicitly that spiders are loaded recursively.|
+Rolando Espinoza,2016-12-20,1,5,6,108,21,5~6~ENH Pass arguments to logger rather than formatted message.|
+Rolando Espinoza,2016-12-01,1,1,1,109,22,1~1~TST: Fix duplicated test name.|
+Rolando Espinoza,2014-07-16,2,19,7,128,29,17~6~Updated input/ouput processor example according to #560.|2~1~For consistency, use `job_dir` helper in `SpiderState` extension.|
+Rolando Espinoza,2016-11-08,1,1,0,129,29,1~0~Ignore explicitly compiled python files.|
+Rolando Espinoza,2017-02-23,1,167,10,296,39,167~10~Handle data loss gracefully.|
+rootavish,2016-04-06,1,12,1,12,1,12~1~Modifying existing gzip read failure recovery mechanism to patch read for broken archives|
+Roy Crihfield,2014-07-10,1,1,1,1,1,1~1~Fix typo in commands.rst|
+seales,2015-12-13,1,5,5,5,5,5~5~Spelling fixes|
+Shadab Zafar,2015-03-12,1,63,0,63,0,63~0~Added linkfix script to docs/utils|
+Shadab Zafar,2015-02-06,1,60,60,123,60,60~60~Fix some redirection links in documentation|
+smirecki,2015-10-02,1,4,4,4,4,4~4~Typos corrections|
+Stefan,2014-12-10,1,2,2,2,2,2~2~fixed the variable types in mailsender documentation|
+Steven Almeroth,2016-10-21,2,10,10,10,10,9~9~Doc: remove trailing spaces|1~1~Doc: wording|
+stummjr,2016-01-29,2,17,1,17,1,17~1~Fixed bug on XMLItemExporter with non-string fields in items|
+stummjr,2016-01-27,4,85,25,102,26,1~1~Changes fallback for CSVItemExporter, avoiding to call to_native_str(str()).|51~19~Include tests for exporters: JSON, JSON-Lines, Pickle and Marshal.|16~1~Fix CSV exporter for non string Python types.|17~4~fix PythonItemExporter for non-string types|
+Sudhanshu Shekhar,2015-01-14,5,75,5,75,5,72~2~Added the first version of SelectJmes|3~3~Reset items_scraped instead of item_count|
+Takehiro Shiozaki,2017-02-06,5,1,1,1,1,1~1~fix typo|
+terut,2017-02-13,5,6,2,6,2,6~2~Separate building request from _requests_to_follow in CrawlSpider|
+Thom Dixon,2016-08-24,6,10,10,10,10,1~1~Fix indentation|9~9~Correct documentation about Response parameters|
+tpeng,2014-11-19,6,48,7,48,7,48~7~add 2 more test cases and minor doc fixes|
+tpeng,2014-12-01,1,35,3,83,10,35~3~support namespace prefix in xmliter_lxml|
+tpeng,2014-11-25,1,32,21,115,31,32~21~attemp to fix travis fails|
+tpeng,2014-11-12,1,137,5,252,36,137~5~avoid download large response|
+tpeng,2014-05-20,1,1,0,253,36,1~0~set the exit code to non-zero when contracts fails|
+tpeng,2014-06-17,1,6,3,259,39,6~3~print spider name even it has no contract tests when -v is specified|
+Uyounghz,2014-08-28,1,1,1,1,1,1~1~Duplicate comma in request-response.rst|
+Valdir Stumm Jr,2016-02-03,1,25,51,25,51,25~51~edits on Py3 Support and New features sections|
+Valdir Stumm Jr,2016-01-06,1,13,13,38,64,13~13~Update deprecated examples|
+Valdir Stumm Jr,2016-08-01,1,4,0,42,64,4~0~Remove download stats badge|
+Valdir Stumm Jr,2016-02-03,1,53,34,95,98,53~34~fixed references to issues and fit text to 80 cols in the first two sections|
+Valdir Stumm Jr,2015-10-26,1,1,1,96,99,1~1~fixed a typo in the documentation.|
+Valdir Stumm Jr,2016-02-03,2,125,294,221,393,31~44~edit API changes, Deprecations, and Relocations sections.|94~250~Updates to release notes|
+Valdir Stumm Junior,2016-06-11,2,18,6,18,6,18~6~enable genspider command outside projects|
+Valdir Stumm Junior,2016-09-16,1,70,51,88,57,70~51~updates on the first section (our first spider)|
+Valdir Stumm Junior,2016-09-14,1,1,1,89,58,1~1~fix indentation issue|
+Valdir Stumm Junior,2016-09-16,1,40,0,129,58,40~0~include section describing spider arguments|
+Valdir Stumm Junior,2016-09-09,1,138,157,267,215,138~157~changed tutorial examples from dmoz to quotes.toscrape.com|
+Valdir Stumm Junior,2016-10-18,1,10,0,277,215,10~0~document download_latency meta key|
+Valdir Stumm Junior,2016-09-16,1,5,6,282,221,5~6~small fixes on tutorial|
+Valdir Stumm Junior,2016-09-28,1,9,14,291,235,9~14~Doc: update examples section with quotes.toscrape.com spiders|
+Valdir Stumm Junior,2016-07-05,1,11,22,302,257,11~22~document new genspider behavior|
+Valdir Stumm Junior,2016-07-04,1,3,9,305,266,3~9~remove references to Item classes in templates|
+Valdir Stumm Junior,2016-08-19,1,2,4,307,270,2~4~fix RANDOMIZE_DOWNLOAD_DELAY description in the docs|
+Valdir Stumm Junior,2016-09-19,1,112,10,419,280,112~10~Completing the data extraction section|
+Valdir Stumm Junior,2016-09-02,1,16,0,435,280,16~0~Add Segment Analytics to Documentation|
+Victor Mireyev,2016-02-19,2,3,3,3,3,2~2~Fix typo in docstring|1~1~Fix typo in docstring|
+Victor Sued,2016-10-18,2,4,0,4,0,4~0~update documentation to explain the use of double quotes on Windows.|
+Victoria Terenina (torymur),2015-04-30,2,22,1,22,1,22~1~testing robotstxt error|
+Victoria Terenina (torymur),2015-04-02,1,6,0,28,1,6~0~fixed unhandled error in deferred (RobotsTxtMiddleware)|
+VKen,2014-10-03,1,3,3,3,3,3~3~updated deprecated cgi.parse_qsl to use six's parse_qsl|
+Wayne Lovely,2016-09-17,1,1,1,1,1,1~1~Fix a dict key in the tutorial|
+Wieland Hoffmann,2016-10-02,1,2,2,2,2,2~2~Remove duplicate colons from the feed export settings docs|
+Wieland Hoffmann,2015-04-29,1,2,2,4,4,2~2~Remove a duplicate word|
+woxcab,2017-03-15,1,4,1,4,1,4~1~Init tests are split by initializer' input|
+woxcab,2017-03-13,1,45,2,49,3,45~2~Allowed passing objects of Mapping class or its subclass to the CaselessDict initializer|
+yakxxx,2014-08-28,1,12,0,12,0,12~0~SgmlLinkExtractor - fix for parsing <area> tag with Unicode present|
+Yaroslav Halchenko,2015-06-25,2,10,3,10,3,9~3~ENH: make explicit build-ignore-errors to be used by linkfix|1~0~ENH: include tests/ to source distribution in MANIFEST.in|
+Yaroslav Halchenko,2015-12-18,1,2,2,12,5,2~2~BF: robustify _monkeypatches check for twisted - str() name first (Closes: #1634)|
+Yaroslav Halchenko,2015-06-25,2,5,2,17,7,1~1~BF: fail if docs failed to build|4~1~DOC(ENH): specify path to rtd theme explicitly|
+Zbigniew Siciarz,2014-07-04,2,1,1,1,1,1~1~Fixed Python syntax in tutorial.|
+zhouyc,2016-12-19,2,1,1,1,1,1~1~update parsel version which will cause attribute error|
+Zoltán Szeredi,2015-07-25,3,4,1,4,1,3~1~Improve python3 support for test_utils_defer.|1~0~Remove test_utils_defer from ignores.|
+Νικόλαος-Διγενής Καραγιάννης,2015-11-13,3,13,0,13,0,13~0~FormRequest: test unicode xpath expr & exception|
+Νικόλαος-Διγενής Καραγιάννης,2015-10-05,1,102,94,115,94,102~94~Relocate telnetconsole to extensions/|
+Νικόλαος-Διγενής Καραγιάννης,2015-11-13,2,14,1,129,95,13~0~FormRequest: test case-insensitive type attribute|1~1~FormRequest: <input>'s default type must be text|
+Νικόλαος-Διγενής Καραγιάννης,2016-06-04,1,5,0,134,95,5~0~Encourage descriptive PR titles|
+Νικόλαος-Διγενής Καραγιάννης,2016-01-26,1,10,4,144,99,10~4~tests+doc for subdomains in offsite middleware|
+Νικόλαος-Διγενής Καραγιάννης,2015-11-13,2,14,6,158,105,2~1~FormRequest: test default <input> type (is text)|12~5~FormRequest: fix case-insensitive type attributes|
+Νικόλαος-Διγενής Καραγιάννης,2016-07-29,1,8,0,166,105,8~0~Selector should not receive both response and text|
+Νικόλαος-Διγενής Καραγιάννης,2015-11-14,1,9,8,175,113,9~8~readable xpath with exslt|
+Νικόλαος-Διγενής Καραγιάννης,2015-11-13,1,2,1,177,114,2~1~FormRequest: fix unicode xpath exception|
+Νικόλαος-Διγενής Καραγιάννης,2015-06-16,1,5,1,182,115,5~1~Disable dupefilter in shell|
+Νικόλαος-Διγενής Καραγιάννης,2015-05-06,2,43,1,225,116,2~1~fix string manipulation in render_templatefile()|41~0~Test utils.template.render_templatefile()|
+Νικόλαος-Διγενής Καραγιάννης,2015-10-07,1,5,3,230,119,5~3~escape nodename in xmliter regex|
+Νικόλαος-Διγενής Καραγιάννης,2017-01-05,1,31,0,261,119,31~0~Document copying of spider arguments to attributes|
+Νικόλαος-Διγενής Καραγιάννης,2015-10-07,1,13,0,274,119,13~0~test xml nodename with dots|

@@ -90,6 +90,8 @@ router.get('/', function(req, res) {
                 authorCumAddition = eachCommitsArr[index].addition; 
                 authorCumDeletion = eachCommitsArr[index].deletion; 
                 details = "";
+                dayAddition = eachCommitsArr[index].addition; 
+                dayDeletion = eachCommitsArr[index].deletion; 
                 
             } else {
                 authorCumAddition += eachCommitsArr[index].addition; 
@@ -131,6 +133,7 @@ router.get('/', function(req, res) {
         var csv = postprocessor.convertArrayOfObjectsToCSV({
 				data: commitsPerDatePerAuthor
         });
+        
         /*
         var csv2 = postprocessor.convertArrayOfObjectsToCSV({
 				data: eachCommitsArr
@@ -163,7 +166,11 @@ function sortByAuthor(arrayOfObj) {
 function sortByDate(arrayOfObj) {
 	var byDate = arrayOfObj.slice(0);
 	byDate.sort(function(a,b) {
-		return new Date(a.date).getTime() - new Date(b.date).getTime() ;
+        var x = new Date(a.date).getTime();
+        var y = new Date(b.date).getTime();
+        if (x > y) return 1;
+        if (x < y) return -1;
+        return 0;
 	});
 
 	return byDate;
