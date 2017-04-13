@@ -11,12 +11,350 @@
     <div class="container">
         <div class="row">
             <div class="starter-template">
-                <h1>File</h1>
-
-                <form action="/url" method="post">
-                GitHub repository URL: <input type="text" name="url"/> <input type="submit" value="Submit">
+                <h1>View Contributions By File</h1>
+                <br>
+                <br>
+                <h3>Enter the filepath of the file you want to inspect below.</h3>
+                <br>
+                <form action="/file/filepath" method="post">
+                    <input type="text" name="filepath"/> <input type="submit" value="Submit">
                 </form>
+                <br>
+                <form>
+                    <label><input type="radio" name="dataset" id="dataset" value="num_commits" checked> Number Of Commits</label>
+                    <br>
+                    <label><input type="radio" name="dataset" id="dataset" value="add_delete"> Additions / Deletions</label>
+                </form>
+                <br>
+                <div id="bar-chart"></div>
+                <br><br><br>
+                <h1>See history of edits for a specific code chunk</h1>
+                <br>
+                <form action="/file/codechunk" method="post">
+                    From Line : <input type="number" name="linestart"/> to <input type="number" name="lineend"/> <input type="submit" value="Submit">
+                </form>
+                
+                <% if (showHistory == true) { %>
+                <br><br>
+                <h3>Showing edit history for lines <%=lineStart%> to <%=lineEnd%></h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Author</th>
+                                <th>Date</th>
+                                <th>Commit Message</th>
+                                <th>No. of Additions</th>
+                                <th>No. of Deletions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% console.log("Inside html editHistory: ", editHistoryArray) %>
+                            <% for (var i = 0; i < editHistoryArray.length; i++) { %>
+                            <tr> 
+                                <td><%= i + 1 %></td>
+                                <td><%= editHistoryArray[i].author %></td>
+                                <td><%= editHistoryArray[i].date %></td>
+                                <td><%= editHistoryArray[i].msg %></td>
+                                <td><%= editHistoryArray[i].addition %></td>
+                                <td><%= editHistoryArray[i].deletion %></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
 
+                <script src="http://d3js.org/d3.v3.min.js"></script>
+                <script>
+
+                    datasetNumCommits = <%-JSON.stringify(datasetNumCommits)%>
+                    datasetAddDelete = <%-JSON.stringify(datasetAddDelete)%>
+                    
+                    console.log("Array Inside EJS: ", datasetNumCommits)
+
+                    d3.selectAll("input").on("change", selectDataset);
+
+                    function selectDataset() {
+
+                        var value = this.value;
+                        if (value == "num_commits")
+                        {
+                            renderSingle(datasetNumCommits);
+                        }
+                        else if (value == "add_delete")
+                        {
+                            renderGrouped(datasetAddDelete);
+                        }
+                    }
+
+                    var barHeight = 40
+                    var margin = {
+                        top: 10, 
+                        right: 100, 
+                        bottom: 50, 
+                        left: 100,
+                    }
+                    
+                    var div = d3.select("#bar-chart").append("div").attr("class", "toolTip");
+
+                    renderSingle(datasetNumCommits);
+
+                    function renderGrouped(dataset) {
+                        d3.selectAll("svg").remove();
+
+
+                        var newDataset = dataset.map(d=>Object.assign({}, d)); 
+
+                        var options = d3.keys(newDataset[0]).filter(function(key) { return key !== "author"; });
+
+                        newDataset.forEach(function(d) {
+                            d.valores = options.map(function(name) { return {name: name, value: +d[name]}; });
+                        });
+
+                         // Calculate height based on the number of dataset elements
+                         var height = newDataset.length * barHeight - margin.top - margin.bottom
+                         var width = 800
+
+                        // Setup axes
+                        var y = d3.scale.ordinal()
+                        .rangeRoundBands([height, 0], .2, 0.5)
+                        .domain(newDataset.map(function(d) { return d.author; }));
+
+                        var x = d3.scale.linear()
+                        .range([0, width])
+                        .domain([0, d3.max(newDataset, function(d) { return d3.max(d.valores, function(d) { return d.value; }); })]);
+
+                        var y1 = d3.scale.ordinal()
+                        .domain(options).rangeRoundBands([0, y.rangeBand()]);
+
+                        var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .tickSize(-height)
+                        .orient("bottom");
+
+                        var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
+
+                        var colorRange = d3.scale.category20();
+                        var color = d3.scale.ordinal()
+                        .range(["#01DFA5", "#FF8000"]);
+
+                        // Make main svg component in div called bar-chart, and append a group, and name this svg
+                        var svg = d3.select("#bar-chart").append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                        d3.select("input[value=\"total\"]").property("checked", true);
+
+                        svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis);
+
+                        svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                        .append("text")
+                        .attr("transform", "rotate(0)")
+                        .attr("x", 40)
+                        .attr("dx", ".1em")
+                        .style("text-anchor", "end")
+                        .text("Authors");
+
+                        var bar = svg.selectAll(".bar")
+                        .data(newDataset)
+                        .enter().append("g")
+                        .attr("class", "rect")
+                        .attr("transform", function(d) { return "translate( 0,"+ y(d.author) +")"; });
+
+                        var bar_enter = bar.selectAll("rect")
+                        .data(function(d) { return d.valores; })
+                        .enter();
+
+
+                        bar_enter.append("rect")
+                        .attr("height", y1.rangeBand())
+                        .attr("y", function(d) { return y1(d.name); })
+                        .attr("x", function(d) { return 0; })
+                        .attr("value", function(d){return d.name;})
+                        .attr("width", function(d) { return x(d.value); })
+                        .style("fill", function(d) { return color(d.name); });
+
+                        bar_enter.append("text")
+                        .attr("x", function(d) { return x(d.value) +5;  })
+                        .attr("y", function(d) { return y1(d.name) +(y1.rangeBand()/2); })
+                        .attr("dy", ".35em")
+                        .text(function(d) { return d.value; });
+
+                        bar
+                        .on("mousemove", function(d){
+                            div.style("left", d3.event.pageX+10+"px");
+                            div.style("top", d3.event.pageY-25+"px");
+                            div.style("display", "inline-block");
+                            var x = d3.event.pageX, y = d3.event.pageY
+                            var elements = document.querySelectorAll(':hover');
+                            l = elements.length
+                            l = l-1
+                            elementData = elements[l].__data__
+                            div.html((d.author)+"<br>"+elementData.name + "<br>" + elementData.value);
+                        });
+                        bar
+                        .on("mouseout", function(d){
+                            div.style("display", "none");
+                        });
+
+                        var legend = svg.selectAll(".legend")
+                        .data(options.slice())
+                        .enter().append("g")
+                        .attr("class", "legend")
+                        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+                        legend.append("rect")
+                        .attr("x", width - 18)
+                        .attr("width", 18)
+                        .attr("height", 18)
+                        .style("fill", color);
+
+                        legend.append("text")
+                        .attr("x", width - 24)
+                        .attr("y", 9)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "end")
+                        .text(function(d) { return d; });
+
+                        /*
+                        // removed data:
+                        bar_enter.exit().remove();
+
+                        // updated data:
+                        bar_enter.transition()    
+                        .duration(750)
+                        .attr("x", function(d) { return 0; })
+                        .attr("y", function(d) { return y(d.author); })
+                        .attr("width", function(d) { return x(d.value); })
+                        .attr("height", y.rangeBand());
+                        */
+                    }
+
+                    function renderSingle(dataset) {
+
+                        d3.selectAll("svg").remove();
+
+                         // Calculate height based on the number of dataset elements
+                         var height = dataset.length * barHeight - margin.top - margin.bottom
+                         var width = 800
+
+                        // Setup axes
+                        var y = d3.scale.ordinal()
+                        .rangeRoundBands([height, 0], .2, 0.5)
+                        .domain(dataset.map(function(d) { return d.label; }))
+                        .rangeRoundBands([height, 0], .2, 0.5);
+
+
+                        var x = d3.scale.linear()
+                        .range([0, width])
+                        .domain([0, d3.max(dataset, function(d) { return d.value; })]);
+
+                        var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .tickSize(-height)
+                        .orient("bottom");
+
+                        var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
+
+
+                        // Make main svg component in div called bar-chart, and append a group, and name this svg
+                        var svg = d3.select("#bar-chart").append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                        d3.select("input[value=\"total\"]").property("checked", true);
+                        
+
+                        //Reset axis
+                        //svg.select(".y.axis").remove();
+                        //svg.select(".x.axis").remove();
+
+                        // Set new x and y axis
+                        svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis)
+                        .append("text")
+                        .attr("x", 350)
+                        .attr("y", 28)
+                        .text("Num Of Commits");
+
+                        svg.append("g")
+                        .attr("class", "y axis")
+                        .attr("height", 50)
+                        .call(yAxis)
+                        .append("text")
+                        .attr("transform", "rotate(0)")
+                        .attr("x", 50)
+                        .attr("dx", ".1em")
+                        .style("text-anchor", "end")
+                        .text("Authors");
+
+                        var bar = svg.selectAll(".bar")
+                        .data(dataset, function(d) { return d.label; });
+
+                        // new data:
+                        bar.enter().append("rect")
+                        .attr("class", "bar")
+                        .attr("x", function(d) { return x(d.value); })
+                        .attr("y", function(d) { return y(d.label); })
+                        .attr("width", function(d) { return width-x(d.value); })
+                        .attr("height", y.rangeBand());
+
+                        if (dataset == datasetNumCommits) {
+                            bar
+                            .on("mousemove", function(d){
+                                div.style("left", d3.event.pageX+10+"px");
+                                div.style("top", d3.event.pageY-25+"px");
+                                div.style("display", "inline-block");
+                                div.html((d.label)+"<br><br>"+"Num. of Commits:  " + (d.value));
+                            });    
+                        } else {
+                            bar
+                            .on("mousemove", function(d){
+                                div.style("left", d3.event.pageX+10+"px");
+                                div.style("top", d3.event.pageY-25+"px");
+                                div.style("display", "inline-block");
+                                div.html((d.label)+"<br>"+(d.value));
+                            });
+                        }
+                        
+                        bar
+                        .on("mouseout", function(d){
+                            div.style("display", "none");
+                        });
+
+
+                        // removed data:
+                        bar.exit().remove();
+
+                        // updated data:
+                        bar.transition()
+                        .duration(750)
+                        .attr("x", function(d) { return 0; })
+                        .attr("y", function(d) { return y(d.label); })
+                        .attr("width", function(d) { return x(d.value); })
+                        .attr("height", y.rangeBand());
+                        
+                    };
+
+
+                </script>
             </div>
         </div>
         <!-- /.row -->
