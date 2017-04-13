@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <title>part b and c</title>
-    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
     <style>
         rect {
             fill: transparent;
@@ -15,11 +15,11 @@
             shape-rendering: crispEdges;
         }
         .axis text, .legend {
-            font-family: 'Indie Flower', cursive;
+            //font-family: 'Indie Flower', cursive;
             font-size: .8em;
         } 
         .axis .label {
-            font-family: 'Indie Flower', cursive;
+            //font-family: 'Indie Flower', cursive;
             font-size: 1em;
         }
         .axisLine {
@@ -92,7 +92,21 @@
         <label><input type="radio" name="xAxis" id="cumulative" checked>Cumulative Addition</label>
     </div>
     <div class="container">
-        <div id="info"></div>
+        <div id="info">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Addtions</th>
+                            <th>Deletions</th>
+                            <th>Commit Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div id="scatter"></div>
     </div>
     
@@ -100,6 +114,8 @@
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script>
+        var data = <%- JSON.stringify(commitsPerDatePerAuthor) %>;
+        
         var margin = { top: 10, right: 200, bottom: 80, left: 50 },
             outerWidth = 1250,
             outerHeight = 580,
@@ -118,7 +134,7 @@
             rCat = "commitCount",
             colorCat = "author";
         //var parseDate = d3.time.format("%y-%b-%d").parse;
-        d3.csv("/data/commitsPerDatePerAuthor.csv", function(data) {
+        (function(d3) {
             data.forEach(function(d) {
                 d.date = new Date(d.date);
                 d.dateMili = +d.dateMili;
@@ -235,6 +251,9 @@
             .attr("x2", 0)
             .attr("y2", height);
 
+        var info = d3.select("#info").style("display", "none");
+        var table = info.select(".table");
+            
         objects.selectAll(".dot")
             .data(data)
             .enter().append("circle")
@@ -245,11 +264,8 @@
             .on("mouseover", tip.show)
             .on("mouseout", tip.hide)
             .on("click", function (d, i) {
-              d3.select("#info")
-                  .text(function () {
-                      return "Addition Deletion CommitMessage \n" + d[details].replace(/[|]/g, '\n'); //should write into a table format
-                      //writeTable('info',d[details])
-                  });
+                info.style("display", "block");
+                writeTable(d.details);
           });
 
         var legend = svg.selectAll(".legend")
@@ -332,25 +348,22 @@
             return "translate(" + x(d[xCat]) + "," + y(d[yCat]) + ")";
         }
         
-        /*
-        function writeTable(targetID,str){
-            var trows=str.split('|'),
-                tab=document.createElement('table'),
-                tbody=tab.appendChild(document.createElement('tbody'));
-            tab.className='tab';
-            tab.setAttribute('align','center');
-            for(var i=0;i<trows.length;i++){
-                var curr=trows[i].split('~'),
-                nRow=tbody.appendChild(document.createElement('tr'));
-                for(var k=0;k<curr.length;k++){
-                    var td=nRow.appendChild(document.createElement('td'));
-                    td.innerHTML=curr[k];
-                 }
-            }
-            doc(targetID).appendChild(tab);
+        
+        function writeTable(details){
+            var oldTbody = document.querySelector("#info table tbody");
+            var newTbody = document.createElement('tbody');
+            oldTbody.parentNode.replaceChild(newTbody, oldTbody);
+            details.forEach(detail => {
+                var tr = newTbody.insertRow();
+                detail.forEach(d=> {
+                    var td = tr.insertCell();
+                    var newText = document.createTextNode(d);
+                    td.appendChild(newText);
+                });
+            });
         }
-        */
-        });
+        
+        })(window.d3);
       </script>
   </body>
 </html>

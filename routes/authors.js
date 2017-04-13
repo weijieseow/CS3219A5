@@ -80,7 +80,7 @@ router.get('/', function(req, res) {
         var authorCumDeletion = 0;
         var newSpace = "~";
         var newTab = "|";
-        var details = "";
+        var details = [];
         
         eachCommitsArr.forEach(function(data, index) {
             
@@ -89,10 +89,11 @@ router.get('/', function(req, res) {
                 authorInOperation = eachCommitsArr[index].author;
                 authorCumAddition = eachCommitsArr[index].addition; 
                 authorCumDeletion = eachCommitsArr[index].deletion; 
-                details = "";
+
+                details = [];
                 dayAddition = eachCommitsArr[index].addition; 
                 dayDeletion = eachCommitsArr[index].deletion; 
-                
+
             } else {
                 authorCumAddition += eachCommitsArr[index].addition; 
                 authorCumDeletion += eachCommitsArr[index].deletion;
@@ -101,7 +102,7 @@ router.get('/', function(req, res) {
                     dayAddition = eachCommitsArr[index].addition; 
                     dayDeletion = eachCommitsArr[index].deletion; 
                     commitCountPerDay = 1; //reset to zero
-                    details = "";
+                    details = [];
                     
                 } else {
                     commitCountPerDay++;
@@ -111,7 +112,9 @@ router.get('/', function(req, res) {
                         commitsPerDatePerAuthor.pop();
                 }
             }
-            details = details.concat(eachCommitsArr[index].addition, newSpace, eachCommitsArr[index].deletion, newSpace, eachCommitsArr[index].message, newTab);
+            
+            detail = [eachCommitsArr[index].addition, eachCommitsArr[index].deletion, eachCommitsArr[index].message];
+            details.push(detail);
             
             commitsPerDatePerAuthor.push({
                 author: authorInOperation,
