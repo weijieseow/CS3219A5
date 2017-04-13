@@ -1,362 +1,376 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <style>
-
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      width: 960px;
-      height: 500px;
-      position: relative;
-      margin: auto;
+<meta charset="utf-8">
+<style>
+    .bar-chart {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        height: 500;
+        width: 960;
+        margin: 0 auto
     }
 
-    h1, h4 {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      text-align: center;
+    path.slice{
+        stroke-width:2px;
+    }
+
+    text{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    polyline{
+        opacity: .3;
+        stroke: black;
+        stroke-width: 2px;
+        fill: none;
+    }
+
+    .labelValue
+    {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 60%;
+        opacity: .5;
+
+    }
+
+    label {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: normal;
     }
 
     .toolTip {
-      position: absolute;
-      display: none;
-      min-width: 80px;
-      height: auto;
-      background: none repeat scroll 0 0 #ffffff;
-      border: 1px solid #A4A4A4;
-      padding: 14px;
-      text-align: center;
-      border-radius: 8px 8px 8px 8px;
-      box-shadow: -3px 3px 15px #888888;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: absolute;
+        display: none;
+        width: auto;
+        height: auto;
+        background: none repeat scroll 0 0 white;
+        border: 0 none;
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: -3px 3px 15px #888888;
+        color: black;
+        font: 12px sans-serif;
+        padding: 5px;
+        text-align: center;
     }
+
 
     .legend {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 60%;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 60%;
     }
-
     rect {
-      stroke-width: 2;
+        stroke-width: 2;
     }
 
-    .axisVertical path{
-      fill: none;
-      stroke: #000;
+    text {
+        font: 10px sans-serif;
     }
 
-    .axisVertical line {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
+
+    text.value{
+        font-size: 200%;
+        fill: white;
     }
 
-    .axisVertical .tick line {
-      stroke-width: 1;
-      stroke: rgba(0, 0, 0, 0.2);
+    text.label{
+        font-size: 100%;
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    .axis path{
+        fill: none;
+        stroke: #000;
+    }
+
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .axis .tick line {
+        stroke-width: 1;
+        stroke: rgba(0, 0, 0, 0.2);
     }
 
     .axisHorizontal path{
-      fill: none;
+        fill: none;
     }
 
     .axisHorizontal line {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
     }
 
     .axisHorizontal .tick line {
-      stroke-width: 1;
-      stroke: rgba(0, 0, 0, 0.2);
+        stroke-width: 1;
+        stroke: rgba(0, 0, 0, 0.2);
     }
 
-    .grid line {
-      stroke: lightgrey;
-      stroke-opacity: 0.3;
-      shape-rendering: crispEdges;
+    .bar {
+        fill: steelblue;
+        fill-opacity: .9;
     }
 
-    .grid path {
-      stroke-width: 0;
+    .x.axis path {
+        display: none;
     }
 
-  </style>
-</head>
 
+</style>
 <body>
 
-<% include templates/header.ejs %>
+    <% include templates/header.ejs %>
 
-<!-- Page Content -->
-<div class="container">
-    <div class="row">
-        <div class="starter-template">
+    
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="starter-template">
 
-              <h1><%= repo %></h1>
-            
-              <h1>Comparison between number of additions and deletions between authors</h1>
+                <% if (repo == "no repo") { %>
+                <h3>No repository is provided.</h3>
+                <a href="/">Head to homepage</a>
+                <% } else { %>
 
-              <form>
-                <label><input type="radio" name="mode" value="grouped"> Grouped</label>
-                <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
-              </form>
-              <svg width="960" height="500"></svg>
-              <script src="https://d3js.org/d3.v4.min.js"></script>
-              <script>
+                <h3>Overview of <br> <%= repo %></h3>
+                <a href="#compare">Click here to compare authors</a>
 
-                var svg = d3.select("svg"),
-                margin = {top: 20, right: 20, bottom: 30, left: 40},
-                width = +svg.attr("width") - margin.left - margin.right,
-                height = +svg.attr("height") - margin.top - margin.bottom,
-                g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-              // for stacked bar chart
-              var x = d3.scaleBand()
-              .rangeRound([0, width])
-              .padding(0.2)
-              .paddingInner(0.05)
-              .align(0.1);
-
-              var y = d3.scaleLinear()
-              .rangeRound([height, 0]);
-
-              var z = d3.scaleOrdinal()
-              .range(["#01DFA5", "#FF8000"]);
-
-              // for group bar chart
-              var x0 = d3.scaleBand()
-              .rangeRound([0  , width])
-              .paddingInner(0.1);
-
-              var x1 = d3.scaleBand()
-              .padding(0.05);
-
-              // gridlines in y axis function
-              function make_y_gridlines() {   
-                return d3.axisLeft(y)
-                .ticks(15)
-              }
-
-              var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-
-              d3.csv("/data/overview.csv", function(d, i, columns) {
-                for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
-                  d.total = t;
-                return d;
-              }, function(error, data) {
-                if (error) throw error;
-
-                var dataGroupBarChart = data;
-
-                var keys = data.columns.slice(1);
-
-                transitionStacked();
-
-                d3.selectAll("input")
-                .on("change", changed);
-
-                var timeout = d3.timeout(function() {
-                  d3.select("input[value=\"stacked\"]")
-                  .property("checked", true)
-                  .dispatch("change");
-                });
-
-                function changed() {
-                  console.log("Changing transition");
-                  timeout.stop();
-                  if (this.value === "stacked") transitionStacked();
-                  else transitionGrouped();
-                }
-
-                function transitionGrouped() {
-
-                  d3.selectAll("svg > g > *").remove();
-
-                  x0.domain(dataGroupBarChart.map(function(d) { return d.author; }));
-                  x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-                  y.domain([0, d3.max(dataGroupBarChart, function(d) { return d3.max(keys, function(key) { return d[key]; }) }) + 100]).nice();
-
-                  var bar = g.append("g")
-                  .selectAll("g")
-                  .data(dataGroupBarChart)
-                  .enter().append("g")
-                  .attr("transform", function(d) { return "translate(" + x0(d.author) + ",0)"; })
-                  
-                  var rect = bar.selectAll("rect")
-                  .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
-                  .enter().append("rect")
-                  .attr("y", height)
-                  .attr("width", x.bandwidth())
-                  .attr("height", 0);
-
-                  rect.transition()
-                  .delay(function(d, i) { return i * 10; })
-                  .attr("x", function(d) { return x1(d.key); })
-                  .attr("y", function(d) { return y(d.value); })
-                  .attr("width", x1.bandwidth())
-                  .attr("height", function(d) { return height - y(d.value); })
-                  .attr("fill", function(d) { return z(d.key); })
-
-                  rect.on("mousemove", function(d){
-
-                   tooltip
-                   .style("left", d3.event.pageX - 280+ "px")
-                   .style("top", d3.event.pageY - 80 + "px")
-                   .style("display", "inline-block")
-                   .html("Number of " + d.key + " = " + d.value);
-                 })
-                  .on("mouseout", function(d){ tooltip.style("display", "none");});
-
-                  g.append("g")
-                  .attr("class", "axisHorizontal")
-                  .attr("transform", "translate(0," + height + ")")
-                  .call(d3.axisBottom(x0))
-                  .append("text")
-                  .attr("x", width / 2)
-                  .attr("y", 20)
-                  .attr("dy", ".71em")
-                  .attr("fill", "#000")
-                  .attr("font-weight", "bold")
-                  .attr("text-anchor", "middle")
-                  .text("Months in 2016");
-
-                  g.append("g")
-                  .attr("class", "axisVertical")
-                  .call(d3.axisLeft(y).ticks(null, "s"))
-                  .append("text")
-                  .attr("x", 2)
-                  .attr("y", y(y.ticks().pop()) + 0.5)
-                  .attr("dy", "0.32em")
-                  .attr("fill", "#000")
-                  .attr("font-weight", "bold")
-                  .attr("text-anchor", "start")
-                  .text("Count");
-
-                  g.append("g")     
-                  .attr("class", "grid")
-                  .call(make_y_gridlines()
-                    .tickSize(-width)
-                    .tickFormat("")
-                    );
-
-                  var legend = g.append("g")
-                  .attr("font-family", "sans-serif")
-                  .attr("font-size", 10)
-                  .attr("text-anchor", "end")
-                  .selectAll("g")
-                  .data(keys.slice())
-                  .enter().append("g")
-                  .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-                  legend.append("rect")
-                  .attr("x", width - 19)
-                  .attr("width", 19)
-                  .attr("height", 19)
-                  .attr("fill", z);
-
-                  legend.append("text")
-                  .attr("x", width - 24)
-                  .attr("y", 9.5)
-                  .attr("dy", "0.32em")
-                  .text(function(d) { return d; });
-                }
-
-                function transitionStacked() {
-
-                  d3.selectAll("svg > g > *").remove();
-
-                  x.domain(data.map(function(d) { return d.author; }));
-                  z.domain(keys);
-                  y.domain([0, d3.max(data, function(d) { return d.total; })]).nice();
-
-                  var bar = g.append("g")
-                  .selectAll("g")
-                  .data(d3.stack().keys(keys)(data))
-                  .enter().append("g")
-                  .attr("fill", function(d) { return z(d.key); });
-
-                  var rect = bar.selectAll("rect")
-                  .data(function(d) { return d; })
-                  .enter().append("rect")
-                  .attr("x", function(d) { return x(d.data.author); })
-                  .attr("y", height)
-                  .attr("width", x.bandwidth())
-                  .attr("height", 0);
-
-                  rect.transition()
-                  .delay(function(d, i) { return i * 10; })
-                  .attr("y", function(d) { return y(d[1]); })
-                  .attr("height", function(d) { return y(d[0]) - y(d[1]); });
-
-                  rect.on("mousemove", function(d){
-
-                   tooltip
-                   .style("left", d3.event.pageX - 280+ "px")
-                   .style("top", d3.event.pageY - 80 + "px")
-                   .style("display", "inline-block")
-                   .html("Total count for " + d.data.author + " = " + d.data.total); 
-                 })
-                  .on("mouseout", function(d){ tooltip.style("display", "none");});
-
-                  g.append("g")
-                  .attr("class", "axisHorizontal")
-                  .attr("transform", "translate(0," + height + ")")
-                  .call(d3.axisBottom(x))
-                  .append("text")
-                  .attr("x", width / 2)
-                  .attr("y", 20)
-                  .attr("dy", ".71em")
-                  .attr("fill", "#000")
-                  .attr("font-weight", "bold")
-                  .attr("text-anchor", "middle")
-                  .text("Months in 2016");
-
-                  g.append("g")
-                  .attr("class", "axisVetical")
-                  .call(d3.axisLeft(y).ticks(null, "s"))
-                  .append("text")
-                  .attr("x", 2)
-                  .attr("y", y(y.ticks().pop()) + 0.5)
-                  .attr("dy", "0.32em")
-                  .attr("fill", "#000")
-                  .attr("font-weight", "bold")
-                  .attr("text-anchor", "start")
-                  .text("Count");
-
-                  g.append("g")     
-                  .attr("class", "grid")
-                  .call(make_y_gridlines()
-                    .tickSize(-width)
-                    .tickFormat("")
-                    );
-
-                  var legend = g.append("g")
-                  .attr("font-family", "sans-serif")
-                  .attr("font-size", 10)
-                  .attr("text-anchor", "end")
-                  .selectAll("g")
-                  .data(keys.slice().reverse())
-                  .enter().append("g")
-                  .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-                  legend.append("rect")
-                  .attr("x", width - 19)
-                  .attr("width", 19)
-                  .attr("height", 19)
-                  .attr("fill", z);
-
-                  legend.append("text")
-                  .attr("x", width - 24)
-                  .attr("y", 9.5)
-                  .attr("dy", "0.32em")
-                  .text(function(d) { return d; });
-                }
-              });
-
-            </script>
+                <hr>
+                
+                <form>
+                    <label><input type="radio" name="dataset" id="dataset" value="Commits" checked> Commits</label>
+                    <label><input type="radio" name="dataset" id="dataset" value="Additions"> Addtions</label>
+                    <label><input type="radio" name="dataset" id="dataset" value="Deletions"> Deletions</label>
+                </form>
+                
+            </div>
         </div>
     </div>
-</div>
+
+    <div id="bar-chart"></div>
+
+    <hr>
+
+    <div id="compare">
+        <div class="container">
+            <div class="starter-template">
+                <h5>Select 1 or more author to compare. Default date will be today.</h5>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Author</th>
+                                <th>Commits</th>
+                                <th>Additions</th>
+                                <th>Deletions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (var i = 0; i < overallInfo.length; i++) { %>
+                            <tr> 
+                                <td><input type="checkbox" value="<%= overallInfo[i].author %>" name="authorbox" /></td>
+                                <td><%= overallInfo[i].author %></td>
+                                <td><%= overallInfo[i].commits %></td>
+                                <td><%= overallInfo[i].additions %></td>
+                                <td><%= overallInfo[i].deletions %></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p> 
+                    From: <input type="text" name="beforedate" id="datebefore"> 
+                    To: <input type="text" name="afterdate" id="dateafter"> 
+                    <button type="button" name="authorbtn">Compare</button> 
+                </p>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <% } %>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#datebefore").datepicker({ dateFormat: 'dd-mm-yy' }).datepicker("setDate", new Date());;
+        });
+        $(function() {
+            $("#dateafter").datepicker({ dateFormat: 'dd-mm-yy' }).datepicker("setDate", new Date());;
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("button[name='authorbtn']").click(function(){
+                var authors = [];
+                var url = "/authors";
+
+                var beforedate = $("input[name='beforedate']").val();
+                var afterdate = $("input[name='afterdate']").val();
+                url += ("/" + beforedate + "/" + afterdate);
+                
+                $.each($("input[name='authorbox']:checked"), function(){            
+                    authors.push($(this).val());
+                    url += ("/" + $(this).val());
+                });
+
+
+                if (authors.length == 0) {
+                    alert("Please select at least 1 author to compare");
+                }
+                else {
+                    //alert(authors.join(", ") + beforedate  + afterdate);
+
+                    window.location.href = url;
+                    return false;
+                }
+            });
+        });
+    </script>
+
+    <script>
+
+        var datasetCommit = <%- JSON.stringify(commitInfo) %>
+        var datasetAddition = <%- JSON.stringify(additionInfo) %>
+        var datasetDeletion = <%- JSON.stringify(deletionInfo) %>
+
+        d3.selectAll("input").on("change", selectDataset);
+
+        function selectDataset()
+        {
+            var value = this.value;
+            if (value == "Commits")
+            {
+                change(datasetCommit);
+            }
+            else if (value == "Additions")
+            {
+                change(datasetAddition);
+            }
+            else if (value == "Deletions")
+            {
+                change(datasetDeletion);
+            }
+        }
+
+        var margin = {top: (parseInt(d3.select('body').style('height'), 10)/20), right: (parseInt(d3.select('body').style('width'), 10)/20), bottom: (parseInt(d3.select('body').style('height'), 10)/20), left: (parseInt(d3.select('body').style('width'), 10)/5)},
+        width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
+        height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
+
+        var div = d3.select("#bar-chart").append("div").attr("class", "toolTip");
+
+        var formatPercent = d3.format("");
+
+        var y = d3.scale.ordinal()
+        .rangeRoundBands([height, 0], .2, 0.5);
+
+        var x = d3.scale.linear()
+        .range([0, width]);
+
+        var xAxis = d3.svg.axis()
+        .scale(x)
+        .tickSize(-height)
+        .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+        var svg = d3.select("#bar-chart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+        d3.select("input[value=\"total\"]").property("checked", true);
+        change(datasetCommit);
+
+        function change(dataset) {
+
+            y.domain(dataset.map(function(d) { return d.label; }));
+            x.domain([0, d3.max(dataset, function(d) { return d.value; })]);
+
+            svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+            svg.select(".y.axis").remove();
+            svg.select(".x.axis").remove();
+
+            svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(0)")
+            .attr("x", 50)
+            .attr("dx", ".1em")
+            .style("text-anchor", "end")
+            .text("Authors");
+
+
+            var bar = svg.selectAll(".bar")
+            .data(dataset, function(d) { return d.label; });
+            // new data:
+            bar.enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d.value); })
+            .attr("y", function(d) { return y(d.label); })
+            .attr("width", function(d) { return width-x(d.value); })
+            .attr("height", y.rangeBand())
+            .append("text")
+            .attr("x", function(d) { return x(d.value); })
+            .attr("y", function(d) { return y(d.label) + width; })
+            .text(function(d) { return d.value; });
+
+            bar
+            .on("mousemove", function(d){
+                div.style("left", d3.event.pageX+10+"px");
+                div.style("top", d3.event.pageY-25+"px");
+                div.style("display", "inline-block");
+                div.html((d.label)+"<br>"+(d.value));
+            });
+            bar
+            .on("mouseout", function(d){
+                div.style("display", "none");
+            });
+
+
+            // removed data:
+            bar.exit().remove();
+
+            // updated data:
+            bar.transition()
+            .duration(750)
+            .attr("x", function(d) { return 0; })
+            .attr("y", function(d) { return y(d.label); })
+            .attr("width", function(d) { return x(d.value); })
+            .attr("height", y.rangeBand());
+
+        };
+    </script>
+
 </body>
 </html>
