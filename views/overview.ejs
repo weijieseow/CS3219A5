@@ -3,8 +3,8 @@
 <style>
     .bar-chart {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        height: auto;
-        width: auto;
+        height: 500;
+        width: 960;
         margin: 0 auto
     }
 
@@ -137,6 +137,10 @@
                 <% } else { %>
 
                 <h3>Overview of <br> <%= repo %></h3>
+                <a href="#compare">Click here to compare authors</a>
+
+                <hr>
+                
                 <form>
                     <label><input type="radio" name="dataset" id="dataset" value="Commits" checked> Commits</label>
                     <label><input type="radio" name="dataset" id="dataset" value="Additions"> Addtions</label>
@@ -149,46 +153,50 @@
 
     <div id="bar-chart"></div>
 
-    <div class="container">
-        <div class="starter-template">
-            <h5>Select 1 or more author to compare. Default date will be today.</h5>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table table-bordered">
+    <hr>
 
-                    <thead>
-                        <tr>
-                            <th>Select</th>
-                            <th>Author</th>
-                            <th>Commits</th>
-                            <th>Additions</th>
-                            <th>Deletions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (var i = 0; i < overallInfo.length; i++) { %>
-                        <tr> 
-                            <td><input type="checkbox" value="<%= overallInfo[i].author %>" name="authorbox" /></td>
-                            <td><%= overallInfo[i].author %></td>
-                            <td><%= overallInfo[i].commits %></td>
-                            <td><%= overallInfo[i].additions %></td>
-                            <td><%= overallInfo[i].deletions %></td>
-                        </tr>
-                        <% } %>
-                    </tbody>
-                </table>
+    <div id="compare">
+        <div class="container">
+            <div class="starter-template">
+                <h5>Select 1 or more author to compare. Default date will be today.</h5>
             </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
 
-            <p> 
-                From: <input type="text" name="beforedate" id="datebefore"> 
-                To: <input type="text" name="afterdate" id="dateafter"> 
-                <button type="button" name="authorbtn">Compare</button> 
-            </p>
-            
-            
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Author</th>
+                                <th>Commits</th>
+                                <th>Additions</th>
+                                <th>Deletions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (var i = 0; i < overallInfo.length; i++) { %>
+                            <tr> 
+                                <td><input type="checkbox" value="<%= overallInfo[i].author %>" name="authorbox" /></td>
+                                <td><%= overallInfo[i].author %></td>
+                                <td><%= overallInfo[i].commits %></td>
+                                <td><%= overallInfo[i].additions %></td>
+                                <td><%= overallInfo[i].deletions %></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p> 
+                    From: <input type="text" name="beforedate" id="datebefore"> 
+                    To: <input type="text" name="afterdate" id="dateafter"> 
+                    <button type="button" name="authorbtn">Compare</button> 
+                </p>
+                
+                
+            </div>
         </div>
     </div>
 

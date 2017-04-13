@@ -15,7 +15,17 @@ router.get('/', function(req, res) {
 
 	console.log("current repo: " + req.session.repo);
 
-	git(__dirname + "/../repo").raw([
+	if (req.session.repo == undefined) {
+		res.render('overview', {
+				repo: "no repo",
+				commitInfo: commitInfo,
+				additionInfo: additionInfo,
+				deletionInfo: deletionInfo,
+				overallInfo : infoArray
+			});
+	}
+	else {
+		git(__dirname + "/../repo").raw([
 		'log',
 		'--pretty=format:%cN',
 		], (err, result) => {
@@ -151,6 +161,8 @@ router.get('/', function(req, res) {
 			});
 
 		});
+	}
+
 });
 
 function sortByValues(arrayOfObj) {
