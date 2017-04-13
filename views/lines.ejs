@@ -2,6 +2,17 @@
 <html>
 <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      
+    rect {
+        shape-rendering: crispEdges;
+    }
+
+    .xAxis, .yAxis, .chartLabel {
+        font-size: .8em;
+    }
+
+    </style>
 </head>
 <body>
 
@@ -11,17 +22,96 @@
     <div class="container">
         <div class="row">
             <div class="starter-template">
-                <h1>File</h1>
+                <h1>Contribution by Lines</h1>
 
-                <form action="/url" method="post">
-                GitHub repository URL: <input type="text" name="url"/> <input type="submit" value="Submit">
-                </form>
+                <div id="chartByLines"></div>
 
             </div>
         </div>
         <!-- /.row -->
     </div>
     <!-- /.container -->
+
+<script>
+var dataset = <%- JSON.stringify(data) %>;
+</script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+(function(d3) {
+'use strict';
+
+var data = dataset.sort(function(a, b) { return b.count - a.count; });
+
+var margin = {left:100, right:50, top:10, bottom:10};
+var barWidth = 30;
+var svgWidth = 1000;
+var svgHeight = data.length * barWidth;
+var width = svgWidth - margin.left - margin.right;
+var height = svgHeight - margin.top - margin.bottom;
+
+function textEllipsis(width) {
+    var self = d3.select(this);
+    var text = self.text();
+    var newText = text;
+    while (self.node().getComputedTextLength() > 90) {
+        newText = newText.slice(0,-1);
+        self.text(newText + '...');
+    }
+}
+
+var svg = d3.select('#chartByLines')
+	.append("svg")
+	.attr("width", svgWidth)
+	.attr("height", svgHeight)
+	.append("g")
+	.attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+
+var x = d3.scaleLinear()
+	.domain([0, d3.max(data.map( d => d.count))])
+	.range([0, width]);
+
+var y = d3.scaleBand()
+	.domain(data.map( d => d.author ))
+	.range([0, height])
+	.padding(0.4);
+
+var g = svg.append("g");
+
+// render the bars
+var bar = g.selectAll("g")
+		.data(data)
+		.enter().append('rect')
+		.attr("x", 0)
+		.attr("y", function(d) {return y(d.author)})
+		.attr("width", function(d) {return x(d.count)})
+		.attr("height", y.bandwidth())
+		.attr("fill", "#eeeeee");
+		
+// render the line count next to the bar
+var label = g.selectAll("g")
+			.data(data)
+			.enter().append("text")
+			.text(d => d.count)
+			.attr("x", function(d) {return x(d.count) + 15})
+			.attr("y", function(d) {return y(d.author) + y.bandwidth()/2})
+            .attr('class','chartLabel')
+            .style("dominant-baseline", "middle")
+			.style("text-anchor", "left");
+
+// set the y axis
+var yAxis = d3.axisLeft(y)
+	.tickSize(0);
+
+svg.append("g")
+.attr("transform", "translate(0," + 0 + ")")
+.attr('class','yAxis')
+.call(yAxis)
+.selectAll(".tick text")
+.each(textEllipsis);
+
+})(window.d3);
+</script>
 
 </body>
 </html>
