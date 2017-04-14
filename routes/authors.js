@@ -7,14 +7,23 @@ var fileUtil = require('../util/fileUtil.js');
 var postprocessor = require('../data-controller/postprocessor.js');
 
 
-router.get('/', function(req, res) {
+
+router.get('/arr', function(req, res) {
 
 	//Rui Wen Qn 1 part b and c
     //command: git log --shortstat --since=3.years --pretty=format:'%ad%n%an%n%s' --date=short --no-merges >output.txt
+
+    var datebefore = req.params.datebefore;
+    var dateafter = req.params.dateafter;
+    var authors = req.query;
+
+    var searchAuthor = [];
+    Object.keys(authors).forEach(function (key) {
+        searchAuthor.push(authors[key]);       
+    });
     
     git(__dirname + "/../repo").raw([
 		'log',
-		'--since=3.years',
 		'--shortstat',
         '--pretty=format:%ad%n%an%n%s',
         '--date=short',
@@ -54,17 +63,27 @@ router.get('/', function(req, res) {
         }
         
         authorArray.forEach(function(author, index) {
-            eachCommitsArr.push({
-                date : dateArray[index],
-                author: authorArray[index],
-                message: messageArray[index],
-                changedFile : changedFileArray[index],
-                addition: additionArray[index],
-                deletion : deletionArray[index],
-            });
-            uniqueAuthorsArray = authorArray.filter(function(elem, index, self) {
-				return index == self.indexOf(elem);
-			});
+
+            var hasAuthor = false;
+            for (var i = 0; i < searchAuthor.length && !hasAuthor; i++) {
+              if (searchAuthor[i] === authorArray[index]) {
+                hasAuthor = true;
+              }
+            }
+
+            if (hasAuthor) {
+                    eachCommitsArr.push({
+                    date : dateArray[index],
+                    author: authorArray[index],
+                    message: messageArray[index],
+                    changedFile : changedFileArray[index],
+                    addition: additionArray[index],
+                    deletion : deletionArray[index],
+                });
+                uniqueAuthorsArray = authorArray.filter(function(elem, index, self) {
+                    return index == self.indexOf(elem);
+                });
+            }    
         });
         
         eachCommitsArr = sortByDate(eachCommitsArr);
@@ -115,7 +134,7 @@ router.get('/', function(req, res) {
             
             detail = [eachCommitsArr[index].addition, eachCommitsArr[index].deletion, eachCommitsArr[index].message];
             details.push(detail);
-            
+
             commitsPerDatePerAuthor.push({
                 author: authorInOperation,
                 date: dateInOperation,
@@ -125,11 +144,11 @@ router.get('/', function(req, res) {
                 authorCumAddition: authorCumAddition,
                 authorCumDeletion: authorCumDeletion,
                 details: details
-            });
+            })
             
         });
             
-        //console.log(commitsPerDatePerAuthor);
+        
 
         //console.log(uniqueAuthorsArr);
         
