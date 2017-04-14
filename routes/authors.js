@@ -25,7 +25,7 @@ router.get('/arr', function(req, res) {
     git(__dirname + "/../repo").raw([
 		'log',
 		'--shortstat',
-        '--pretty=format:%ad%n%an%n%s',
+        '--pretty=format:ad:%ad%nan:%an%nas:%s',
         '--date=short',
         '--no-merges',
 		], (err, result) => {
@@ -42,23 +42,23 @@ router.get('/arr', function(req, res) {
         var eachCommitsArr = [];
         
         for(var i=0; i<lines.length; i++) {
-            
-            if(i % 5 == 0){
-                dateArray.push(lines[i]);
-            } else if (i % 5 == 1) {
-                authorArray.push(lines[i]);
-            } else if (i % 5 == 2) {
-                messageArray.push(lines[i]);
-            } else if (i % 5 == 3) {
-                let delimitedBySpace = lines[i].split(",");
-                var changedFile = parseInt(delimitedBySpace[0]);
-                var addition = parseInt(delimitedBySpace[1]);
-                var deletion = parseInt(delimitedBySpace[2]);
-                changedFileArray.push((isNaN(changedFile) ? 0 : changedFile));
-                additionArray.push((isNaN(addition) ? 0 : addition));
-                deletionArray.push((isNaN(deletion) ? 0 : deletion));
-            } else {
-            	continue;
+            if (lines[i].startsWith('ad:')) {
+                dateArray.push(lines[i++].substr(3));
+                authorArray.push(lines[i++].substr(3));
+                messageArray.push(lines[i++].substr(3));
+                if (lines[i].trim().length > 0) {
+                    let delimitedBySpace = lines[i].trim().split(",");
+                    var changedFile = parseInt(delimitedBySpace[0]);
+                    var addition = parseInt(delimitedBySpace[1]);
+                    var deletion = parseInt(delimitedBySpace[2]);
+                    changedFileArray.push((isNaN(changedFile) ? 0 : changedFile));
+                    additionArray.push((isNaN(addition) ? 0 : addition));
+                    deletionArray.push((isNaN(deletion) ? 0 : deletion));
+                } else {
+                    changedFileArray.push(0);
+                    additionArray.push(0);
+                    deletionArray.push(0);
+                }
             }
         }
         
