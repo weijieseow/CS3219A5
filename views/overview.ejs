@@ -254,7 +254,7 @@
         var datasetDeletion = <%- JSON.stringify(deletionInfo) %>
         var datasetGrouped = <%- JSON.stringify(groupedInfo) %>
 
-        d3.selectAll("input").on("change", selectDataset);
+        d3.selectAll("input[name='dataset']").on("change", selectDataset);
 
         function selectDataset()
         {
