@@ -8,6 +8,7 @@ var postprocessor = require('../data-controller/postprocessor.js');
 var urlEncodoedParser = bodyParser.urlencoded({ extended: false });
 
 // Define the variables that should be passed on to HTML here
+var showBarchart = false
 var dArrayOfCommits = []
 var dArrayOfCommitNumber = []
 var dArrayOfAddDelete = []
@@ -15,12 +16,14 @@ var showHistory = false
 var editHistoryArray = []
 var lineStart = 0
 var lineEnd = 0
+var showBarchart = false
 
 router.get('/', function(req, res) {
 
 	// Render Page with empty / default variablesa
 	res.render('file', {
-		filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
+		filepath: "Showing stats for file: " + req.session.filepath || "Filepath is invalid!",
+		showBarchart: showBarchart,
 		commitsArr: dArrayOfCommits || [],
 		datasetNumCommits: dArrayOfCommitNumber || [],
 		datasetAddDelete: dArrayOfAddDelete || [],
@@ -40,6 +43,9 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 	dArrayOfCommits = []
 	dArrayOfCommitNumber = []
 	dArrayOfAddDelete = []
+
+	// When filepath entered, should show bar chart
+	showBarchart = true
 
 	// Reset showHistory: Whenever file changes, history of edits should not be shown
 	showHistory = false
@@ -173,6 +179,7 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 		// Render page now with the data
 		res.render('file', {
 			filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
+			showBarchart: showBarchart,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
 			datasetAddDelete: dArrayOfAddDelete || [],
@@ -260,6 +267,7 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 		// Render page now with the data
 		res.render('file', {
 			filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
+			showBarchart: showBarchart,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
 			datasetAddDelete: dArrayOfAddDelete || [],
