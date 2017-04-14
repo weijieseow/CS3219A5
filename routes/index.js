@@ -19,9 +19,10 @@ router.post('/url', urlEncodoedParser, function(req, res) {
    req.session.repo = req.body.url; // save the repo in current session
 
    shell.cd(__dirname + "/..");
-   shell.exec('rm -rf repo');
+   shell.rm('-rf', 'repo');
+   shell.exec('mkdir repo');
 
-   clone(req.body.url, __dirname + "/../repo", function() {
+   clone(req.body.url, __dirname + "/../repo/", function() {
    	//process data here using the cloned repo in {working directory}/repo
    	//store the data as csv files in public/data
    	
