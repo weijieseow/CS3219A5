@@ -31,7 +31,11 @@ router.get('/', function(req, res) {
 			'log',
 			'--pretty=format:%cN',
 			], (err, result) => {
-
+                if (err || result == null) {
+                  res.redirect('/error');
+                  return;
+                }
+          
 				var authorsArr = result.replace(/\n/g, ",").split(",");
 
 				authorsArr = authorsArr.filter(function(elem, index, self) {

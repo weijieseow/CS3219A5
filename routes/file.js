@@ -85,7 +85,10 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
    	'--pretty=format:"%aN%n%s"',
    	filepath,
    	], (err, result) => {
-
+        if (err || result == null) {
+          res.redirect('/error');
+          return;
+        }
 		//console.log(result)
 
 		// TODO: Check for null result 
