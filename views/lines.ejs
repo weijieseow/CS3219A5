@@ -42,10 +42,21 @@
     <div class="container">
         <div class="row">
             <div class="starter-template">
-                <h1>Contribution by Lines</h1>
+
+                <% if (repo == "no repo") { %>
+                <h3>No repository is provided.</h3>
+                <a href="/">Head to homepage</a>
+                <% } else { %>
+
+                <h3>Currently analysing: <br> <%= repo %></h3>
+                <br>
+                <h3>Contribution by Lines</h3>
+                <hr>
 
                 <div class="chart" id="chartByLines"></div>
 
+                <hr>
+                <% } %>
             </div>
         </div>
         <!-- /.row -->

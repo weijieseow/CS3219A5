@@ -19,19 +19,35 @@ var lineEnd = 0
 var showBarchart = false
 
 router.get('/', function(req, res) {
-
+	if (req.session.repo == undefined) {
+		res.render('file', {
+			repo: "no repo",
+			filepath: "Showing stats for file: " + req.session.filepath || "Filepath is invalid!",
+			showBarchart: showBarchart,
+			commitsArr: dArrayOfCommits || [],
+			datasetNumCommits: dArrayOfCommitNumber || [],
+			datasetAddDelete: dArrayOfAddDelete || [],
+			showHistory: showHistory,
+			editHistoryArray: editHistoryArray || [],
+			lineStart: lineStart,
+			lineEnd: lineEnd,
+		});
+	}
+	else {
+		res.render('file', {
+			repo: req.session.repo,
+			filepath: "Showing stats for file: " + req.session.filepath || "Filepath is invalid!",
+			showBarchart: showBarchart,
+			commitsArr: dArrayOfCommits || [],
+			datasetNumCommits: dArrayOfCommitNumber || [],
+			datasetAddDelete: dArrayOfAddDelete || [],
+			showHistory: showHistory,
+			editHistoryArray: editHistoryArray || [],
+			lineStart: lineStart,
+			lineEnd: lineEnd,
+		});
+	}
 	// Render Page with empty / default variablesa
-	res.render('file', {
-		filepath: "Showing stats for file: " + req.session.filepath || "Filepath is invalid!",
-		showBarchart: showBarchart,
-		commitsArr: dArrayOfCommits || [],
-		datasetNumCommits: dArrayOfCommitNumber || [],
-		datasetAddDelete: dArrayOfAddDelete || [],
-		showHistory: showHistory,
-		editHistoryArray: editHistoryArray || [],
-		lineStart: lineStart,
-		lineEnd: lineEnd,
-	});
 
 	// DEBUG
 	console.log("Current Repo: " + req.session.repo)
@@ -50,25 +66,25 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 	// Reset showHistory: Whenever file changes, history of edits should not be shown
 	showHistory = false
 
-   	var dataDict = {}
+	var dataDict = {}
 
 	var dAuthorsArr = [];
 	var dCommitMsgArr = [];
 	var dAdditionsArr = [];
 	var dDeletionsArr = [];
 
-   let filepath = req.body.filepath
-   req.session.filepath = filepath
+	let filepath = req.body.filepath
+	req.session.filepath = filepath
    console.log(filepath); // Filepath to be inspected
 
    // Pull data for part D
-	git(__dirname + "/../repo").raw([
-	'log',
-	'--follow',
-	'--numstat',
-	'--pretty=format:"%aN%n%s"',
-	filepath,
-	], (err, result) => {
+   git(__dirname + "/../repo").raw([
+   	'log',
+   	'--follow',
+   	'--numstat',
+   	'--pretty=format:"%aN%n%s"',
+   	filepath,
+   	], (err, result) => {
 
 		//console.log(result)
 
@@ -83,17 +99,17 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 				dAuthorsArr.push(line.substring(1))
 
 			// This line is  commit msg without last char (")
-			} else if (i%4 == 1) {
-				dCommitMsgArr.push(line.slice(0, -1)) 
+		} else if (i%4 == 1) {
+			dCommitMsgArr.push(line.slice(0, -1)) 
 			
 			// this line is addition and deletions
-			} else if (i%4 == 2) {
-				let delimitedByTab = line.split('\t')
-				dAdditionsArr.push(parseInt(delimitedByTab[0]))
-				dDeletionsArr.push(parseInt(delimitedByTab[1]))  				
-			}
-
+		} else if (i%4 == 2) {
+			let delimitedByTab = line.split('\t')
+			dAdditionsArr.push(parseInt(delimitedByTab[0]))
+			dDeletionsArr.push(parseInt(delimitedByTab[1]))  				
 		}
+
+	}
 
 		// Combine arrays into an array of JSON objects repsenting a commit
 		for (var i = 0; i < dAuthorsArr.length; i++) {
@@ -178,6 +194,7 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 
 		// Render page now with the data
 		res.render('file', {
+			repo: req.session.repo,
 			filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
 			showBarchart: showBarchart,
 			commitsArr: dArrayOfCommits || [],
@@ -203,13 +220,13 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
    	editHistoryArray = []
 
    	// Pull data for part D
-	git(__dirname + "/../repo").raw([
-	'log',
-	'--numstat',
-	'--pretty="%n&&&%n-A%aN%n-D%ad%n-M%s"',
-	'-L',
-	lineStart + ',' + lineEnd + ':' + filepath
-	], (err, result) => {
+   	git(__dirname + "/../repo").raw([
+   		'log',
+   		'--numstat',
+   		'--pretty="%n&&&%n-A%aN%n-D%ad%n-M%s"',
+   		'-L',
+   		lineStart + ',' + lineEnd + ':' + filepath
+   		], (err, result) => {
 		//console.log(result)
 
 		showHistory = true
@@ -235,30 +252,30 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 				}
 
 			// Check for -A flag for author
-			} else if (currLine.substring(0,2) == '-A') {
-				currentEdit.author = currLine.substring(2)
+		} else if (currLine.substring(0,2) == '-A') {
+			currentEdit.author = currLine.substring(2)
 			
 			// Check for -D flag for date
-			} else if (currLine.substring(0,2) == '-D') {
-				currentEdit.date = currLine.substring(2)
+		} else if (currLine.substring(0,2) == '-D') {
+			currentEdit.date = currLine.substring(2)
 
 			// Check for -M flag for message
-			} else if (currLine.substring(0,2) == '-M') {
-				currentEdit.msg = currLine.substring(2)
+		} else if (currLine.substring(0,2) == '-M') {
+			currentEdit.msg = currLine.substring(2)
 
 			// Check first 3 characters, if it is '+++' or '---', ignore
-			} else if (currLine.substring(0, 3) == '+++') {
-				continue
-			} else if (currLine.substring(0, 3) == '---') {
-				continue
+		} else if (currLine.substring(0, 3) == '+++') {
+			continue
+		} else if (currLine.substring(0, 3) == '---') {
+			continue
 
 			// If first char is '-' or '+', add to deletion / addition respectively
-			} else if (currLine.substring(0, 1) == '-') {
-				currentEdit.deletion++
-			} else if (currLine.substring(0, 1) == '+') {
-				currentEdit.addition++
-			}
+		} else if (currLine.substring(0, 1) == '-') {
+			currentEdit.deletion++
+		} else if (currLine.substring(0, 1) == '+') {
+			currentEdit.addition++
 		}
+	}
 
 		// Remove first element because it is always empty
 		arrayOfEdits.shift();
@@ -278,7 +295,7 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 		});
 
 	});
-});	
+   });	
 
 
 module.exports = router;

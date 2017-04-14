@@ -167,7 +167,7 @@ router.get('/arr', function(req, res) {
 
 
         res.render('authors', {
-            repo: req.session.repo || "no repo",
+            repo: req.session.repo,
             commitsPerDatePerAuthor: commitsPerDatePerAuthor,
             eachCommitsArr: eachCommitsArr
         });

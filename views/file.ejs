@@ -11,15 +11,22 @@
     <div class="container">
         <div class="row">
             <div class="starter-template">
-                <h1>View Contributions By File</h1>
+                <% if (repo == "no repo") { %>
+                    <h3>No repository is provided.</h3>
+                    <a href="/">Head to homepage</a>
+                <% } else { %>
+
+                <h3>Currently analysing: <br> <%= repo %></h3>
                 <br>
-                <br>
+
+                <h3>View Contributions By File</h3>
                 <h3>Enter the filepath of the file you want to inspect below.</h3>
-                <br>
+                
                 <form action="/file/filepath" method="post">
                     <input type="text" name="filepath"/> <input type="submit" value="Submit">
                 </form>
-                <br><br>
+                
+                <hr>
 
                 <% if (showBarchart == true) { %>
                     <h4><%= filepath%></h4>
@@ -31,10 +38,9 @@
                     <br>
                     <div id="bar-chart"></div>
 
-                    <br><br>
                     <hr>
-                    <br><br>
-                    <h1>See history of edits for a specific code chunk</h1>
+                    <br>
+                    <h3>See history of edits for a specific code chunk</h3>
                     <br>
                     <form action="/file/codechunk" method="post">
                         From Line : <input type="number" name="linestart"/> to <input type="number" name="lineend"/> <input type="submit" value="Submit">
@@ -72,6 +78,7 @@
                         </div>
                     <% } %>
                 <% } %>
+            <% } %>
                 
                 
 
