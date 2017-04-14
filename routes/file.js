@@ -85,10 +85,6 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
    	'--pretty=format:"%aN%n%s"',
    	filepath,
    	], (err, result) => {
-        if (err || result == null) {
-          res.redirect('/error');
-          return;
-        }
 		//console.log(result)
 
 		// TODO: Check for null result 
@@ -227,7 +223,21 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 });
 
 router.post('/codechunk', urlEncodoedParser, function(req, res) {
-
+    if (req.session.repo == undefined) {
+		res.render('file', {
+			repo: "no repo",
+			filepath: "",
+			showBarchart: showBarchart,
+			commitsArr: dArrayOfCommits || [],
+			datasetNumCommits: dArrayOfCommitNumber || [],
+			datasetAddDelete: dArrayOfAddDelete || [],
+			showHistory: showHistory,
+			editHistoryArray: editHistoryArray || [],
+			lineStart: lineStart,
+			lineEnd: lineEnd,
+		});
+	}
+  
 	// Replace old variables
 	let filepath = req.session.filepath
 	lineStart = req.body.linestart
@@ -245,7 +255,7 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
    		'-L',
    		lineStart + ',' + lineEnd + ':' + filepath
    		], (err, result) => {
-		
+
 		// If lines are invalid
 		if (result == null) {
 			res.render('file', {
@@ -316,6 +326,7 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 
 		// Render page now with the data
 		res.render('file', {
+            repo: req.session.repo,
 			filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
 			showBarchart: showBarchart,
 			commitsArr: dArrayOfCommits || [],

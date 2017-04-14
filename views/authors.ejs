@@ -1,7 +1,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!--<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
     <style>
         rect {
             fill: transparent;
@@ -14,11 +13,9 @@
             shape-rendering: crispEdges;
         }
         .axis text, .legend {
-            //font-family: 'Indie Flower', cursive;
             font-size: .8em;
         } 
         .axis .label {
-            //font-family: 'Indie Flower', cursive;
             font-size: 1em;
         }
         .axisLine {
@@ -71,7 +68,6 @@
         }
         
         #info {
-            font-family: 'Indie Flower', cursive;
             font-size: 12pt;
         }
         circle {
@@ -107,7 +103,9 @@
     <hr>
 
     <div class="container">
+        <div id="scatter"></div>
         <div id="info">
+            <h3 id="table-author"></h3>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -122,9 +120,7 @@
                 </table>
             </div>
         </div>
-        <div id="scatter"></div>
     </div>
-    
     
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -280,7 +276,7 @@
             .on("mouseout", tip.hide)
             .on("click", function (d, i) {
                 info.style("display", "block");
-                writeTable(d.details);
+                writeTable(d.author, d.details);
           });
 
         var legend = svg.selectAll(".legend")
@@ -364,7 +360,10 @@
         }
         
         
-        function writeTable(details){
+        function writeTable(name, details){
+            var author = document.querySelector("#table-author");
+            author.innerHTML = name;
+          
             var oldTbody = document.querySelector("#info table tbody");
             var newTbody = document.createElement('tbody');
             oldTbody.parentNode.replaceChild(newTbody, oldTbody);

@@ -119,13 +119,13 @@ var tooltip = d3.select('body')
 var bar = g.selectAll("g")
 		.data(data)
 		.enter().append('rect')
-        .transition()
-        .duration(750)
 		.attr("x", 0)
 		.attr("y", function(d) {return y(d.author)})
-		.attr("width", function(d) {return x(d.count)})
 		.attr("height", y.bandwidth())
-		.attr("fill", "#eeeeee");
+		.attr("fill", "#eeeeee")
+        .transition()
+        .duration(750)
+		.attr("width", function(d) {return x(d.count)});
 		
 // render the line count next to the bar
 var label = g.selectAll("g")
