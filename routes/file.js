@@ -74,8 +74,16 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 	var dDeletionsArr = [];
 
 	let filepath = req.body.filepath
+
+	// Validate filepath
+	if (!filepath.includes(".")) {
+		console.log("Invalid file path!")
+		filepath = ""
+	}
+
+
 	req.session.filepath = filepath
-   console.log(filepath); // Filepath to be inspected
+   	console.log(filepath); // Filepath to be inspected
 
    // Pull data for part D
    git(__dirname + "/../repo").raw([
@@ -96,7 +104,7 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 				commitsArr: dArrayOfCommits || [],
 				datasetNumCommits: dArrayOfCommitNumber || [],
 				datasetAddDelete: dArrayOfAddDelete || [],
-				showHistory: showHistory,
+				showHistory: false,
 				editHistoryArray: editHistoryArray || [],
 				lineStart: lineStart,
 				lineEnd: lineEnd,
@@ -223,18 +231,21 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 });
 
 router.post('/codechunk', urlEncodoedParser, function(req, res) {
+
+	// If no repo, dont render anything
     if (req.session.repo == undefined) {
 		res.render('file', {
 			repo: "no repo",
 			filepath: "",
-			showBarchart: showBarchart,
+			showBarchart: false,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
 			datasetAddDelete: dArrayOfAddDelete || [],
-			showHistory: showHistory,
+			showHistory: false,
 			editHistoryArray: editHistoryArray || [],
 			lineStart: lineStart,
 			lineEnd: lineEnd,
+			codechunkTitle: "",
 		});
 	}
   
@@ -257,7 +268,7 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
    		], (err, result) => {
 
 		// If lines are invalid
-		if (result == null) {
+		if (result == null || lineStart > lineEnd) {
 			res.render('file', {
 				repo: req.session.repo,
 				filepath: "Showing stats for file: " + req.session.filepath, 
