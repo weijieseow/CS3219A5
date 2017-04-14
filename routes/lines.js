@@ -32,9 +32,8 @@ router.get('/', function(req, res) {
       '-I', '-l',
       '-e', ''
       ], (err, result) => {
-        if (err) {
-          console.log('grep failed: ' + err);
-          res.render('lines');
+        if (err || result == null) {
+          res.redirect('/error');
           return;
         }
       

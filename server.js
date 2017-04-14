@@ -32,7 +32,9 @@ app.use('/overview', overview);
 app.use('/file', file);
 app.use('/lines', lines);
 app.use('/authors', authors);
-
+app.use('/error', function(req, res) {
+  res.render('error');
+})
 app.use('*',function(req, res){
   res.send('Error 404: Not Found!');
 });
