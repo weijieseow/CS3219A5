@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
 	if (req.session.repo == undefined) {
 		res.render('file', {
 			repo: "no repo",
-			filepath: "Showing stats for file: " + req.session.filepath || "Filepath is invalid!",
+			filepath: "",
 			showBarchart: showBarchart,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
 	else {
 		res.render('file', {
 			repo: req.session.repo,
-			filepath: "Showing stats for file: " + req.session.filepath || "Filepath is invalid!",
+			filepath: "",
 			showBarchart: showBarchart,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
@@ -45,6 +45,7 @@ router.get('/', function(req, res) {
 			editHistoryArray: editHistoryArray || [],
 			lineStart: lineStart,
 			lineEnd: lineEnd,
+			codechunkTitle: ""
 		});
 	}
 	// Render Page with empty / default variablesa
@@ -60,11 +61,10 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 	dArrayOfCommitNumber = []
 	dArrayOfAddDelete = []
 
-	// When filepath entered, should show bar chart
-	showBarchart = true
-
 	// Reset showHistory: Whenever file changes, history of edits should not be shown
 	showHistory = false
+	// When filepath entered, should show bar chart
+	showBarchart = true
 
 	var dataDict = {}
 
@@ -89,6 +89,22 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 		//console.log(result)
 
 		// TODO: Check for null result 
+		if (result == null) {
+			res.render('file', {
+				repo: req.session.repo,
+				filepath: "Filepath is invalid!",
+				showBarchart: showBarchart,
+				commitsArr: dArrayOfCommits || [],
+				datasetNumCommits: dArrayOfCommitNumber || [],
+				datasetAddDelete: dArrayOfAddDelete || [],
+				showHistory: showHistory,
+				editHistoryArray: editHistoryArray || [],
+				lineStart: lineStart,
+				lineEnd: lineEnd,
+				codechunkTitle: "Showing edit history for lines " + lineStart + " to " + lineEnd
+			});
+			return
+		}
 
 		var lines = result.split('\n') 
 		for(var i = 0; i < lines.length; i++){
@@ -180,22 +196,19 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			//console.log("For author" + currAuthor, dArrayOfCommitNumber)
 		}
 
+		dArrayOfCommitNumber = dArrayOfCommitNumber.sort(sortByCommitNumber);
+		dArrayOfAddDelete = dArrayOfAddDelete.sort(sortByTotalEdits);
+
 		req.session.filepathData = {
 			commits: dArrayOfCommits,
 			numCommits: dArrayOfCommitNumber,
 			addDelete: dArrayOfAddDelete, 
 		}
 
-		//console.log("After Loop, Arr of Com Num")
-		//console.log(dArrayOfCommitNumber)
-
-		//console.log("Before Render, Arr of Com Num")
-		//console.log(dArrayOfCommitNumber)
-
 		// Render page now with the data
 		res.render('file', {
 			repo: req.session.repo,
-			filepath: "Showing stats for file: " + req.session.filepath || "No file specified.",
+			filepath: "Showing stats for file: " + req.session.filepath,
 			showBarchart: showBarchart,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
@@ -204,17 +217,19 @@ router.post('/filepath', urlEncodoedParser, function(req, res) {
 			editHistoryArray: editHistoryArray || [],
 			lineStart: lineStart,
 			lineEnd: lineEnd,
+			codechunkTitle: "",
+
 		});
 	});
 });
 
 router.post('/codechunk', urlEncodoedParser, function(req, res) {
 
-	// Replace old line variables
+	// Replace old variables
 	let filepath = req.session.filepath
 	lineStart = req.body.linestart
 	lineEnd = req.body.lineend
-   	//console.log("Before git log: ", filepath, lineStart, lineEnd);
+   	showHistory = true
 
    	// Reset array
    	editHistoryArray = []
@@ -227,9 +242,24 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
    		'-L',
    		lineStart + ',' + lineEnd + ':' + filepath
    		], (err, result) => {
-		//console.log(result)
-
-		showHistory = true
+		
+		// If lines are invalid
+		if (result == null) {
+			res.render('file', {
+				repo: req.session.repo,
+				filepath: "Showing stats for file: " + req.session.filepath, 
+				showBarchart: showBarchart,
+				commitsArr: dArrayOfCommits || [],
+				datasetNumCommits: dArrayOfCommitNumber || [],
+				datasetAddDelete: dArrayOfAddDelete || [],
+				showHistory: showHistory,
+				editHistoryArray: editHistoryArray || [],
+				lineStart: lineStart,
+				lineEnd: lineEnd,
+				codechunkTitle: "Invalid line number(s)!"
+			});
+			return;
+		}
 
 		var allLines = result.split('\n')
 		var arrayOfEdits = []
@@ -292,10 +322,34 @@ router.post('/codechunk', urlEncodoedParser, function(req, res) {
 			editHistoryArray: editHistoryArray || [],
 			lineStart: lineStart,
 			lineEnd: lineEnd,
+			codechunkTitle: "Showing edit history for lines " + lineStart + " to " + lineEnd,
 		});
 
 	});
-   });	
+});	
+
+function sortByCommitNumber(a, b) {
+	return a.value - b.value;
+}
+
+function sortByTotalEdits(a, b) {
+	return (a.addition + a.deletion) - (b.addition + b.deletion);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;
