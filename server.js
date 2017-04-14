@@ -39,6 +39,6 @@ app.use('*',function(req, res){
   
 // use npm run dev 
 // to run the server
-app.listen(app.get('port)',function(){
+app.listen(app.get('port)',function() {
   console.log('Server running on port', app.get('port)'));
-});
+}));
