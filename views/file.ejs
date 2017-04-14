@@ -315,9 +315,9 @@
                         // new data:
                         bar.enter().append("rect")
                         .attr("class", "bar")
-                        .attr("x", function(d) { return x(d.value); })
+                        .attr("x", function(d) { return 0; })
                         .attr("y", function(d) { return y(d.label); })
-                        .attr("width", function(d) { return width-x(d.value); })
+                        .attr("width", function(d) { return 0; })
                         .attr("height", y.rangeBand());
 
                         // Tooltips
