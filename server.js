@@ -11,6 +11,8 @@ var authors = require('./routes/authors');
 // set up session middleware
 var session = require('express-session');
 
+app.set('port', (process.env.PORT || 3000));
+
 app.use(session({
   secret: 'this15secret',
   resave: false,
@@ -37,6 +39,6 @@ app.use('*',function(req, res){
   
 // use npm run dev 
 // to run the server
-app.listen(3000,function(){
-  console.log('Server running at Port 3000');
+app.listen(app.get('port)',function(){
+  console.log('Server running on port', app.get('port)'));
 });

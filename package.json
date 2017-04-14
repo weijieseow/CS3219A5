@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/weijieseow/CS3219A5.git"
   },
+  "engines": {
+    "node": "6.10.0"
+  },
   "author": "CS3219 group 5",
   "license": "ISC",
   "bugs": {

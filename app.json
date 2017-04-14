@@ -1,0 +1,6 @@
+{
+	"name": "Git Guard",
+	"description": "A web application to analyse your git repository.",
+	"repository": "https://github.com/weijieseow/CS3219A5",
+	"keywords": ["node", "express", "static"]
+}
