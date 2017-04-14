@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
 		res.render('file', {
 			repo: "no repo",
 			filepath: "",
-			showBarchart: showBarchart,
+			showBarchart: false,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
 			datasetAddDelete: dArrayOfAddDelete || [],
@@ -37,7 +37,7 @@ router.get('/', function(req, res) {
 		res.render('file', {
 			repo: req.session.repo,
 			filepath: "",
-			showBarchart: showBarchart,
+			showBarchart: false,
 			commitsArr: dArrayOfCommits || [],
 			datasetNumCommits: dArrayOfCommitNumber || [],
 			datasetAddDelete: dArrayOfAddDelete || [],
